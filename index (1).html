@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <script>if (location.protocol === 'http:' && location.hostname !== 'localhost') location.replace('https://' + location.host + location.pathname + location.search + location.hash);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BrightWork Realty Advocates — move into your next home, then sell. Non-contingent offers and better sale outcomes for Lamorinda sellers." />
+  <meta name="theme-color" content="#1a2f45" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BrightWork Realty Advocates" />
+  <meta property="og:title" content="Move Into Your Next Home. Then Sell. | BrightWork Realty Advocates" />
+  <meta property="og:description" content="Stop losing homes to contingency limitations. BrightWork helps Lamorinda sellers buy first, then sell their current home properly." />
+  <title>Buy Before You Sell | BrightWork Realty Advocates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cyan: #0bbfe0;
+      --cyan-dark: #0099b8;
+      --cyan-light: #e6f9fd;
+      --yellow: #f5c800;
+      --navy: #1a2f45;
+      --white: #ffffff;
+      --off-white: #f7fafc;
+      --text: #1e2d3d;
+      --muted: #5a7184;
+      --border: #d8edf4;
+      --teal: #005d7a;
+      --page-gutter: 60px;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--page-gutter);
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 55px;
+      width: auto;
+      max-width: min(360px, 52vw);
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      display: none;
+    }
+    .nav-logo-text.is-visible { display: inline; }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .nav-phone svg {
+      width: 16px; height: 16px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* HERO */
+    .hero {
+      margin-top: 72px;
+      position: relative;
+      min-height: max(65vh, 580px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #1a2f45;
+      background-image: url('images/hero.jpg?v=2');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(6, 18, 36, 0.87) 0%,
+        rgba(10, 26, 44, 0.67) 48%,
+        rgba(12, 28, 48, 0.32) 85%,
+        rgba(14, 32, 52, 0.15) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px var(--page-gutter);
+      max-width: 660px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: var(--navy);
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--cyan); }
+    .hero p {
+      font-size: clamp(16px, 1.3vw, 19px);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 520px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cyan);
+      color: var(--white);
+      text-decoration: none;
+      padding: 17px 36px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--cyan-dark); transform: translateY(-2px); }
+    .hero-cta svg {
+      width: 16px; height: 16px;
+      stroke: white; fill: none; stroke-width: 2.5;
+      transition: transform 0.2s;
+    }
+    .hero-cta:hover svg { transform: translateX(4px); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--teal);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .trust-item svg {
+      width: 18px; height: 18px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 1.75;
+      min-width: 18px;
+    }
+
+    /* SECTION UTILITIES */
+    .section { padding: 88px var(--page-gutter); }
+    .section-light { background: var(--off-white); }
+    .section-white { background: var(--white); }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    /* CONCEPT SECTION */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 72px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .concept-divider { background: var(--border); }
+    .concept-col h2 {
+      font-size: clamp(22px, 2vw, 32px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+    .concept-col p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .concept-col p:last-child { margin-bottom: 0; }
+    .concept-col p strong {
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    /* TWO-SIDED BENEFIT */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      background: var(--border);
+    }
+    .benefit-card {
+      background: var(--white);
+      padding: 60px 52px;
+    }
+    .benefit-card-navy {
+      background: var(--teal);
+    }
+    .benefit-tag {
+      display: inline-block;
+      background: var(--cyan-light);
+      color: var(--cyan-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      margin-bottom: 28px;
+    }
+    .benefit-tag-dark {
+      background: rgba(255,255,255,0.08);
+      color: var(--yellow);
+    }
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .benefit-icon svg {
+      width: 22px; height: 22px;
+      stroke: white; fill: none; stroke-width: 2;
+    }
+    .benefit-card h3 {
+      font-size: clamp(22px, 2vw, 30px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .benefit-card-navy h3 { color: var(--white); }
+    .benefit-card p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .benefit-card-navy p { color: rgba(255,255,255,0.68); }
+    .benefit-card p:last-child { margin-bottom: 0; }
+    .benefit-card p strong {
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .benefit-card-navy p strong {
+      color: rgba(255,255,255,0.96);
+    }
+
+    /* PATHS SECTION */
+    .paths-intro {
+      max-width: 680px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+    .paths-intro h2 {
+      font-size: clamp(26px, 2.5vw, 38px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .paths-intro p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .path-card {
+      border: 1.5px solid var(--border);
+      padding: 36px 28px;
+      background: var(--white);
+    }
+    .path-number {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .path-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .path-card p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .paths-footer {
+      max-width: 720px;
+      margin: 48px auto 0;
+      text-align: center;
+      padding: 28px 36px;
+      border-top: 2px solid var(--cyan);
+      background: var(--cyan-light);
+    }
+    .paths-footer p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.75;
+      font-style: italic;
+    }
+    .paths-footer cite {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      font-style: normal;
+      color: var(--cyan-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    /* BIO SECTION */
+    .bio-section {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      align-items: start;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .bio-photo {
+      aspect-ratio: 3/4;
+      background: var(--border);
+      overflow: hidden;
+    }
+    .bio-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .bio-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      background: linear-gradient(145deg, #1a2f45 0%, #0099b8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bio-photo-placeholder svg {
+      width: 64px; height: 64px;
+      stroke: rgba(255,255,255,0.25); fill: none; stroke-width: 1;
+    }
+    .bio-content h2 {
+      font-size: clamp(26px, 2.2vw, 36px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .bio-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cyan-dark);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .bio-content p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .bio-content p:last-child { margin-bottom: 0; }
+    .bio-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .bio-stat strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .bio-stat span {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* SPLIT FORM */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .split-left {
+      padding: 80px 64px 80px 60px;
+      background: var(--off-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .split-left h2 {
+      font-size: clamp(26px, 2.2vw, 36px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .split-left > p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 36px;
+    }
+    .summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .summary-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .summary-check {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      background: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .summary-check svg {
+      width: 12px; height: 12px;
+      stroke: white; fill: none; stroke-width: 3;
+    }
+    .summary-item p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* FORM PANEL */
+    .split-right {
+      background: var(--cyan);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .split-right::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .split-right::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: -50px;
+      width: 200px; height: 200px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .form-wrap { position: relative; z-index: 1; }
+    .form-wrap h2 {
+      font-size: clamp(24px, 2.2vw, 32px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .form-wrap .subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+    .field-row .field-group { margin-bottom: 0; }
+    .field-group label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .field-group input,
+    .field-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 13px 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .field-group input::placeholder { color: rgba(255,255,255,0.45); }
+    .field-group input:focus,
+    .field-group select:focus {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,0.2);
+    }
+    .field-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-color: rgba(255,255,255,0.15);
+      padding-right: 40px;
+    }
+    .field-group select option { background: var(--cyan-dark); color: white; }
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 14px 0 20px;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--yellow);
+      cursor: pointer;
+    }
+    .consent-row p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .consent-row a { color: rgba(255,255,255,0.85); }
+    .submit-btn {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--navy);
+      border: none;
+      padding: 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .submit-btn:hover { background: #ffd700; transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* SUCCESS */
+    .success-state { display: none; text-align: center; }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .success-icon svg {
+      width: 32px; height: 32px;
+      stroke: var(--navy); fill: none; stroke-width: 3;
+    }
+    .success-state h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .success-state p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* SPINNER */
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid transparent;
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* DISCLAIMER */
+    .disclaimer-bar {
+      background: var(--navy);
+      padding: 28px 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .disclaimer-bar svg {
+      width: 20px; height: 20px;
+      stroke: var(--yellow); fill: none; stroke-width: 2;
+      min-width: 20px;
+      margin-top: 2px;
+    }
+    .disclaimer-bar p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .disclaimer-bar strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 36px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+    }
+    footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 12px;
+    }
+    footer a:hover { color: var(--cyan); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge { animation: fadeUp 0.5s ease both; }
+    .hero h1    { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero p     { animation: fadeUp 0.6s ease 0.2s both; }
+    .hero-cta   { animation: fadeUp 0.5s ease 0.3s both; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      :root { --page-gutter: 28px; }
+      .concept-grid { grid-template-columns: 1fr; gap: 44px; }
+      .concept-divider { display: none; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .benefit-card { padding: 48px 32px; }
+      .paths-grid { grid-template-columns: 1fr; gap: 16px; }
+      .bio-section { grid-template-columns: 1fr; gap: 36px; }
+      .bio-photo { max-width: 220px; }
+      .bio-stats { gap: 24px; flex-wrap: wrap; }
+      .split { grid-template-columns: 1fr; }
+      .split-left { padding: 56px 28px; }
+      .split-right { padding: 56px 28px; }
+      .field-row { grid-template-columns: 1fr; }
+      .hero { min-height: max(56vh, 500px); }
+      .hero-content { padding: 36px var(--page-gutter) 40px; }
+      .trust-bar { gap: 24px; padding: 20px 28px; }
+      .section { padding: 60px var(--page-gutter); }
+      .disclaimer-bar { padding: 24px 28px; }
+      footer { padding: 28px 28px; flex-direction: column; text-align: center; }
+    }
+  </style>
+
+<!-- PostHog Analytics -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/ph.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||(window.posthog=[]));
+  posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only'
+  })
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://brightworkrealty.com" class="nav-logo" target="_blank" rel="noopener noreferrer">
+    <img src="images/logo.png?v=5" alt="BrightWork Realty Advocates" decoding="async"
+         onerror="this.style.display='none';document.getElementById('navLogoText').classList.add('is-visible');" />
+    <span class="nav-logo-text" id="navLogoText">BrightWork Realty</span>
+  </a>
+  <a href="tel:9252006000" class="nav-phone">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l1.06-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (925) 200-6000
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Buy Before You Sell</div>
+    <h1>Move into your<br>next home.<br><span>Then sell.</span></h1>
+    <p>Every contingent offer gives sellers a reason to choose someone else. In Lamorinda, that's a frequent and real cost. There's a structure that changes the equation.</p>
+    <a href="#how-it-works" class="hero-cta">
+      See How It Works
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Selling Lamorinda since 1977
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    Non-contingent offers
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Multiple program options
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+    Sell prepared, not pressured
+  </div>
+</div>
+
+<!-- CONCEPT: THE PROBLEM / THE SOLUTION -->
+<section class="section section-white" id="how-it-works">
+  <div class="concept-grid">
+    <div class="concept-col">
+      <div class="eyebrow">The Problem</div>
+      <h2>You're negotiating with one hand tied behind your back.</h2>
+      <p>In a competitive market, <strong>contingent offers lose.</strong> When your offer depends on selling your current home first, sellers see that as risk. They'll take the cleaner offer, <strong>even if yours is higher on paper.</strong></p>
+      <p>So most sellers try to sell first. But selling a home while you're still living in it is harder than it looks. Showings to schedule around your life, repairs to coordinate while you're still there, a home staged around your furniture instead of a buyer's imagination. <strong>It costs time and, typically, money.</strong></p>
+      <p>The conventional sequence forces <strong>a compromise on both sides of the transaction.</strong> You get a weaker position as a buyer and a lower net as a seller.</p>
+    </div>
+    <div class="concept-divider"></div>
+    <div class="concept-col">
+      <div class="eyebrow">The Solution</div>
+      <h2>Buy first. Then sell properly.</h2>
+      <p>When you move before you sell, <strong>both sides of the transaction improve.</strong> You're no longer contingent on the buy side, so your offer competes on equal footing with everyone. And your current home goes to market the right way: <strong>vacant, properly prepped, staged, and shown at its best.</strong></p>
+      <p>The result is typically <strong>a stronger purchase and a higher net on the sale.</strong> Not because of a program feature, but because you've removed the constraints that make both sides harder.</p>
+      <p>Ben has access to multiple structures that make this work. Which one makes sense depends on your specific situation, which is where the conversation starts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TWO-SIDED BENEFIT -->
+<div class="benefits-grid">
+  <div class="benefit-card">
+    <div class="benefit-tag">On the buy side</div>
+    <div class="benefit-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <h3>Buy Stronger</h3>
+    <p><strong>A non-contingent offer is a materially better offer.</strong> Sellers in Lamorinda know the difference. In a competitive situation, they'll take the cleaner offer even at a slightly lower number.</p>
+    <p>When you're not waiting on your current home to close, <strong>you can move decisively.</strong> That changes your negotiating position entirely.</p>
+  </div>
+  <div class="benefit-card benefit-card-navy">
+    <div class="benefit-tag benefit-tag-dark">On the sell side</div>
+    <div class="benefit-icon">
+      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+    </div>
+    <h3>Sell Smarter</h3>
+    <p><strong>A vacant home, properly staged and fully prepped, consistently outperforms an occupied one.</strong> You can address inspection items before they become negotiating chips. You can show on your schedule, not theirs.</p>
+    <p>The boosted outcome on the sell side isn't a program benefit. <strong>It's what happens when you remove the constraints that hold most sellers back.</strong></p>
+  </div>
+</div>
+
+<!-- MULTIPLE PATHS -->
+<section class="section section-light">
+  <div class="paths-intro">
+    <div class="eyebrow">The Advisory Approach</div>
+    <h2>There's no single program that fits every situation.</h2>
+    <p>Whether you're moving up, moving down, or making a lateral move changes the math significantly. So does your equity, your timeline, and what other assets you have available. Ben's job is to find the structure that actually improves your net, not just your speed.</p>
+  </div>
+  <div class="paths-grid">
+    <div class="path-card">
+      <div class="path-number">Scenario 01</div>
+      <h4>Moving Up</h4>
+      <p>You've found a larger home or a better neighborhood, but you need your current equity to fund the purchase. A buy-before-you-sell structure lets you compete without the contingency that's been costing you deals.</p>
+    </div>
+    <div class="path-card">
+      <div class="path-number">Scenario 02</div>
+      <h4>Downsizing</h4>
+      <p>The economics look different when your current home is worth more than your next one. Some structures work well here; others charge fees that don't make sense at this scale. Ben runs the numbers first before recommending a path.</p>
+    </div>
+    <div class="path-card">
+      <div class="path-number">Scenario 03</div>
+      <h4>Lateral or Lifestyle Move</h4>
+      <p>Moving for location, schools, or lifestyle rather than size. Timing is everything. A buy-before-you-sell approach lets you move when the right home appears rather than when your sale happens to close.</p>
+    </div>
+  </div>
+  <div class="paths-footer">
+    <p>"There are several ways to do this. The right one depends on whether you're moving up, down, or sideways, and what you're working with. Let's figure out what fits your situation."</p>
+    <cite>Ben Olsen, BrightWork Realty Advocates</cite>
+  </div>
+</section>
+
+<!-- BEN BIO -->
+<section class="section section-white">
+  <div class="bio-section">
+    <div class="bio-photo">
+      <img src="images/ben-olsen.png?v=1" alt="Ben Olsen, BrightWork Realty Advocates"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="bio-photo-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+    </div>
+    <div class="bio-content">
+      <div class="eyebrow">Your Advisor</div>
+      <h2>Ben Olsen</h2>
+      <p class="bio-title">Founder | Realtor, BrightWork Realty Advocates</p>
+      <p>Ben grew up in Moraga, lives in Lamorinda, and has spent his career building deep expertise in these specific communities. The BrightWork team has been working this market since 1977.</p>
+      <p>His approach to buy-before-you-sell isn't about pushing a single product. It's about understanding your financial picture, your goals, and which structure actually improves your outcome. That starts with an honest conversation about your numbers.</p>
+      <div class="bio-stats">
+        <div class="bio-stat">
+          <strong>1977</strong>
+          <span>In Lamorinda</span>
+        </div>
+        <div class="bio-stat">
+          <strong>$1B+</strong>
+          <span>Local Sales</span>
+        </div>
+        <div class="bio-stat">
+          <strong>Moraga</strong>
+          <span>Local Roots</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM SPLIT -->
+<section class="split" id="get-started">
+  <div class="split-left">
+    <div class="eyebrow">Get Started</div>
+    <h2>Let's map out your options.</h2>
+    <p>Every buy-before-you-sell situation is different. Share a bit about where you are and Ben will reach out to walk through what makes sense for your specific numbers.</p>
+    <div class="summary-list">
+      <div class="summary-item">
+        <div class="summary-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Non-contingent offer on your next home</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Sell your current home prepped, staged, and on your terms</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Multiple structures matched to your situation</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>No obligation conversation about your options</p>
+      </div>
+    </div>
+  </div>
+  <div class="split-right">
+    <div class="form-wrap">
+      <h2>Let's Map Out<br>Your Options</h2>
+      <p class="subtitle">Tell Ben a bit about where you are and he'll reach out to walk you through what structure makes the most sense.</p>
+      <form id="leadForm">
+        <div class="field-row">
+          <div class="field-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="Jane" required />
+          </div>
+          <div class="field-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="jane@email.com" required />
+        </div>
+        <div class="field-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="(925) 555-0100" required />
+        </div>
+        <div class="field-group">
+          <label for="timeline">Where are you in the process?</label>
+          <select id="timeline">
+            <option value="" disabled selected>Select your timeline</option>
+            <option value="found-home">Already found a home to buy</option>
+            <option value="actively-looking">Actively looking now</option>
+            <option value="planning-6mo">Planning in the next 6 months</option>
+            <option value="exploring">Just exploring my options</option>
+          </select>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="consent" required />
+          <p>I agree to be contacted by BrightWork Realty Advocates via call, email, and text. Reply 'stop' to opt out. Message and data rates may apply. <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>.</p>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnText">Let's Map Out My Options</span>
+          <div class="spinner" id="spinner"></div>
+        </button>
+      </form>
+      <div class="success-state" id="successState">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>You're in good hands.</h3>
+        <p>Ben will reach out shortly to walk you through your options. You can also call directly at (925) 200-6000.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <p><strong>A note on program specifics:</strong> Buy-before-you-sell structures vary in eligibility, cost, and terms depending on your individual situation. Nothing on this page constitutes a financial commitment or guarantee of program availability. The right approach is best worked out in a direct conversation with Ben.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>BrightWork Realty Advocates &nbsp;&middot;&nbsp; DRE# 02014153 &nbsp;&middot;&nbsp; 455 Moraga Road, Suite 1, Moraga, CA 94556</p>
+  <div style="display:flex;gap:20px;align-items:center;">
+    <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>
+    <a href="https://brightworkrealty.com">BrightWork Realty</a>
+  </div>
+</footer>
+
+<script>
+  const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
+  const LEAD_TAG = 'buy-before-you-sell-lead';
+  const SOURCE   = 'Buy Before You Sell Landing Page';
+
+  document.getElementById('leadForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn     = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+
+    if (!FUB_PROXY_URL || !/^https:\/\//i.test(FUB_PROXY_URL)) {
+      alert('Form delivery is not configured yet. Please call us at (925) 200-6000.');
+      return;
+    }
+
+    btn.disabled = true;
+    btnText.textContent = 'Submitting...';
+    spinner.style.display = 'block';
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const emailRaw  = document.getElementById('email').value.trim();
+    const phoneRaw  = document.getElementById('phone').value.trim();
+    const timeline  = document.getElementById('timeline').value;
+
+    const tags = [LEAD_TAG, SOURCE];
+    if (timeline) tags.push(timeline);
+
+    const payload = {
+      person: {
+        firstName,
+        lastName,
+        emails: [{ value: emailRaw, type: 'work' }],
+        phones: [{ value: phoneRaw, type: 'mobile' }],
+        tags
+      }
+    };
+
+    try {
+      const res = await fetch(FUB_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      } else {
+        throw new Error('Proxy error');
+      }
+    } catch (err) {
+      alert('Something went wrong. Please call us at (925) 200-6000.');
+      btn.disabled = false;
+      btnText.textContent = "Let's Map Out My Options";
+      spinner.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
