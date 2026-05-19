@@ -47,7 +47,7 @@ Images live in a local /images/ folder per page.
 
 | Layer        | Solution                                      |
 |--------------|-----------------------------------------------|
-| Hosting      | Cloudflare Pages (one deployment per folder)  |
+| Hosting      | Cloudflare Workers (one deployment per folder)  |
 | DNS          | Cloudflare (on brightworkrealty.com zone)     |
 | Form backend | bw-fub-proxy Cloudflare Worker                |
 | CRM          | Follow Up Boss                                |
@@ -57,9 +57,9 @@ Images live in a local /images/ folder per page.
 
 ---
 
-## Hosting: Cloudflare Pages
+## Hosting: Cloudflare Workers
 
-Each page has its own Cloudflare Pages deployment pointing to its subdirectory.
+Each page has its own Cloudflare Workers deployment pointing to its subdirectory.
 No build command. No output directory configuration needed (static HTML).
 
 Deployment pattern:
@@ -79,7 +79,7 @@ access. No external DNS requests needed for new subdomains.
 
 When adding a new page:
 1. Create the folder and index.html
-2. Create a new Cloudflare Pages project, set root to the folder
+2. Create a new Cloudflare Workers project, set root to the folder
 3. Add the custom domain in Pages settings
 4. DNS record is auto-created via Cloudflare integration
 
@@ -298,7 +298,7 @@ Navy background, yellow info icon, subdued body text.
 
 ```html
 <footer>
-  <p>BrightWork Realty Advocates &middot; DRE# 02014153 &middot; 455 Moraga Road, Suite 1, Moraga, CA 94556</p>
+  <p>BrightWork Realty Advocates &middot; DRE# 02014153 &middot; 455 Moraga Road, Suite I, Moraga, CA 94556</p>
   <div>
     <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>
     <a href="https://brightworkrealty.com">BrightWork Realty</a>
@@ -434,7 +434,7 @@ Direct:  (925) 255-9727  [do not publish unless page specifically warrants it]
 Email:   ben@brightworkrealty.com
 Web:     brightworkrealty.com
 DRE:     01409268 (personal) / 02014153 (brokerage)
-Address: 455 Moraga Road, Suite 1, Moraga, CA 94556
+Address: 455 Moraga Road, Suite I, Moraga, CA 94556
 ```
 
 ---
@@ -454,7 +454,7 @@ When building a new page in this repo:
 - [ ] Footer uses standard DRE/address format
 - [ ] No em dashes anywhere in copy
 - [ ] No mention of Side Real Estate
-- [ ] Create Cloudflare Pages deployment with build root = /[pagename]
+- [ ] Create Cloudflare Workers deployment with build root = /[pagename]
 - [ ] Add CNAME DNS record for new subdomain
 
 ---
