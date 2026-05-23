@@ -24,7 +24,7 @@ brightwork-landing-pages/
 ├── shared/
 │   ├── posthog-init.js        ← shared PostHog snippet (cross-subdomain)
 │   ├── brand.css              ← CSS custom properties / token reference
-│   └── logo.png               ← BrightWork logo (same file across all pages)
+│   └── BrightWork_logo.png    ← BrightWork logo (same file across all pages)
 ├── offmarket/                 → offmarket.brightworkrealty.com
 │   ├── index.html
 │   └── images/
@@ -146,16 +146,18 @@ Critical config — cross-subdomain cookie must be true so a user visiting
 multiple subdomains is tracked as one person:
 
 ```javascript
-posthog.init('YOUR_PROJECT_ID', {
+posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   api_host: 'https://us.i.posthog.com',
+  defaults: '2026-01-30',
   cross_subdomain_cookie: true,   // ← required for *.brightworkrealty.com
+  person_profiles: 'identified_only',
   loaded: function(posthog) {
     if (location.hostname === 'localhost') posthog.opt_out_capturing();
   }
 });
 ```
 
-PostHog project ID: [ADD WHEN CONFIGURED — do not hardcode a placeholder]
+Project key lives in `shared/posthog-init.js` only. Do not duplicate inline on individual pages.
 
 ### Identity linking
 
@@ -258,7 +260,7 @@ Nav pattern for all landing pages:
 <nav>
   <!-- Logo left: links to main site -->
   <a href="https://brightworkrealty.com" class="nav-logo" target="_blank" rel="noopener">
-    <img src="../shared/logo.png" alt="BrightWork Realty Advocates" />
+    <img src="../shared/BrightWork_logo.png" alt="BrightWork Realty Advocates" />
   </a>
 
   <!-- Center: optional credibility links (see per-page guidance below) -->
@@ -467,7 +469,7 @@ Address: 455 Moraga Road, Suite I, Moraga, CA 94556
 When building a new page in this repo:
 
 - [ ] Create `[pagename]/index.html` and `[pagename]/images/`
-- [ ] Copy logo.png from shared/ or reference `../shared/logo.png`
+- [ ] Reference `../shared/BrightWork_logo.png` in nav (with text fallback via onerror)
 - [ ] Add `<script src="../shared/posthog-init.js"></script>` before closing `</head>`
 - [ ] Set correct LEAD_TAG and LEAD_SOURCE constants (see table above)
 - [ ] Include posthog.identify() and posthog.capture() in form submission handler

@@ -1,0 +1,6 @@
+name = "brightwork-offmarket"
+compatibility_date = "2026-05-23"
+account_id = "5f50d138eb76f9beb59f76d0f356543f"
+
+[assets]
+directory = "."
