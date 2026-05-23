@@ -32,7 +32,6 @@ brightwork-landing-pages/
 │   ├── index.html
 │   └── images/
 ├── quiet/                     → quiet.brightworkrealty.com  [TO BUILD]
-├── revive/                    → revive.brightworkrealty.com  [TO BUILD]
 ├── relaunch/                  → relaunch.brightworkrealty.com  [TO BUILD]
 └── finaloffer/                → finaloffer.brightworkrealty.com  [TO BUILD]
 ```
@@ -127,7 +126,6 @@ Both go into the `tags` array on the person object.
 | offmarket  | off-market-lead             | Off-Market Landing Page          |
 | buybefore  | buy-before-you-sell-lead    | Buy Before You Sell Landing Page |
 | quiet      | quiet-listing-lead          | Quiet Listing Landing Page       |
-| revive     | pre-sale-construction-lead  | Pre-Sale Construction Page       |
 | relaunch   | relaunch-lead               | Relaunch Strategy Page           |
 | finaloffer | final-offer-lead            | Final Offer Landing Page         |
 
