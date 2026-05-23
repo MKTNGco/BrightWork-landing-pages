@@ -243,7 +243,7 @@ specific content reason documented in the page folder.
 
 ```
 1. <head>   meta, OG tags, theme-color, font link
-2. nav      fixed, 72px height, logo left + phone right
+2. nav      fixed, 72px height, logo left + optional center links + phone right
 3. hero     full-bleed bg image, dark overlay, badge + h1 + p + CTA button
 4. trust-bar  4 credibility items, navy or teal background
 5. [content sections]  varies by program
@@ -254,20 +254,45 @@ specific content reason documented in the page folder.
 
 ### Nav
 
+Nav pattern for all landing pages:
+
 ```html
 <nav>
-  <a href="https://brightworkrealty.com" class="nav-logo" target="_blank" rel="noopener noreferrer">
-    <img src="images/logo.png" alt="BrightWork Realty Advocates" ... />
-    <span class="nav-logo-text" id="navLogoText">BrightWork Realty</span>
+  <!-- Logo left: links to main site -->
+  <a href="https://brightworkrealty.com" class="nav-logo" target="_blank" rel="noopener">
+    <img src="../shared/logo.png" alt="BrightWork Realty Advocates" />
   </a>
-  <a href="tel:9252006000" class="nav-phone">
-    <!-- phone svg + (925) 200-6000 -->
-  </a>
+
+  <!-- Center: optional credibility links (see per-page guidance below) -->
+  <div class="nav-links">
+    <a href="https://brightworkrealty.com/about-us" class="nav-link">Our Team</a>
+    <a href="https://brightworkrealty.com/properties" class="nav-link">Properties</a>
+  </div>
+
+  <!-- Phone right: always present -->
+  <a href="tel:9252006000" class="nav-phone">(925) 200-6000</a>
 </nav>
 ```
 
-Logo fallback: if img fails to load, the span with id="navLogoText" becomes
-visible. Always include both. The onerror handler on the img triggers this.
+**Per-page nav guidance:**
+
+| Page | Include center links? | Which links |
+|------|----------------------|-------------|
+| offmarket | No. Urgency page, minimal nav. | Logo + phone only. Omit `.nav-links`. |
+| buybefore | Yes. Our Team only. | Our Team |
+| quiet | Yes. Our Team only. | Our Team |
+| relaunch | No. Skeptical audience, just logo + phone. | Logo + phone only. Omit `.nav-links`. |
+| bright-flip | Yes. Our Team only. | Our Team |
+| finaloffer | Yes. Our Team + Properties. | Our Team, Properties |
+| invest | Yes. Our Team + Properties. | Our Team, Properties |
+| seniorworkshop | Yes. Our Team only. | Our Team |
+
+When a page omits center links, remove the entire `<div class="nav-links">` block.
+When a page includes only Our Team, include that single link and omit Properties.
+
+Logo fallback (optional): if the img fails to load, show a text fallback span with
+id="navLogoText" and an onerror handler on the img. Always link the logo to
+https://brightworkrealty.com.
 
 ### Hero badge
 
