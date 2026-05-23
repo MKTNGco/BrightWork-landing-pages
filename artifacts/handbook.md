@@ -107,9 +107,11 @@ brightwork-landing-pages/
 ├── offmarket/                 → offmarket.brightworkrealty.com  [EXISTS]
 │   ├── index.html
 │   └── images/
+│       └── logo.png           ← copy from shared/logo.png
 ├── buybefore/                 → buybefore.brightworkrealty.com  [EXISTS]
 │   ├── index.html
 │   └── images/
+│       └── logo.png
 ├── quiet/                     → quiet.brightworkrealty.com      [BUILD]
 ├── relaunch/                  → relaunch.brightworkrealty.com   [BUILD]
 ├── brightflip/                → brightflip.brightworkrealty.com [BUILD]
@@ -118,7 +120,7 @@ brightwork-landing-pages/
 └── seniors/                   → seniors.brightworkrealty.com    [BUILD]
 ```
 
-When building a new page: create `[pagename]/index.html` and `[pagename]/images/`. Copy `logo.png` from `shared/` or reference `../shared/logo.png`.
+When building a new page: create `[pagename]/index.html` and `[pagename]/images/`. Copy `shared/logo.png` into `[pagename]/images/logo.png`. Reference the logo in nav and footer as `images/logo.png` (not `../shared/logo.png`). Each page is self-contained for Cloudflare Workers static asset deployment.
 
 ---
 
@@ -174,6 +176,8 @@ Every page follows this order. Do not deviate without documented reason.
 ---
 
 ## 8. Nav Component
+
+Logo path is always `images/logo.png` (local copy per page). Do not use `../shared/logo.png` in nav or footer.
 
 ```html
 <nav>
@@ -1171,7 +1175,7 @@ Ben Olsen has been in Lamorinda real estate since 2004. He grew up here and know
 When building any new page in this repo:
 
 - [ ] Create `[pagename]/index.html` and `[pagename]/images/`
-- [ ] Copy or reference `../shared/logo.png`
+- [ ] Copy `shared/logo.png` to `[pagename]/images/logo.png`; use `images/logo.png` in nav and footer
 - [ ] Include HTTPS redirect snippet in `<head>`
 - [ ] Add `<script src="../shared/posthog-init.js"></script>` before `</head>`
 - [ ] Set `<link rel="canonical">` to the page's full URL
