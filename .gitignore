@@ -2,3 +2,5 @@ node_modules/
 .wrangler/
 .env
 .env.local
+*/package.json
+*/package-lock.json
