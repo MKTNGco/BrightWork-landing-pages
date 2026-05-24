@@ -1,4 +1,3 @@
----
 name: Deploy Landing Pages
 
 on:
@@ -9,6 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         page: [offmarket, buybefore, quiet, relaunch, brightflip, finaloffer, invest, seniors]
     steps:
@@ -20,3 +20,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: ${{ matrix.page }}
+          command: deploy --verbose
