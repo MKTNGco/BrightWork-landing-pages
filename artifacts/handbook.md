@@ -51,28 +51,96 @@ Every agent must internalize these before writing a single line of code or copy.
 - All pages must include the PostHog init script from `../shared/posthog-init.js`
 - Suite I fix: `sed -i 's/Suite 1, Moraga/Suite I, Moraga/g'` if needed
 
+**Color**
+- Dark backgrounds (hero scrim, footer, disclaimer, trust bar, case-study bands) use **`--teal` (`#005d7a`) only**
+- Never use **`#1e2d3d`** — deprecated dark blue that crept into early builds; grep the repo and remove if found
+- Never use `var(--navy)` or `#1a2f45` for section backgrounds — `--navy` is typography on light backgrounds only
+- Labels and accents **on teal backgrounds** use **`--yellow` (`#ffe200`)**, not cyan
+- `theme-color` meta tag: **`#005d7a`**
+
 ---
 
 ## 3. Brand Tokens
 
-Use these exact CSS custom properties in every page `:root` block.
+Use these exact CSS custom properties in every page `:root` block. Reference copy also lives in `shared/brand.css`.
 
 ```css
 :root {
-  --cyan:        #0bbfe0;   /* primary action color */
+  --cyan:        #0bbfe0;   /* primary action color on light backgrounds */
   --cyan-dark:   #0099b8;   /* hover state */
   --cyan-light:  #e6f9fd;   /* light tint backgrounds */
-  --yellow:      #ffe200;   /* badges, highlights, labels on teal backgrounds, CTA buttons */
-  --navy:        #1a2f45;   /* headings and body text on light backgrounds */
-  --teal:        #005d7a;   /* hero overlay, footer, disclaimer, trust bars, dark section backgrounds */
+  --yellow:      #ffe200;   /* badges, hero h1 spans, labels on teal backgrounds */
+  --teal:        #005d7a;   /* dark brand color — hero scrim, footer, disclaimer, trust bars, dark section backgrounds */
+  --navy:        #1a2f45;   /* headings and body text on light backgrounds only — not for dark bands */
   --white:       #ffffff;
   --off-white:   #f7fafc;   /* light section backgrounds */
-  --text:        #1a2f45;   /* body text — use --navy, not #1e2d3d or --teal */
+  --text:        #1a2f45;   /* body text on light backgrounds — same as --navy */
   --muted:       #5a7184;   /* secondary text, descriptions */
   --border:      #d8edf4;   /* card borders, dividers */
   --page-gutter: 60px;      /* horizontal padding, drops to 28px at 800px */
 }
 ```
+
+### Color roles
+
+| Token | Hex | Use |
+|---|---|---|
+| `--teal` | `#005d7a` | Hero scrim base, footer, disclaimer, trust bar, case-study bands, any dark section background |
+| `--navy` / `--text` | `#1a2f45` | Headings, nav links, body copy on white or off-white sections |
+| `--yellow` | `#ffe200` | Hero h1 accent spans, eyebrows/labels on teal backgrounds, disclaimer icons |
+| `--cyan` | `#0bbfe0` | CTAs, nav hover, links on light backgrounds |
+| ~~`#1e2d3d`~~ | — | **Banned.** Do not use anywhere. Replace with `--teal` for backgrounds or `--navy` for text. |
+
+Every page `:root` must declare `--teal: #005d7a`. Copy the dark-section CSS below — do not substitute `var(--navy)` for backgrounds.
+
+### Dark section CSS — copy exactly
+
+**Hero** — teal base + teal-tinted gradient overlay; yellow accent on h1 span:
+
+```css
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--teal);
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 45, 60, 0.82) 0%,
+    rgba(0, 55, 72, 0.62) 48%,
+    rgba(0, 65, 85, 0.28) 85%,
+    rgba(0, 70, 90, 0.12) 100%
+  );
+}
+.hero h1 span { color: var(--yellow); }
+```
+
+**Trust bar, disclaimer bar, MLS bar, footer** — all use `background: var(--teal)` with light text:
+
+```css
+.trust-bar,
+.disclaimer-bar,
+.mls-bar {
+  background: var(--teal);
+  color: rgba(255,255,255,0.85);
+}
+.disclaimer-bar svg,
+.mls-bar svg {
+  stroke: var(--yellow);
+}
+footer {
+  background: var(--teal);
+  color: rgba(255,255,255,0.85);
+}
+```
+
+Eyebrows and section labels sitting on teal use `color: var(--yellow)`, not `var(--cyan)`.
 
 ---
 
@@ -145,7 +213,7 @@ Every page follows this order. Do not deviate without documented reason.
 ```
 1. <head>     meta tags, OG tags, canonical, theme-color, font link, schema JSON-LD
 2. nav        fixed 72px, logo left + optional nav-links center + phone right
-3. hero       full-bleed bg image, dark overlay, badge + h1 + subhead + CTA
+3. hero       full-bleed bg image, teal overlay, badge + h1 + subhead + CTA
 4. trust-bar  4 credibility items, teal background
 5. [content]  varies by program — see per-page specs below
 6. split      left: program summary / checklist  |  right: lead form (cyan bg)
@@ -168,7 +236,7 @@ Every page follows this order. Do not deviate without documented reason.
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="[keyword-led description, 150-160 chars]" />
-  <meta name="theme-color" content="#1a2f45" />
+  <meta name="theme-color" content="#005d7a" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BrightWork Realty Advocates" />
   <meta property="og:title" content="[Keyword Phrase] | BrightWork Realty Advocates" />
@@ -1258,6 +1326,8 @@ When building any new page in this repo:
 - [ ] Address uses Suite I (letter), not Suite 1 (numeral)
 - [ ] Ben's title is REALTOR not Broker
 - [ ] No hype words (see Section 2)
+- [ ] `:root` includes `--teal: #005d7a`; dark sections use `var(--teal)`, not `var(--navy)` or `#1e2d3d`
+- [ ] `theme-color` meta is `#005d7a`; labels on teal backgrounds use `--yellow`
 - [ ] Add `[pagename]/wrangler.toml` and `[pagename]/.assetsignore` (exclude `node_modules/`, `package.json`, `package-lock.json`, `.wrangler/`)
 - [ ] Add the page to the deploy workflow matrix in `.github/workflows/deploy.yml`
 - [ ] Add CNAME DNS record for new subdomain on `brightworkrealty.com` zone

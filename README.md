@@ -120,6 +120,7 @@ anonymous session to the named lead.
 
 ## Brand Constraints (Short Version)
 
+- **Dark backgrounds:** teal `#005d7a` (`--teal`) only. Never `#1e2d3d` (deprecated) or navy for section backgrounds.
 - **No em dashes.** Anywhere.
 - **No mention of Side Real Estate** in any page copy. Back-office only.
 - **Ben's title is REALTOR**, not Broker.

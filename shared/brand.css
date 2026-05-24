@@ -1,0 +1,22 @@
+/*
+ * BrightWork Realty Advocates — brand color tokens
+ * Authoritative spec: artifacts/handbook.md Section 3
+ * Inline these into each page :root block; this file is the reference copy.
+ */
+
+:root {
+  --cyan:        #0bbfe0;   /* primary action color on light backgrounds */
+  --cyan-dark:   #0099b8;   /* hover state */
+  --cyan-light:  #e6f9fd;   /* light tint backgrounds */
+  --yellow:      #ffe200;   /* badges, hero h1 spans, labels on teal backgrounds */
+  --teal:        #005d7a;   /* dark brand color — hero scrim, footer, disclaimer, trust bars */
+  --navy:        #1a2f45;   /* headings and body text on light backgrounds only */
+  --white:       #ffffff;
+  --off-white:   #f7fafc;
+  --text:        #1a2f45;
+  --muted:       #5a7184;
+  --border:      #d8edf4;
+  --page-gutter: 60px;
+}
+
+/* Banned: #1e2d3d — replace with --teal (backgrounds) or --navy (text) */
