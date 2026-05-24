@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        page: [offmarket, buybefore, quiet, seniors]
+        page: [offmarket, buybefore, quiet, relaunch, brightflip, finaloffer, invest, seniors]
     steps:
       - uses: actions/checkout@v4
 
