@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         page: [offmarket, buybefore, quiet, relaunch, brightflip, finaloffer, invest, seniors]
     steps:
@@ -20,4 +21,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: ${{ matrix.page }}
-          command: deploy --verbose
+        env:
+          WRANGLER_LOG: debug
