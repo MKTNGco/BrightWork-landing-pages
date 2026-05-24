@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        page: [offmarket, buybefore, quiet, relaunch, brightflip, finaloffer, invest, seniors]
+        page: [offmarket, buybefore, quiet, seniors]
     steps:
       - uses: actions/checkout@v4
 
       - name: Deploy ${{ matrix.page }}
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
