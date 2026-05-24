@@ -69,13 +69,13 @@ Each page is deployed as its own Cloudflare Workers static site.
 - Account ID: `5f50d138eb76f9beb59f76d0f356543f`  
 - One Workers deployment per page folder  
 - Build command: none  
-- Build root: `/[pagename]`  
+- CI: push to `main` triggers `.github/workflows/deploy.yml`  
 - Custom domain set in Workers settings per subdomain  
 - DNS lives in Cloudflare on the `brightworkrealty.com` zone
 
-To deploy a new page: create the folder, push to main, create a new Workers
-project pointed at the folder, add the custom domain, DNS record is
-auto-created via Cloudflare integration.
+**Deployment note:** The wrangler-action runs from the repo root using `command: deploy --config ${{ matrix.page }}/wrangler.toml`. Do not set `workingDirectory` to the page folder — it causes wrangler to install its dependencies inside the page folder, which then get picked up as static assets and exceed Cloudflare's 25MB limit. Each page directory has a `.assetsignore` file excluding `node_modules/`, `package.json`, `package-lock.json`, and `.wrangler/`.
+
+To deploy a new page: create the folder, add `wrangler.toml` and `.assetsignore`, add the page to the deploy workflow matrix, push to main, and add the custom domain in Workers settings. DNS record is auto-created via Cloudflare integration.
 
 ---
 

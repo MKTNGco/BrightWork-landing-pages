@@ -62,12 +62,12 @@ Use these exact CSS custom properties in every page `:root` block.
   --cyan:        #0bbfe0;   /* primary action color */
   --cyan-dark:   #0099b8;   /* hover state */
   --cyan-light:  #e6f9fd;   /* light tint backgrounds */
-  --yellow:      #f5c800;   /* badges, highlights, CTA buttons */
-  --navy:        #1a2f45;   /* dark backgrounds, headings */
-  --teal:        #005d7a;   /* trust bars, section backgrounds */
+  --yellow:      #ffe200;   /* badges, highlights, labels on teal backgrounds, CTA buttons */
+  --navy:        #1a2f45;   /* headings and body text on light backgrounds */
+  --teal:        #005d7a;   /* hero overlay, footer, disclaimer, trust bars, dark section backgrounds */
   --white:       #ffffff;
   --off-white:   #f7fafc;   /* light section backgrounds */
-  --text:        #1e2d3d;   /* body text */
+  --text:        #1a2f45;   /* body text — use --navy, not #1e2d3d or --teal */
   --muted:       #5a7184;   /* secondary text, descriptions */
   --border:      #d8edf4;   /* card borders, dividers */
   --page-gutter: 60px;      /* horizontal padding, drops to 28px at 800px */
@@ -134,6 +134,8 @@ brightwork-landing-pages/
 
 When building a new page: create `[pagename]/index.html` and `[pagename]/images/`. Copy `shared/logo.png` into `[pagename]/images/logo.png`. Reference the logo in nav and footer as `images/logo.png` (not `../shared/logo.png`). Each page is self-contained for Cloudflare Workers static asset deployment.
 
+**Deployment note:** The wrangler-action runs from the repo root using `command: deploy --config ${{ matrix.page }}/wrangler.toml`. Do not set `workingDirectory` to the page folder — it causes wrangler to install its dependencies inside the page folder, which then get picked up as static assets and exceed Cloudflare's 25MB limit. Each page directory has a `.assetsignore` file excluding `node_modules/`, `package.json`, `package-lock.json`, and `.wrangler/`.
+
 ---
 
 ## 6. Page Structure — Required Section Order
@@ -144,11 +146,11 @@ Every page follows this order. Do not deviate without documented reason.
 1. <head>     meta tags, OG tags, canonical, theme-color, font link, schema JSON-LD
 2. nav        fixed 72px, logo left + optional nav-links center + phone right
 3. hero       full-bleed bg image, dark overlay, badge + h1 + subhead + CTA
-4. trust-bar  4 credibility items, navy or teal background
+4. trust-bar  4 credibility items, teal background
 5. [content]  varies by program — see per-page specs below
 6. split      left: program summary / checklist  |  right: lead form (cyan bg)
 7. faq        3-5 Q&A pairs before disclaimer
-8. disclaimer navy background, compliance notice — required on all pages
+8. disclaimer teal background, compliance notice — required on all pages
 9. footer     universal footer with programs column — see Section 9
 ```
 
@@ -270,7 +272,8 @@ Replace any existing footer HTML and CSS with this pattern on every page.
 
 ```css
 footer {
-  background: var(--navy);
+  background: var(--teal);
+  color: rgba(255,255,255,0.85);
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .footer-top {
@@ -1255,7 +1258,8 @@ When building any new page in this repo:
 - [ ] Address uses Suite I (letter), not Suite 1 (numeral)
 - [ ] Ben's title is REALTOR not Broker
 - [ ] No hype words (see Section 2)
-- [ ] Create Cloudflare Workers deployment with build root = `/[pagename]`
+- [ ] Add `[pagename]/wrangler.toml` and `[pagename]/.assetsignore` (exclude `node_modules/`, `package.json`, `package-lock.json`, `.wrangler/`)
+- [ ] Add the page to the deploy workflow matrix in `.github/workflows/deploy.yml`
 - [ ] Add CNAME DNS record for new subdomain on `brightworkrealty.com` zone
 
 ---

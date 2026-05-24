@@ -126,11 +126,11 @@
       --cyan: #0bbfe0;
       --cyan-dark: #0099b8;
       --cyan-light: #e6f9fd;
-      --yellow: #f5c800;
+      --yellow: #ffe200;
       --navy: #1a2f45;
       --white: #ffffff;
       --off-white: #f7fafc;
-      --text: #1e2d3d;
+      --text: #1a2f45;
       --muted: #5a7184;
       --border: #d8edf4;
       --teal: #005d7a;
@@ -238,7 +238,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-color: #1a2f45;
+      background-color: var(--teal);
       background-image: url('images/hero.jpg');
       background-size: cover;
       background-position: center center;
@@ -249,10 +249,10 @@
       inset: 0;
       background: linear-gradient(
         to right,
-        rgba(6, 18, 36, 0.87) 0%,
-        rgba(10, 26, 44, 0.67) 48%,
-        rgba(12, 28, 48, 0.32) 85%,
-        rgba(14, 32, 52, 0.15) 100%
+        rgba(0, 45, 60, 0.87) 0%,
+        rgba(0, 55, 72, 0.67) 48%,
+        rgba(0, 65, 85, 0.32) 85%,
+        rgba(0, 70, 90, 0.15) 100%
       );
     }
     .hero-content {
@@ -282,7 +282,7 @@
       letter-spacing: -0.025em;
       margin-bottom: 22px;
     }
-    .hero h1 span { color: var(--cyan); }
+    .hero h1 span { color: var(--yellow); }
     .hero p {
       font-size: clamp(16px, 1.3vw, 19px);
       font-weight: 500;
@@ -565,7 +565,7 @@
 
     /* VISIBLE COMPLIANCE CALLOUT */
     .compliance-callout {
-      background: var(--navy);
+      background: var(--teal);
       padding: 56px var(--page-gutter);
     }
     .compliance-inner {
@@ -911,7 +911,8 @@
 
     /* DISCLAIMER BAR */
     .disclaimer-bar {
-      background: var(--navy);
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
       padding: 28px 60px;
       display: flex;
       align-items: flex-start;
@@ -933,7 +934,8 @@
 
     /* FOOTER */
     footer {
-      background: var(--navy);
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .footer-top {

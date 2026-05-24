@@ -120,11 +120,12 @@
       --cyan: #0bbfe0;
       --cyan-dark: #0099b8;
       --cyan-light: #e6f9fd;
-      --yellow: #f5c800;
+      --yellow: #ffe200;
       --navy: #1a2f45;
+      --teal: #005d7a;
       --white: #ffffff;
       --off-white: #f7fafc;
-      --text: #1e2d3d;
+      --text: #1a2f45;
       --muted: #5a7184;
       --border: #d8edf4;
       /* Aligns nav logo with hero copy and other main-column content */
@@ -232,7 +233,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-color: #1a2f45;
+      background-color: var(--teal);
       background-image: url('images/hero.jpg');
       background-size: cover;
       background-position: center center;
@@ -244,10 +245,10 @@
       /* Darker on the left where copy sits; keeps photo visible on the right */
       background: linear-gradient(
         to right,
-        rgba(6, 18, 36, 0.82) 0%,
-        rgba(10, 26, 44, 0.62) 48%,
-        rgba(12, 28, 48, 0.28) 85%,
-        rgba(14, 32, 52, 0.12) 100%
+        rgba(0, 45, 60, 0.82) 0%,
+        rgba(0, 55, 72, 0.62) 48%,
+        rgba(0, 65, 85, 0.28) 85%,
+        rgba(0, 70, 90, 0.12) 100%
       );
     }
     .hero-content {
@@ -284,7 +285,7 @@
       letter-spacing: -0.02em;
       margin-bottom: 20px;
     }
-    .hero h1 span { color: var(--cyan); }
+    .hero h1 span { color: var(--yellow); }
     .hero p {
       font-size: clamp(17px, 1.4vw, 20px);
       font-weight: 600;
@@ -319,7 +320,7 @@
     .hero-cta:hover svg { transform: translateX(4px); }
     /* ── TRUST BAR ── */
     .trust-bar {
-      background: var(--navy);
+      background: var(--teal);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -577,7 +578,8 @@
     }
     /* ── MLS NOTICE ── */
     .mls-bar {
-      background: var(--navy);
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
       padding: 28px 60px;
       display: flex;
       align-items: flex-start;
@@ -646,7 +648,8 @@
     }
     /* ── UNIVERSAL FOOTER ── */
     footer {
-      background: var(--navy);
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .footer-top {

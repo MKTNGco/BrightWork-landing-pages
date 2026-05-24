@@ -47,9 +47,11 @@ brightwork-landing-pages/
 Each page deploys as its own Workers static site. One deployment per folder.
 
 Deployment pattern:
-- Build root: `/[pagename]`
-- Build command: (none)
-- Output directory: (none)
+- CI: GitHub Actions (`.github/workflows/deploy.yml`) deploys on push to `main`
+- Each page has its own `wrangler.toml` with `[assets] directory = "."`
+- Build command: (none) — plain HTML, no build step
+
+**Deployment note:** The wrangler-action runs from the repo root using `command: deploy --config ${{ matrix.page }}/wrangler.toml`. Do not set `workingDirectory` to the page folder — it causes wrangler to install its dependencies inside the page folder, which then get picked up as static assets and exceed Cloudflare's 25MB limit. Each page directory has a `.assetsignore` file excluding `node_modules/`, `package.json`, `package-lock.json`, and `.wrangler/`.
 
 DNS: `brightworkrealty.com` zone is in Cloudflare. MKTNG has access.
 Add a CNAME for each new subdomain pointing to the Workers deployment URL.
