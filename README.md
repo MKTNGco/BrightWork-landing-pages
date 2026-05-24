@@ -11,6 +11,8 @@ Questions: scott@mktng.co
 Each subdirectory is a standalone landing page for one of Ben's programs.  
 Plain HTML, CSS, and vanilla JS. No framework. No build step.
 
+All eight program pages are built and deployed to Cloudflare Workers. CI deploys on push to `main`.
+
 ---
 
 ## Pages
@@ -20,11 +22,11 @@ Plain HTML, CSS, and vanilla JS. No framework. No build step.
 | `offmarket/` | offmarket.brightworkrealty.com | Live |
 | `buybefore/` | buybefore.brightworkrealty.com | Live |
 | `seniors/` | seniors.brightworkrealty.com | Live |
-| `quiet/` | quiet.brightworkrealty.com | Build |
-| `relaunch/` | relaunch.brightworkrealty.com | Build |
-| `brightflip/` | brightflip.brightworkrealty.com | Build |
-| `finaloffer/` | finaloffer.brightworkrealty.com | Build |
-| `invest/` | invest.brightworkrealty.com | Build |
+| `quiet/` | quiet.brightworkrealty.com | Live |
+| `relaunch/` | relaunch.brightworkrealty.com | Live |
+| `brightflip/` | brightflip.brightworkrealty.com | Live |
+| `finaloffer/` | finaloffer.brightworkrealty.com | Live |
+| `invest/` | invest.brightworkrealty.com | Live |
 
 ---
 
@@ -37,10 +39,13 @@ brightwork-landing-pages/
 │   └── handbook.md            ← full spec: brand rules, page patterns, per-page copy
 ├── shared/
 │   ├── posthog-init.js        ← PostHog analytics snippet (all pages load this)
+│   ├── animations.js          ← scroll-reveal (program pages; seniors/workshop omits)
 │   ├── brand.css              ← CSS token reference
 │   └── BrightWork_logo.png    ← logo file (copied into each page's images/ folder)
 └── [pagename]/
     ├── index.html             ← entire page, CSS and JS inline
+    ├── wrangler.toml          ← Cloudflare Workers config
+    ├── .assetsignore
     └── images/
         └── logo.png           ← local copy of shared logo
 ```

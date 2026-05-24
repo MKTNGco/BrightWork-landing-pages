@@ -1,7 +1,7 @@
 # BrightWork Realty Advocates — Agent Handbook
 
 **Maintained by:** MKTNG.co on behalf of Ben Olsen, BrightWork Realty Advocates  
-**For:** ai-pdlc subagents building landing pages in this repo  
+**For:** ai-pdlc subagents maintaining landing pages in this repo  
 **Questions:** scott@mktng.co
 
 ---
@@ -9,6 +9,8 @@
 ## 1. Project Overview
 
 This repo holds all BrightWork Realty Advocates program landing pages. Each page is a standalone lead capture site for a specific program Ben Olsen offers. Pages are plain HTML/CSS/vanilla JS — no framework, no build step.
+
+**Deployment status:** All eight program landing pages are built and deployed to Cloudflare Workers. GitHub Actions deploys on push to `main` via `.github/workflows/deploy.yml`.
 
 **Client:** Ben Olsen, Founder and REALTOR, BrightWork Realty Advocates  
 **Agency:** MKTNG.co (Scott Eggert)  
@@ -170,21 +172,39 @@ brightwork-landing-pages/
 │   └── handbook.md            ← this file
 ├── shared/
 │   ├── posthog-init.js
+│   ├── animations.js          ← scroll-reveal (all program pages except seniors/workshop)
 │   ├── brand.css
 │   └── logo.png
 ├── offmarket/                 → offmarket.brightworkrealty.com  [EXISTS]
 │   ├── index.html
+│   ├── wrangler.toml
 │   └── images/
 │       └── logo.png           ← copy from shared/logo.png
 ├── buybefore/                 → buybefore.brightworkrealty.com  [EXISTS]
 │   ├── index.html
+│   ├── wrangler.toml
 │   └── images/
 │       └── logo.png
-├── quiet/                     → quiet.brightworkrealty.com      [BUILD]
-├── relaunch/                  → relaunch.brightworkrealty.com   [BUILD]
-├── brightflip/                → brightflip.brightworkrealty.com [BUILD]
-├── finaloffer/                → finaloffer.brightworkrealty.com [BUILD]
-├── invest/                    → invest.brightworkrealty.com     [BUILD]
+├── quiet/                     → quiet.brightworkrealty.com      [EXISTS]
+│   ├── index.html
+│   ├── wrangler.toml
+│   └── images/
+├── relaunch/                  → relaunch.brightworkrealty.com   [EXISTS]
+│   ├── index.html
+│   ├── wrangler.toml
+│   └── images/
+├── brightflip/                → brightflip.brightworkrealty.com [EXISTS]
+│   ├── index.html
+│   ├── wrangler.toml
+│   └── images/
+├── finaloffer/                → finaloffer.brightworkrealty.com [EXISTS]
+│   ├── index.html
+│   ├── wrangler.toml
+│   └── images/
+├── invest/                    → invest.brightworkrealty.com     [EXISTS]
+│   ├── index.html
+│   ├── wrangler.toml
+│   └── images/
 └── seniors/                   → seniors.brightworkrealty.com    [EXISTS]
     ├── index.html             ← permanent senior services page
     ├── workshop/
@@ -673,7 +693,7 @@ All pages break at 800px.
 ---
 
 ### PAGE 1: Off-Market Access
-**Status:** EXISTS — update only (nav links, footer, schema, FAQ section)  
+**Status:** EXISTS — deployed  
 **URL:** https://offmarket.brightworkrealty.com  
 **File:** `offmarket/index.html`
 
@@ -707,7 +727,7 @@ All pages break at 800px.
 **Disclaimer bar:**  
 "MLS regulations require us not to publish these listings publicly, which is why this must be a private conversation. By joining our VIP list, you gain access before anyone else, and your information is never shared with third parties."
 
-**FAQ (add to page):**
+**FAQ:**
 1. What is an off-market listing in Lamorinda?
 2. How do I get access to off-market homes before they hit Zillow?
 3. Are off-market homes in Moraga and Lafayette available without an agent?
@@ -718,7 +738,7 @@ All pages break at 800px.
 ---
 
 ### PAGE 2: Buy Before You Sell
-**Status:** EXISTS — update only (nav links, footer, schema, FAQ section)  
+**Status:** EXISTS — deployed  
 **URL:** https://buybefore.brightworkrealty.com  
 **File:** `buybefore/index.html`
 
@@ -736,7 +756,7 @@ All pages break at 800px.
 - The boosted payout when your home sells means you don't have to rush
 - Do NOT name specific program providers, lenders, or dollar amounts
 
-**FAQ (add to page):**
+**FAQ:**
 1. How does buy before you sell work in California?
 2. What is the difference between buy before you sell and a bridge loan?
 3. Can I make a non-contingent offer before selling my home in Lamorinda?
@@ -747,7 +767,7 @@ All pages break at 800px.
 ---
 
 ### PAGE 3: Quiet Listing
-**Status:** BUILD  
+**Status:** EXISTS — deployed  
 **URL:** https://quiet.brightworkrealty.com  
 **File:** `quiet/index.html`
 
@@ -813,7 +833,7 @@ Compliance signal (include visibly): Every quiet listing is documented, structur
 ---
 
 ### PAGE 4: Relaunch Strategy
-**Status:** BUILD  
+**Status:** EXISTS — deployed  
 **URL:** https://relaunch.brightworkrealty.com  
 **File:** `relaunch/index.html`
 
@@ -889,7 +909,7 @@ Ben Olsen has been in Lamorinda real estate since 2004. The BrightWork team has 
 ---
 
 ### PAGE 5: BrightFlip
-**Status:** BUILD  
+**Status:** EXISTS — deployed  
 **URL:** https://brightflip.brightworkrealty.com  
 **File:** `brightflip/index.html`
 
@@ -970,7 +990,7 @@ The part most sellers dread about renovation isn't the cost. It's the management
 ---
 
 ### PAGE 6: Final Offer
-**Status:** BUILD  
+**Status:** EXISTS — deployed  
 **URL:** https://finaloffer.brightworkrealty.com  
 **File:** `finaloffer/index.html`
 
@@ -1014,7 +1034,7 @@ The "I would have paid that" problem: One of the most frustrating outcomes of a 
 
 **For homes algorithms undervalue:** Some homes are hard to comp. A MCC home with a specific floor plan, a view lot, an upgraded kitchen, and club amenity access doesn't have three identical sales in the past six months. Automated valuation models undervalue these properties routinely. Structured competition through Final Offer lets the market make that case.
 
-**The case study (feature section — get Ben's explicit sign-off on details before publishing):**
+**The case study (feature section — confirm details with Ben if this section is revised):**
 
 The first time Ben ran a Final Offer campaign was on a home with strong inherent appeal, limited comparable sales, and neighborhood sentiment that suggested the list price was already aggressive. Automated estimates placed the home significantly below Ben's expectations.
 
@@ -1058,7 +1078,7 @@ Ben will tell you directly if your home isn't the right fit.
 ---
 
 ### PAGE 7: Real Estate Investing
-**Status:** BUILD  
+**Status:** EXISTS — deployed  
 **URL:** https://invest.brightworkrealty.com  
 **File:** `invest/index.html`
 
@@ -1138,7 +1158,7 @@ Ben's starting point isn't a property search. It's a conversation about your fin
 ---
 
 ### PAGE 8A: Senior Real Estate Planning (Services)
-**Status:** EXISTS  
+**Status:** EXISTS — deployed  
 **URL:** https://seniors.brightworkrealty.com  
 **File:** `seniors/index.html`
 
@@ -1214,7 +1234,7 @@ Every mention of 1031 exchanges, DSTs, capital gains, installment sales, or simi
 ---
 
 ### PAGE 8B: Senior Real Estate Planning Workshop
-**Status:** EXISTS  
+**Status:** EXISTS — deployed  
 **URL:** https://seniors.brightworkrealty.com/workshop  
 **File:** `seniors/workshop/index.html`
 
@@ -1261,7 +1281,7 @@ Beyond trusts and titling, this block must cover practical options for minimizin
 
 **Compliance note:** Ben is a REALTOR, not an attorney, financial advisor, or CPA. Workshop content is educational — position tax/trust/estate topics as "questions to ask your advisors."
 
-**Original PAGE 8 spec items not yet built on workshop page:** trust bar, qualifying dropdowns (Homeowner / Adult child), attendee count field, visible disclaimer bar. Form is simplified to core contact fields only.
+**Workshop page scope note:** The deployed workshop page uses a simplified form (core contact fields only). These original spec items were deferred in v1: trust bar, qualifying dropdowns (Homeowner / Adult child), attendee count field, visible disclaimer bar.
 
 ---
 
@@ -1329,6 +1349,7 @@ When building any new page in this repo:
 - [ ] `:root` includes `--teal: #005d7a`; dark sections use `var(--teal)`, not `var(--navy)` or `#1e2d3d`
 - [ ] `theme-color` meta is `#005d7a`; labels on teal backgrounds use `--yellow`
 - [ ] Add `[pagename]/wrangler.toml` and `[pagename]/.assetsignore` (exclude `node_modules/`, `package.json`, `package-lock.json`, `.wrangler/`)
+- [ ] Include `<script src="../shared/animations.js"></script>` before `</body>` (standard on program pages; seniors/workshop omits it)
 - [ ] Add the page to the deploy workflow matrix in `.github/workflows/deploy.yml`
 - [ ] Add CNAME DNS record for new subdomain on `brightworkrealty.com` zone
 
@@ -1336,17 +1357,18 @@ When building any new page in this repo:
 
 ## 17. Updating Existing Pages
 
-**offmarket/index.html and buybefore/index.html need these updates (do not rebuild from scratch):**
+All program landing pages are live. Use this section when making copy, design, or integration changes to any deployed page.
 
-1. Add `.nav-links` CSS block after `.nav-phone svg` rule
-2. Add `.nav-links` HTML div in `<nav>` (buybefore only: "Our Team"; offmarket: none)
-3. Replace old footer CSS and HTML with universal footer pattern (Section 9)
-4. Fix `Suite 1` to `Suite I` throughout
-5. Add `<link rel="canonical">` to `<head>`
-6. Update `<title>` to keyword-led format
-7. Add RealEstateAgent + FAQPage + Service schema to `<head>`
-8. Add visible FAQ section before disclaimer bar
-9. Add PostHog init script reference if not already present
+**Before editing:** Read the per-page spec in Section 14 and match patterns from a reference page (`offmarket/index.html` or `buybefore/index.html`).
+
+**Consistency checks after changes:**
+- `grep -r "LEAD_TAG\|LEAD_SOURCE\|Suite" */index.html`
+- FAQ schema JSON-LD matches visible FAQ HTML exactly
+- Universal footer (Section 9) lists all program links with the current page omitted or de-emphasized
+- Form submit fires `posthog.identify()` before the FUB proxy fetch
+- No em dashes, no Side RE in client-facing copy, Suite I (letter) not Suite 1 (numeral)
+
+**Deploy:** Push to `main`. GitHub Actions deploys all pages in the workflow matrix automatically.
 
 ---
 

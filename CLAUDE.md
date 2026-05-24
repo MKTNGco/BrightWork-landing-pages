@@ -16,6 +16,8 @@ Plain HTML/CSS/vanilla JS landing pages for BrightWork Realty Advocates
 programs. No framework. No build step. Each subdirectory is a self-contained
 page deployed to its own Cloudflare Workers instance.
 
+All eight program pages are built and deployed. GitHub Actions deploys on push to `main`.
+
 MCC site (moragacountryclubrealestate.com) is a separate Astro repo. Not here.
 
 ---
@@ -28,15 +30,16 @@ brightwork-landing-pages/
 │   └── handbook.md          ← read this
 ├── shared/
 │   ├── posthog-init.js
+│   ├── animations.js
 │   ├── brand.css
 │   └── BrightWork_logo.png
 ├── offmarket/               → offmarket.brightworkrealty.com  [EXISTS]
 ├── buybefore/               → buybefore.brightworkrealty.com  [EXISTS]
-├── quiet/                   → quiet.brightworkrealty.com      [BUILD]
-├── relaunch/                → relaunch.brightworkrealty.com   [BUILD]
-├── brightflip/              → brightflip.brightworkrealty.com [BUILD]
-├── finaloffer/              → finaloffer.brightworkrealty.com [BUILD]
-├── invest/                  → invest.brightworkrealty.com     [BUILD]
+├── quiet/                   → quiet.brightworkrealty.com      [EXISTS]
+├── relaunch/                → relaunch.brightworkrealty.com   [EXISTS]
+├── brightflip/              → brightflip.brightworkrealty.com [EXISTS]
+├── finaloffer/              → finaloffer.brightworkrealty.com [EXISTS]
+├── invest/                  → invest.brightworkrealty.com     [EXISTS]
 └── seniors/                 → seniors.brightworkrealty.com    [EXISTS]
 ```
 
