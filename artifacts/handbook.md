@@ -117,8 +117,20 @@ brightwork-landing-pages/
 ├── brightflip/                → brightflip.brightworkrealty.com [BUILD]
 ├── finaloffer/                → finaloffer.brightworkrealty.com [BUILD]
 ├── invest/                    → invest.brightworkrealty.com     [BUILD]
-└── seniors/                   → seniors.brightworkrealty.com    [BUILD]
+└── seniors/                   → seniors.brightworkrealty.com    [EXISTS]
+    ├── index.html             ← permanent senior services page
+    ├── workshop/
+    │   └── index.html         ← workshop / interest-list page (/workshop)
+    ├── images/
+    │   ├── logo.png
+    │   ├── logo-white.png
+    │   ├── hero.jpg
+    │   ├── ben-olsen.png
+    │   └── REALTOR_EHO_white.png
+    └── wrangler.toml
 ```
+
+**Seniors deployment note:** Cloudflare Workers static assets deploy from the `seniors/` folder root. The workshop lives at `seniors/workshop/index.html` (URL: `seniors.brightworkrealty.com/workshop`). Copy all shared assets into `seniors/images/` — do not reference `../shared/` for images (Worker cannot access sibling folders). PostHog init: `../shared/posthog-init.js` on `seniors/index.html`, `../../shared/posthog-init.js` on `seniors/workshop/index.html`.
 
 When building a new page: create `[pagename]/index.html` and `[pagename]/images/`. Copy `shared/logo.png` into `[pagename]/images/logo.png`. Reference the logo in nav and footer as `images/logo.png` (not `../shared/logo.png`). Each page is self-contained for Cloudflare Workers static asset deployment.
 
@@ -211,7 +223,7 @@ Logo path is always `images/logo.png` (local copy per page). Do not use `../shar
 | brightflip | Our Team only |
 | finaloffer | Our Team + Properties |
 | invest | Our Team + Properties |
-| seniors | Our Team only |
+| seniors | None — logo + phone only (services and workshop pages) |
 
 **Nav CSS — add after existing `.nav-phone svg` rule:**
 
@@ -453,7 +465,9 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
 | brightflip | presale-improvement-inquiry | BrightFlip Landing Page |
 | finaloffer | final-offer-inquiry | Final Offer Landing Page |
 | invest | investment-inquiry | Real Estate Investing Page |
-| seniors | senior-workshop-rsvp | Senior Workshop Page |
+| seniors | senior-services-inquiry | Senior Services Page |
+| seniors/workshop (active event) | workshop-registration | Workshop Registration |
+| seniors/workshop (no event) | workshop-interest-list | Workshop Interest List |
 
 If a form has a qualifying dropdown (e.g., "where are you in the process"), pass the selected value as an additional tag in the tags array.
 
@@ -546,7 +560,8 @@ Include both blocks in every page `<head>`. Add the third block per program type
 | Page | Additional schema |
 |---|---|
 | brightflip | HowTo — 3 steps matching the 3 improvement tiers |
-| seniors | Event — when dates confirmed; use EventPostponed status until then |
+| seniors (index) | RealEstateAgent + LocalBusiness, FAQPage (8 Qs), Service |
+| seniors/workshop | FAQPage (6 Qs). Add Event schema when dates confirmed |
 
 ---
 
@@ -1051,88 +1066,131 @@ Ben's starting point isn't a property search. It's a conversation about your fin
 
 ---
 
-### PAGE 8: Senior Workshop
-**Status:** BUILD  
+### PAGE 8A: Senior Real Estate Planning (Services)
+**Status:** EXISTS  
 **URL:** https://seniors.brightworkrealty.com  
 **File:** `seniors/index.html`
 
-**Audience A:** Senior homeowners thinking quietly about what comes next — protective of autonomy, not ready for pressure  
-**Audience B:** Adult children who've noticed warning signs and need a way to start the conversation without conflict  
-**One-line job:** Replace Eventbrite with a permanent owned registration page and FUB capture  
-**Nav:** Our Team only  
-**LEAD_TAG:** `senior-workshop-rsvp`  
-**LEAD_SOURCE:** `Senior Workshop Page`
+**Audience A:** Senior homeowners planning their next chapter — protective of autonomy, not ready for pressure  
+**Audience B:** Adult children who need a structured way to start the conversation  
+**One-line job:** Permanent consultative services page and lead capture for senior real estate planning (not event registration)  
+**Nav:** None — logo + phone only  
+**LEAD_TAG:** `senior-services-inquiry`  
+**LEAD_SOURCE:** `Senior Services Page`  
+**PostHog program:** `seniors`
 
-**Naming note:** Ben has flagged that "senior" can feel clinical. Working label for build is "Senior Workshop" but page should use softer framing throughout: "next chapter," "family transition," "long-time homeowners." Not "seniors" in headlines.
+**Naming note:** Ben has flagged that "senior" can feel clinical. Use softer framing in headlines: "next chapter," "family transition," "long-time homeowners." Badge reads "Senior Real Estate Planning."
 
-**Compliance:** Ben is a REALTOR, not an attorney, financial advisor, or CPA. Workshop content is educational. Every mention of taxes, trusts, capital gains, or estate matters should be positioned as "here's what to ask your attorney or financial planner" — not "here's the answer."
-
-**Required disclaimer (visible):** "Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA. Workshop content is educational and does not constitute legal, financial, or tax advice. Attendees are encouraged to consult qualified professionals for guidance specific to their situation."
-
-**Page title:** "Senior Real Estate Planning Workshop in Lamorinda | BrightWork Realty Advocates"
+**Page title:** "Senior Real Estate Planning in Lamorinda | BrightWork Realty Advocates"
 
 **Hero:**
+- Badge: "Senior Real Estate Planning" (no blinking dot — calm audience)
+- h1: "Real Estate Decisions That Protect Your Family"
+- Subhead: Planning-before-crisis framing. Ben helps Lamorinda families get ahead of transitions on their own terms.
+- CTA: "Talk to Ben" (scrolls to `#contact`)
 
-For pages distributed to senior homeowners directly:
-- h1: "Your Home Has a Story. Let's Make Sure It Has a Plan." OR "The Next Chapter Starts With a Conversation, Not a Crisis"
+**Section order (differs from standard split-page pattern):**
+1. Who This Is For — two-column audience cards (homeowners / adult children)
+2. What Makes This Complicated — five topic blocks (Prop 13, legacy home, trusts/titling, timing, tax strategies families don't know about)
+3. What Ben Does — five benefit blocks (includes "keep it as a rental" scenario)
+4. FAQ — static Q&A (standard project format: `faq-wrap`, bordered items, no accordion)
+5. Workshop callout — toggleable via `data-active="true"|"false"` on `#workshopCallout`. Default: `false` (muted link to `/workshop`). When `true`: prominent teal callout with "See Workshop Details" button.
+6. About Ben — portrait headshot (`images/ben-olsen.png`, 3:4 aspect ratio, `object-position: top`)
+7. Contact form — teal background, `#contact`. Optional textarea → FUB `backgroundInformation`.
 
-For pages shared by adult children:
-- h1: "Your Parents Have a Plan for Everything Except Their Biggest Asset"
+**What Makes This Complicated — block 5 (required):**
+- Heading: "The Options Most Families Don't Know They Have"
+- Cover: selling vs. holding, 1031 exchange, DST, step-up in basis on inheritance
+- Define 1031, DST, and step-up in basis inline on first use (see glossary below)
+- Every tax strategy mention must include a "consult your CPA and estate attorney" qualifier. Ben presents questions to raise with professionals, not advice.
 
-Use the first version as default since the page will live permanently and Ben distributes it broadly.
+**What Ben Does — block 5 (required):**
+- Heading: "Sometimes the Right Answer Is Don't Sell"
+- Cover: evaluating rental vs. sale when Prop 13 basis, embedded equity, and rental demand favor holding
+- Ben may recommend keeping the home even when it means no commission. Pair any tax-event discussion with CPA/estate attorney qualifier.
 
-- Subhead: Ben Olsen hosts a free workshop for Lamorinda homeowners and their families: a practical, honest conversation about what to do with the family home, now and later. No selling. No pressure. Just a roadmap for one of the most important decisions most families will ever make.
-- CTA: "Reserve Your Spot"
+**Seniors tax strategy copy rule (both PAGE 8A and 8B):**
+Every mention of 1031 exchanges, DSTs, capital gains, installment sales, or similar tax strategies must be paired with a qualifier directing readers to their CPA and/or estate attorney. These are questions worth raising with qualified professionals, not advice from Ben.
 
-**Trust bar:** Free — No Obligation / No Sales Pitch / Small and Intimate / Planning Session Not a Listing Presentation
+**Inline glossary — define on first use per page (seniors pages):**
 
-**Dual audience copy:**
-
-*For homeowners:* You've been in your home for a long time. You're not in a hurry to go anywhere. But you've probably started wondering, at least in passing, what happens to this home eventually. What the tax situation would look like. Whether your documents are in order. Whether your kids understand what you want. This workshop gives you a quiet, non-pressured space to start sorting those questions out.
-
-*For adult children:* You've noticed things when you visit. Maybe a safety issue. Maybe the sense that your parent hasn't updated their paperwork in years. Maybe the growing awareness that nobody in your family has actually talked about what happens to the house. This workshop is a way to start that conversation with your parents, not as a crisis intervention, but as a planning session. Bring them. Come together. It's easier when it's framed as learning, not as a family meeting with an agenda.
-
-**What the workshop covers — four areas:**
-
-*1. The Legacy Home: What Do You Actually Want for This Property?* — We talk through the realistic options: staying and aging in place, downsizing, converting to a rental, or selling, and what each one actually involves. Not as a pitch for any particular path, but as a framework for making a decision that's yours.
-
-*2. The Now vs. Later Roadmap* — There are things that make sense to do now regardless of when or whether a move happens. Documents to update. Conversations to have. Maintenance to assess. A basic valuation to understand. Families leave with something concrete to act on.
-
-*3. Tax, Trust, and Titling: What to Ask Your Advisors* — Long-held homes often carry low property tax bases, substantial potential capital gains, and estate structures that haven't been reviewed in years. Ben isn't your attorney or CPA, and this isn't legal or financial advice. But he'll give you the right questions to bring to the professionals who are, which most families have never been given in plain language.
-
-*4. Family Conversations and How to Have Them* — The hardest part of most senior real estate transitions isn't the transaction. It's the family dynamic. We talk through how to include adult children in planning conversations, how to handle disagreements, and how to make sure the senior homeowner's voice stays at the center of the process.
-
-**Why it's free / no sales pitch:**
-
-Ben hosts this workshop as an educational service. No charge to attend, no follow-up pitch for anyone in the room. His practice is built on long-term relationships in Lamorinda. Many of his clients have known him for a decade before they listed a home. Families that plan well are the clients he wants to work with, and that relationship starts long before a listing agreement is signed.
-
-**Details section:**
-
-Between event dates, this section functions as an interest list. Include both states:
-
-*When a date is confirmed:* When: [Date and time] / Where: [Venue] / Duration: Approximately [X] hours / Cost: Free / Space is limited
-
-*Between events (default state):* No workshop is currently scheduled. Join the interest list below and you'll be among the first to know when the next date is confirmed. Registrations are small, so early interest gets priority.
-
-**Trust:**
-Ben Olsen has been in Lamorinda real estate since 2004. He grew up here and knows the specific communities, floor plans, and property types that come up in these conversations. The BrightWork team has operated in Lamorinda since 1977. He hosts this workshop alongside professionals he trusts including estate and elder law attorneys and financial planners. [Confirm co-presenter names before publishing.]
+| Term | Inline definition (use on first appearance) |
+|---|---|
+| 1031 exchange | "a 1031 exchange, an IRS provision that lets you defer capital gains taxes by reinvesting the proceeds from a property sale into another qualifying investment" |
+| Delaware Statutory Trust / DST | "a Delaware Statutory Trust (DST), a passive investment vehicle that qualifies as a 1031 replacement property without requiring you to manage real estate directly" |
+| step-up in basis | "a step-up in basis, which resets a property's cost basis to its current market value when it transfers to heirs, potentially eliminating the embedded capital gain" |
 
 **Form:**
-- Headline: "Reserve Your Spot" (or "Join the Interest List" between events)
-- Fields: First name, Last name, Phone, Email, "Who are you registering?" dropdown (Homeowner / Adult child / Both / Other), Number of attendees, Optional "Is there a specific topic you're hoping the workshop addresses?"
-- Submit CTA: "Save My Spot"
-- Below form: You'll receive confirmation and a reminder before the event. Your information will not be shared with third parties.
+- Headline: "Talk to Ben"
+- Fields: First name, Last name, Email, Phone, optional "What are you thinking about?" textarea
+- Submit: "Send a Message"
+- Inline error alert on failure (no browser `alert()` on submit)
 
-**FAQ:**
-1. What happens at a senior real estate planning workshop in Lamorinda?
-2. Is this a sales pitch or a genuine planning event?
-3. Should I bring my adult children or come alone?
-4. What is Proposition 13 and how does it affect selling a home I've owned for decades?
-5. What is a step-up in basis and why does it matter for inherited property?
+**FAQ (8 questions — static layout, must match FAQPage schema):**
+1. When should a senior homeowner start thinking about a real estate transition?
+2. What is Prop 13 and why does it matter if I'm thinking about selling?
+3. What are the options for a senior homeowner who isn't sure they're ready to sell?
+4. What is a legacy home and how do families typically handle it?
+5. Does Ben Olsen charge for a senior real estate planning consultation?
+6. What is the senior real estate planning workshop?
+7. Should I sell my Lamorinda home or keep it as a rental?
+8. What is a DST and how does it help seniors avoid capital gains on a home sale?
 
-**Disclaimer bar:** "Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA. Workshop content is educational and does not constitute legal, financial, or tax advice. Attendees are encouraged to consult qualified professionals, including estate attorneys and CPAs, for guidance specific to their situation."
+**Schema:** RealEstateAgent + LocalBusiness, FAQPage (8 Qs), Service ("Senior Real Estate Planning")
 
-**Third schema:** Service + Event (EventPostponed when no date is confirmed; update to EventScheduled when dates are set)
+**Fonts:** Montserrat (headings, nav, buttons) + Open Sans (body, form labels). Brand tokens on this page use `--cyan: #00aedb` and `--yellow: #ffe200`.
+
+---
+
+### PAGE 8B: Senior Real Estate Planning Workshop
+**Status:** EXISTS  
+**URL:** https://seniors.brightworkrealty.com/workshop  
+**File:** `seniors/workshop/index.html`
+
+**One-line job:** Event registration when a workshop is scheduled; interest-list capture when it is not  
+**Nav:** None — logo + phone only (logo path: `../images/logo.png`)  
+**PostHog program:** `seniors-workshop`
+
+**Toggle:** Set `const WORKSHOP_ACTIVE = false` at top of `<script>` block. Flip to `true` when event is confirmed and update date/venue/presenter placeholders.
+
+| State | Hero badge | Form heading | Submit button | LEAD_TAG |
+|---|---|---|---|---|
+| `WORKSHOP_ACTIVE = true` | "Upcoming Event · [DATE]" | Reserve Your Spot | Reserve My Spot | workshop-registration |
+| `WORKSHOP_ACTIVE = false` | Senior Real Estate Planning | Join the Interest List | Add Me to the List | workshop-interest-list |
+
+**Always visible (both states):**
+- Who the Workshop Is For — two cards (homeowners / family members)
+- What Happens in 90 Minutes — four topic blocks (Taxes/Trusts block must cover 1031, DST, installment sales, step-up in basis with inline definitions on first use and CPA/estate attorney qualifier)
+- Why Ben Does This — short paragraph in Ben's voice
+- FAQ — static Q&A section (standard `faq-wrap` format, 6 questions, must match FAQPage schema)
+
+**Taxes, Trusts, and Probate topic block (required expansion):**
+Beyond trusts and titling, this block must cover practical options for minimizing or deferring tax on a long-held home: 1031 exchanges, DSTs, installment sales, and step-up in basis. Close with: Ben isn't the expert, your CPA and estate attorney are. Apply the seniors tax strategy copy rule from PAGE 8A.
+
+**Toggles with `WORKSHOP_ACTIVE`:**
+- Hero subhead and CTA label
+- Event details block (date, venue, format, presenter names) — hidden when inactive
+- Form heading, subhead, submit label, FUB tag
+
+**Page title:** "Senior Real Estate Planning Workshop | BrightWork Realty Advocates"
+
+**Hero h1 (both states):** "Plan the Transition Before It Plans You"
+
+**Form:** First name, Last name, Email, Phone, consent checkbox. Teal form panel (same pattern as services page contact form).
+
+**FAQ (6 questions — static layout, must match FAQPage schema):**
+1. What is the BrightWork senior real estate planning workshop?
+2. Who should attend the senior real estate planning workshop?
+3. Is the workshop free?
+4. What does the workshop cover?
+5. Does the workshop cover options for avoiding capital gains on a home sale?
+6. What is a Delaware Statutory Trust in real estate?
+
+**Schema:** FAQPage (6 Qs). Add Event schema when dates are confirmed.
+
+**Compliance note:** Ben is a REALTOR, not an attorney, financial advisor, or CPA. Workshop content is educational — position tax/trust/estate topics as "questions to ask your advisors."
+
+**Original PAGE 8 spec items not yet built on workshop page:** trust bar, qualifying dropdowns (Homeowner / Adult child), attendee count field, visible disclaimer bar. Form is simplified to core contact fields only.
 
 ---
 
@@ -1165,7 +1223,9 @@ Ben Olsen has been in Lamorinda real estate since 2004. He grew up here and know
 | Comparable / comp | "what similar homes in your neighborhood actually sold for" |
 | Contingency | "a condition a buyer attaches to their offer, typically requiring a satisfactory inspection or confirmed financing before they're legally committed" |
 | Depreciation | "a tax concept that lets you deduct a portion of the property's value each year as a paper expense, even while the home is likely appreciating" |
-| 1031 exchange | "an IRS provision that lets you defer capital gains taxes when you sell one investment property and reinvest the proceeds into another" |
+| 1031 exchange | "an IRS provision that lets you defer capital gains taxes when you sell one investment property and reinvest the proceeds into another" (invest page). On seniors pages, use the longer inline form from PAGE 8A glossary table. |
+| Delaware Statutory Trust / DST | "a passive real estate investment vehicle that qualifies as a 1031 exchange replacement property, used when a seller wants tax deferral without managing another physical property" |
+| step-up in basis | "a tax concept that resets the cost basis of an inherited property to its fair market value at inheritance, which can reduce capital gains if the home is later sold" |
 | Prop 13 | "California's Proposition 13, which caps property tax increases for long-term homeowners" |
 
 ---

@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <script>if (location.protocol === 'http:' && location.hostname !== 'localhost') location.replace('https://' + location.host + location.pathname + location.search + location.hash);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Senior real estate planning workshops for Lamorinda families. Join an upcoming session or add your name to the interest list." />
+  <meta name="theme-color" content="#1a2f45" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BrightWork Realty Advocates" />
+  <meta property="og:title" content="Senior Real Estate Planning Workshop | BrightWork Realty Advocates" />
+  <meta property="og:description" content="A planning session for Lamorinda families navigating senior real estate decisions. Reserve your spot or join the interest list." />
+  <meta property="og:url" content="https://seniors.brightworkrealty.com/workshop" />
+  <meta property="og:image" content="https://seniors.brightworkrealty.com/images/hero.jpg" />
+  <link rel="canonical" href="https://seniors.brightworkrealty.com/workshop" />
+  <title>Senior Real Estate Planning Workshop | BrightWork Realty Advocates</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the BrightWork senior real estate planning workshop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 90-minute educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session alongside an estate attorney and financial planner. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should attend the senior real estate planning workshop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The workshop is designed for two groups: seniors and homeowners who are thinking about their next chapter, and adult children who are helping their parents plan a transition. Both audiences leave with a clearer picture of options, tradeoffs, and what to do next."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the workshop free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. There is no cost to attend and no obligation to work with BrightWork or list a property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the workshop cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The workshop covers four main topics: the legacy home decision (stay, downsize, rent, or sell), a now-vs-later planning roadmap, plain-language tax and estate context, and concrete next steps for each family's specific situation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the workshop cover options for avoiding capital gains on a home sale?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. One session covers strategies including 1031 exchanges, Delaware Statutory Trusts, installment sales, and the step-up in basis that applies to inherited property. The goal is to give families the vocabulary and questions to bring to their CPA and estate attorney, not to provide tax advice. Knowing the options exist is the starting point."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Delaware Statutory Trust in real estate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Delaware Statutory Trust, or DST, is a passive real estate investment vehicle that qualifies as a 1031 exchange replacement property. It allows a seller to defer capital gains taxes by reinvesting sale proceeds without acquiring and managing another physical property. It is commonly used by sellers who want the tax deferral of a 1031 exchange but do not want the responsibility of being a landlord. DSTs require coordination with a qualified intermediary, a financial advisor, a CPA, and an estate attorney."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cyan: #00aedb;
+      --cyan-dark: #0099b8;
+      --cyan-light: #e6f9fd;
+      --yellow: #ffe200;
+      --teal: #005d7a;
+      --navy: #1a2f45;
+      --white: #ffffff;
+      --off-white: #f5f9fb;
+      --text: #1e2d3d;
+      --muted: #5a7184;
+      --border: #d8edf4;
+      --page-gutter: 60px;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    h1, h2, h3, nav, .hero-badge, .hero-cta, .submit-btn, .eyebrow, .detail-label {
+      font-family: 'Montserrat', sans-serif;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--page-gutter);
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 55px;
+      width: auto;
+      display: block;
+    }
+    .nav-logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      display: none;
+    }
+    .nav-logo-text.is-visible { display: inline; }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .nav-phone svg {
+      width: 16px; height: 16px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 2;
+    }
+    .hero {
+      margin-top: 72px;
+      position: relative;
+      min-height: max(58vh, 520px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: var(--navy);
+      background-image: url('../images/hero.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(6, 18, 36, 0.88) 0%,
+        rgba(10, 26, 44, 0.68) 48%,
+        rgba(12, 28, 48, 0.32) 85%,
+        rgba(14, 32, 52, 0.14) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px var(--page-gutter);
+      max-width: 640px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--yellow);
+      color: var(--navy);
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: clamp(17px, 1.4vw, 20px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.96);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 540px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cyan);
+      color: var(--white);
+      text-decoration: none;
+      padding: 17px 36px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--cyan-dark); transform: translateY(-2px); }
+    .hero-cta svg {
+      width: 16px; height: 16px;
+      stroke: white; fill: none; stroke-width: 2.5;
+      transition: transform 0.2s;
+    }
+    .hero-cta:hover svg { transform: translateX(4px); }
+    body.workshop-inactive .show-when-active { display: none !important; }
+    body.workshop-active .show-when-inactive { display: none !important; }
+    .audience-section {
+      padding: 80px var(--page-gutter);
+      background: var(--off-white);
+    }
+    .audience-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+    .audience-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+    }
+    .audience-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(20px, 2vw, 24px);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .audience-card > p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .audience-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .audience-card li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+    .audience-card li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      margin-top: 8px;
+    }
+    .covers-section {
+      padding: 80px var(--page-gutter);
+      background: var(--white);
+    }
+    .covers-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .covers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 32px;
+    }
+    .cover-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .cover-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--cyan-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.75;
+    }
+    .cover-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .cover-item p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .cover-intro {
+      margin-bottom: 20px;
+    }
+    .cover-options {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .cover-options p strong {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .cover-close {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .why-ben-section {
+      padding: 64px var(--page-gutter);
+      background: var(--off-white);
+    }
+    .why-ben-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .why-ben-inner p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 2.5vw, 38px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+    .event-section {
+      padding: 80px var(--page-gutter);
+      background: var(--off-white);
+    }
+    .event-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .event-details-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .detail-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .detail-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 12px;
+      background: var(--cyan-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .detail-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.75;
+    }
+    .detail-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+    .detail-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+    .presenters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .presenter {
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .presenter-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .presenter-role {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .register-section {
+      background: var(--cyan);
+      padding: 80px var(--page-gutter);
+      position: relative;
+      overflow: hidden;
+    }
+    .register-section::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .register-section::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: -50px;
+      width: 200px; height: 200px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .register-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .register-inner h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 2.5vw, 36px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .register-inner .subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .register-section .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .register-section .field-group label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .register-section .field-group input {
+      width: 100%;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 14px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      border-radius: 0;
+    }
+    .register-section .field-group input::placeholder { color: rgba(255,255,255,0.45); }
+    .register-section .field-group input:focus {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,0.2);
+    }
+    .register-section .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+    .register-section .consent-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--yellow);
+      cursor: pointer;
+    }
+    .register-section .consent-row p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .register-section .consent-row a { color: rgba(255,255,255,0.85); }
+    .register-section .submit-btn {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--navy);
+      border: none;
+      padding: 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .register-section .submit-btn:hover { background: #ffd700; transform: translateY(-2px); }
+    .register-section .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-alert {
+      display: none;
+      background: rgba(255, 60, 60, 0.15);
+      border: 1px solid rgba(255, 120, 120, 0.5);
+      color: #ffe8e8;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .form-alert.is-visible { display: block; }
+    .success-state {
+      display: none;
+      text-align: center;
+    }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .success-icon svg {
+      width: 32px; height: 32px;
+      stroke: var(--navy); fill: none; stroke-width: 3;
+    }
+    .success-state h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .success-state p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid transparent;
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .faq-section {
+      background: var(--white);
+      padding: 80px 60px;
+    }
+    .faq-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .faq-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .faq-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 2.5vw, 38px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .faq-item {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .faq-item p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-top {
+      padding: 52px 60px 40px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .footer-logo {
+      height: 44px;
+      width: auto;
+      display: block;
+      opacity: 0.9;
+    }
+    .footer-blurb {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      max-width: 320px;
+    }
+    .footer-phone {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-phone:hover { color: white; }
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 4px;
+    }
+    .footer-col a {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--cyan); }
+    .footer-col a.footer-current {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .footer-compliance {
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-compliance-logos {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .footer-compliance-mark {
+      height: 44px;
+      width: auto;
+      display: block;
+      opacity: 0.55;
+    }
+    .footer-compliance-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .footer-bar {
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bar p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      font-weight: 300;
+    }
+    .footer-bar a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 11px;
+      transition: color 0.2s;
+    }
+    .footer-bar a:hover { color: var(--cyan); }
+    .footer-bar-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge   { animation: fadeUp 0.5s ease both; }
+    .hero h1      { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero p       { animation: fadeUp 0.6s ease 0.2s both; }
+    .hero-cta     { animation: fadeUp 0.5s ease 0.3s both; }
+    @media (max-width: 800px) {
+      :root { --page-gutter: 28px; }
+      .hero { min-height: max(52vh, 480px); }
+      .hero-content { padding: 36px var(--page-gutter) 40px; }
+      .event-details-row { grid-template-columns: 1fr; }
+      .presenters { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .covers-grid { grid-template-columns: 1fr; }
+      .event-section, .register-section, .audience-section, .covers-section, .why-ben-section { padding: 56px var(--page-gutter); }
+      .faq-section { padding: 56px 28px; }
+      .footer-top {
+        grid-template-columns: 1fr;
+        padding: 40px 28px 32px;
+        gap: 32px;
+      }
+      .footer-compliance { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
+      .footer-bar { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <script src="../../shared/posthog-init.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="https://brightworkrealty.com" class="nav-logo" target="_blank" rel="noopener noreferrer">
+    <img src="../images/logo.png" alt="BrightWork Realty Advocates" decoding="async" onerror="this.style.display='none';document.getElementById('navLogoText').classList.add('is-visible');" />
+    <span class="nav-logo-text" id="navLogoText">BrightWork Realty</span>
+  </a>
+  <a href="tel:9252006000" class="nav-phone">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l1.06-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (925) 200-6000
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge show-when-active">Upcoming Event &middot; [DATE PLACEHOLDER]</div>
+    <div class="hero-badge show-when-inactive">Senior Real Estate Planning</div>
+    <h1>Plan the Transition<br />Before It Plans You</h1>
+    <p class="show-when-active">A 90-minute planning session for Lamorinda families navigating senior real estate decisions: what to do now, what can wait, and how to avoid the mistakes families make when they wait too long.</p>
+    <p class="show-when-inactive">Ben hosts occasional workshops for Lamorinda homeowners and their families. Add your name to the list.</p>
+    <a href="#register" class="hero-cta">
+      <span class="show-when-active">Reserve Your Spot</span>
+      <span class="show-when-inactive">Join the Interest List</span>
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="audience-section">
+  <div class="audience-inner">
+    <p class="eyebrow">Who This Is For</p>
+    <h2 class="section-heading">Two audiences, one shared conversation</h2>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>If You Own the Home</h3>
+        <p>You've probably thought about what comes next, downsizing, renting, staying put, without having a clear plan. This workshop is for homeowners who want to understand their options while they still have all of them.</p>
+        <ul>
+          <li>You've owned the home a long time and aren't sure what selling would mean financially</li>
+          <li>You're thinking about moving closer to family but haven't run the numbers</li>
+          <li>You want to know what the house could do for you in retirement</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <h3>If Your Parents Own the Home</h3>
+        <p>Adult children often see the situation more clearly than their parents do: the deferred maintenance, the safety concerns, the equity sitting idle. This workshop helps you have that conversation with a shared framework instead of starting from scratch.</p>
+        <ul>
+          <li>You've been wondering how to bring this up without making it a difficult conversation</li>
+          <li>You want to understand the financial picture before any decisions get made</li>
+          <li>You're worried about what happens if there's no plan in place</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="covers-section">
+  <div class="covers-inner">
+    <p class="eyebrow">Workshop Agenda</p>
+    <h2 class="section-heading">What Happens in 90 Minutes</h2>
+    <div class="covers-grid">
+      <div class="cover-item">
+        <div class="cover-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <h3>The Legacy Home Question</h3>
+          <p>What role should the family home play in the next chapter, and in the estate? Ben walks through the real options: stay, downsize, rent, sell, and what each path actually costs and creates.</p>
+        </div>
+      </div>
+      <div class="cover-item">
+        <div class="cover-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h3>What to Do Now vs. What Can Wait</h3>
+          <p>Not everything needs to happen at once. Ben maps out what families should address immediately (estate documents, tax planning conversations, basic safety) and what can be structured over a 12-24 month horizon.</p>
+        </div>
+      </div>
+      <div class="cover-item">
+        <div class="cover-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <h3>Taxes, Trusts, and Probate, In Plain English</h3>
+          <p class="cover-intro">Ben isn't an attorney or a CPA. But he knows what questions to ask and what gets families in trouble when they don't ask them. Co-presenters from estate law and financial planning fill in the rest. Any strategy involving a significant gain should be reviewed with your CPA and estate attorney before you decide.</p>
+          <div class="cover-options">
+            <p><strong>Trusts, titling, and probate.</strong> Outdated documents and improper titling can turn a clean transition into a probate nightmare. The workshop covers the questions to bring to your estate attorney, not the legal answers.</p>
+            <p><strong>Keep it as a rental.</strong> A home with a low Prop 13 basis and strong rental demand may generate more long-term family wealth as a held asset than as a sale. Ben helps families model both scenarios honestly, including the one that does not result in a listing.</p>
+            <p><strong>1031 exchange.</strong> Sell the property and reinvest the proceeds into another qualifying property, deferring the capital gains tax event. You move the equity forward instead of settling the tax bill at closing.</p>
+            <p><strong>Delaware Statutory Trust.</strong> A 1031-eligible vehicle that lets you invest those proceeds into a professionally managed real estate portfolio without taking on property management yourself. Useful when you want the tax deferral but not a new landlord role.</p>
+            <p><strong>Installment sale.</strong> Spread the recognition of gain over time instead of taking the full tax hit at closing. Whether it fits your situation is a question for your CPA, but many families have never heard it raised at all.</p>
+            <p><strong>Step-up in basis.</strong> When a property transfers to heirs rather than selling during your lifetime, the cost basis resets to current market value, potentially eliminating the embedded gain entirely. Worth understanding before making any irreversible decision.</p>
+          </div>
+          <p class="cover-close">Ben knows how to bring these questions into the conversation alongside your CPA and estate attorney.</p>
+        </div>
+      </div>
+      <div class="cover-item">
+        <div class="cover-icon">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div>
+          <h3>Practical Next Steps for Your Specific Situation</h3>
+          <p>Every family leaves with a list of concrete actions, not just information. For some families that's "call your estate attorney." For others it's "get a planning-oriented home valuation." The workshop ends with clarity, not more questions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-ben-section">
+  <div class="why-ben-inner">
+    <p>Most families wait until a health event or a death forces the conversation. The families that plan ahead have more options, less friction, and better outcomes. Ben started hosting these workshops because the information that helps people plan well just isn't easy to find, and most agents aren't interested in having a conversation that doesn't end with a listing agreement.</p>
+  </div>
+</section>
+
+<section class="event-section show-when-active" id="eventDetails">
+  <div class="event-inner">
+    <div class="event-details-row">
+      <div class="detail-card">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <p class="detail-label">Date</p>
+        <p class="detail-value">[DATE TBD]</p>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p class="detail-label">Location</p>
+        <p class="detail-value">[VENUE TBD, Moraga area]</p>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <p class="detail-label">Format</p>
+        <p class="detail-value">90 minutes &middot; Panel discussion &middot; Q&amp;A</p>
+      </div>
+    </div>
+    <div class="presenters">
+      <div class="presenter">
+        <p class="presenter-name">Ben Olsen</p>
+        <p class="presenter-role">REALTOR, BrightWork Realty Advocates</p>
+      </div>
+      <div class="presenter">
+        <p class="presenter-name">[Attorney Name TBD]</p>
+        <p class="presenter-role">Estate Planning Attorney</p>
+      </div>
+      <div class="presenter">
+        <p class="presenter-name">[Planner Name TBD]</p>
+        <p class="presenter-role">Financial Planner</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="register-section" id="register">
+  <div class="register-inner">
+    <h2 id="formHeading">Join the Interest List</h2>
+    <p class="subtitle" id="formSubhead">We'll let you know when the next workshop is scheduled.</p>
+    <div class="form-alert" id="formAlert" role="alert">Something went wrong. Please try again or call us at (925) 200-6000.</div>
+    <form id="leadForm">
+      <div class="field-group">
+        <label for="firstName">First Name *</label>
+        <input type="text" id="firstName" placeholder="Jane" required />
+      </div>
+      <div class="field-group">
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" placeholder="Smith" required />
+      </div>
+      <div class="field-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" placeholder="jane@email.com" required />
+      </div>
+      <div class="field-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" placeholder="(925) 555-0100" required />
+      </div>
+      <div class="consent-row">
+        <input type="checkbox" id="consent" required />
+        <p>I agree to be contacted by BrightWork Realty Advocates via call, email, and text. Reply 'stop' to opt out. Message and data rates may apply. <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>.</p>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span id="btnText">Add Me to the List</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+    </form>
+    <div class="success-state" id="successState">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 id="successHeading">You're on the list</h3>
+      <p id="successMessage">We'll reach out when the next workshop is scheduled.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="faq-wrap">
+    <div class="faq-eyebrow">Common Questions</div>
+    <h2>Workshop Questions, Answered</h2>
+    <div class="faq-item">
+      <h3>What is the BrightWork senior real estate planning workshop?</h3>
+      <p>A 90-minute educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session alongside an estate attorney and financial planner. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Who should attend the senior real estate planning workshop?</h3>
+      <p>The workshop is designed for two groups: seniors and homeowners who are thinking about their next chapter, and adult children who are helping their parents plan a transition. Both audiences leave with a clearer picture of options, tradeoffs, and what to do next.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is the workshop free?</h3>
+      <p>Yes. There is no cost to attend and no obligation to work with BrightWork or list a property.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What does the workshop cover?</h3>
+      <p>The workshop covers four main topics: the legacy home decision (stay, downsize, rent, or sell), a now-vs-later planning roadmap, plain-language tax and estate context, and concrete next steps for each family's specific situation.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does the workshop cover options for avoiding capital gains on a home sale?</h3>
+      <p>Yes. One session covers strategies including 1031 exchanges, Delaware Statutory Trusts, installment sales, and the step-up in basis that applies to inherited property. The goal is to give families the vocabulary and questions to bring to their CPA and estate attorney, not to provide tax advice. Knowing the options exist is the starting point.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a Delaware Statutory Trust in real estate?</h3>
+      <p>A Delaware Statutory Trust, or DST, is a passive real estate investment vehicle that qualifies as a 1031 exchange replacement property. It allows a seller to defer capital gains taxes by reinvesting sale proceeds without acquiring and managing another physical property. It is commonly used by sellers who want the tax deferral of a 1031 exchange but do not want the responsibility of being a landlord. DSTs require coordination with a qualified intermediary, a financial advisor, a CPA, and an estate attorney.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+
+    <div class="footer-brand">
+      <a href="https://brightworkrealty.com" target="_blank" rel="noopener">
+        <img src="../images/logo-white.png" alt="BrightWork Realty Advocates"
+             class="footer-logo"
+             onerror="this.style.display='none'" />
+      </a>
+      <p class="footer-blurb">BrightWork Realty Advocates has operated in Lamorinda since 1977. We combine local market depth, modern marketing tools, and financial programs most sellers never knew to ask for.</p>
+      <a href="tel:9252006000" class="footer-phone">(925) 200-6000</a>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-label">Our Programs</p>
+      <a href="https://offmarket.brightworkrealty.com">Off-Market Access</a>
+      <a href="https://buybefore.brightworkrealty.com">Buy Before You Sell</a>
+      <a href="https://quiet.brightworkrealty.com">Quiet Listing</a>
+      <a href="https://relaunch.brightworkrealty.com">Relaunch Strategy</a>
+      <a href="https://brightflip.brightworkrealty.com">BrightFlip</a>
+      <a href="https://finaloffer.brightworkrealty.com">Final Offer</a>
+      <a href="https://invest.brightworkrealty.com">Real Estate Investing</a>
+      <a href="https://seniors.brightworkrealty.com/workshop" class="footer-current">Senior Workshop</a>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-label">Communities We Serve</p>
+      <a href="https://brightworkrealty.com/neighborhoods/moraga"
+         target="_blank" rel="noopener">Moraga</a>
+      <a href="https://brightworkrealty.com/neighborhoods/lafayette"
+         target="_blank" rel="noopener">Lafayette</a>
+      <a href="https://brightworkrealty.com/neighborhoods/orinda"
+         target="_blank" rel="noopener">Orinda</a>
+      <a href="https://brightworkrealty.com/neighborhoods/walnut-creek"
+         target="_blank" rel="noopener">Walnut Creek</a>
+      <a href="https://brightworkrealty.com/neighborhoods/alamo"
+         target="_blank" rel="noopener">Alamo</a>
+      <a href="https://brightworkrealty.com/neighborhoods/pleasant-hill"
+         target="_blank" rel="noopener">Pleasant Hill</a>
+      <a href="https://brightworkrealty.com/home-search/listings"
+         target="_blank" rel="noopener" style="margin-top:4px;color:var(--cyan)">
+         Search All Homes &rarr;
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer-compliance">
+    <div class="footer-compliance-logos">
+      <img src="../images/REALTOR_EHO_white.png"
+           alt="REALTOR and Equal Housing Opportunity"
+           class="footer-compliance-mark"
+           decoding="async" />
+    </div>
+    <p class="footer-compliance-text">
+      All information deemed reliable but not guaranteed and should be
+      independently reviewed and verified. BrightWork Realty Advocates
+      is an equal opportunity employer and supports fair housing.
+    </p>
+  </div>
+
+  <div class="footer-bar">
+    <p>BrightWork Realty Advocates &nbsp;&middot;&nbsp; DRE# 02014153
+       &nbsp;&middot;&nbsp; 455 Moraga Road, Suite I, Moraga, CA 94556</p>
+    <div class="footer-bar-links">
+      <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>
+      <a href="https://brightworkrealty.com">BrightWork Realty</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // flip to true when event is confirmed
+  const WORKSHOP_ACTIVE = false;
+
+  const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
+  const PROGRAM = 'seniors-workshop';
+
+  let LEAD_TAG = WORKSHOP_ACTIVE ? 'workshop-registration' : 'workshop-interest-list';
+  let LEAD_SOURCE = WORKSHOP_ACTIVE ? 'Workshop Registration' : 'Workshop Interest List';
+
+  document.body.classList.add(WORKSHOP_ACTIVE ? 'workshop-active' : 'workshop-inactive');
+
+  if (WORKSHOP_ACTIVE) {
+    document.getElementById('formHeading').textContent = 'Reserve Your Spot';
+    document.getElementById('formSubhead').textContent = 'Seating is limited. Add your name and we\'ll confirm your registration.';
+    document.getElementById('btnText').textContent = 'Reserve My Spot';
+    document.getElementById('successHeading').textContent = 'Registration received';
+    document.getElementById('successMessage').textContent = 'We\'ll confirm your spot shortly. If you have questions, call (925) 200-6000.';
+  }
+
+  if (typeof posthog !== 'undefined') {
+    posthog.capture('page_view_program', { program: PROGRAM, workshop_active: WORKSHOP_ACTIVE });
+  }
+
+  let formStarted = false;
+  document.getElementById('leadForm').querySelectorAll('input').forEach(function(el) {
+    el.addEventListener('focus', function() {
+      if (!formStarted && typeof posthog !== 'undefined') {
+        formStarted = true;
+        posthog.capture('form_started', { program: PROGRAM });
+      }
+    });
+  });
+
+  document.getElementById('leadForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const alertEl = document.getElementById('formAlert');
+    const defaultBtnLabel = WORKSHOP_ACTIVE ? 'Reserve My Spot' : 'Add Me to the List';
+
+    if (!FUB_PROXY_URL || !/^https:\/\//i.test(FUB_PROXY_URL)) {
+      alertEl.textContent = 'Form delivery is not configured yet. Please call us at (925) 200-6000.';
+      alertEl.classList.add('is-visible');
+      return;
+    }
+
+    alertEl.classList.remove('is-visible');
+    btn.disabled = true;
+    btnText.textContent = 'Submitting...';
+    spinner.style.display = 'block';
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const emailVal = document.getElementById('email').value.trim();
+    const phoneVal = document.getElementById('phone').value.trim();
+
+    if (typeof posthog !== 'undefined') {
+      posthog.identify(emailVal, {
+        email: emailVal,
+        name: firstName + ' ' + lastName,
+        fub_source: LEAD_SOURCE
+      });
+    }
+
+    const payload = {
+      person: {
+        firstName,
+        lastName,
+        emails: [{ value: emailVal, type: 'work' }],
+        phones: [{ value: phoneVal, type: 'mobile' }],
+        tags: [LEAD_TAG, LEAD_SOURCE]
+      }
+    };
+
+    try {
+      const res = await fetch(FUB_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('lead_submitted', { program: PROGRAM, source: LEAD_SOURCE });
+        }
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      } else {
+        throw new Error('Proxy error');
+      }
+    } catch (err) {
+      alertEl.classList.add('is-visible');
+      btn.disabled = false;
+      btnText.textContent = defaultBtnLabel;
+      spinner.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
