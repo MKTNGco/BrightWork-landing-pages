@@ -1492,6 +1492,22 @@
   const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
   const LEAD_TAG = 'buy-before-you-sell-lead';
   const SOURCE   = 'Buy Before You Sell Landing Page';
+  const PROGRAM = LEAD_TAG;
+  const LEAD_SOURCE = 'Buy Before You Sell';
+
+  if (typeof posthog !== 'undefined') {
+    posthog.capture('page_view_program', { program: PROGRAM });
+  }
+
+  let formStarted = false;
+  document.getElementById('leadForm').querySelectorAll('input, textarea, select').forEach(function(el) {
+    el.addEventListener('focus', function() {
+      if (!formStarted && typeof posthog !== 'undefined') {
+        formStarted = true;
+        posthog.capture('form_started', { program: PROGRAM });
+      }
+    });
+  });
 
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -1515,6 +1531,14 @@
     const phoneRaw  = document.getElementById('phone').value.trim();
     const timeline  = document.getElementById('timeline').value;
 
+    if (typeof posthog !== 'undefined') {
+      posthog.identify(emailRaw, {
+        email: emailRaw,
+        name: firstName + ' ' + lastName,
+        fub_source: LEAD_SOURCE
+      });
+    }
+
     const tags = [LEAD_TAG, SOURCE];
     if (timeline) tags.push(timeline);
 
@@ -1536,6 +1560,9 @@
       });
 
       if (res.ok) {
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('lead_submitted', { program: LEAD_TAG, source: LEAD_SOURCE });
+        }
         document.getElementById('leadForm').style.display = 'none';
         document.getElementById('successState').style.display = 'block';
       } else {
@@ -1551,5 +1578,6 @@
 </script>
 <script src="../shared/smart-way-strip.js"></script>
 <script src="../shared/animations.js"></script>
+<script src="../shared/nav-shrink.js"></script>
 </body>
 </html>

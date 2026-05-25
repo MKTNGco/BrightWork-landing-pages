@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -nP \"Suite 1[^I]|Suite 1$|—|–|Side Real Estate|pocket listing\" /Users/scotteggert/Development/Cursor/BrightWork-landing-pages/buybefore/index.html)",
+      "Bash(echo \"EXIT $?\")",
+      "Bash(grep -oE '\\\\$[0-9][0-9,.KMk]*' index.html)"
+    ]
+  }
+}

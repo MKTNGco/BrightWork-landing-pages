@@ -1528,6 +1528,21 @@
   const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
   const LEAD_TAG      = 'investment-inquiry';
   const LEAD_SOURCE   = 'Real Estate Investing Page';
+  const PROGRAM       = LEAD_TAG;
+
+  if (typeof posthog !== 'undefined') {
+    posthog.capture('page_view_program', { program: PROGRAM });
+  }
+
+  let formStarted = false;
+  document.getElementById('leadForm').querySelectorAll('input, textarea, select').forEach(function(el) {
+    el.addEventListener('focus', function() {
+      if (!formStarted && typeof posthog !== 'undefined') {
+        formStarted = true;
+        posthog.capture('form_started', { program: PROGRAM });
+      }
+    });
+  });
 
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -1544,12 +1559,6 @@
     const emailVal   = document.getElementById('email').value.trim();
     const phoneVal   = document.getElementById('phone').value.trim();
     const motivation = document.getElementById('motivation').value;
-
-    // PostHog identity, must fire before FUB call
-    if (typeof posthog !== 'undefined') {
-      posthog.identify(emailVal, { email: emailVal, name: firstName + ' ' + lastName });
-      posthog.capture('lead_submitted', { program: LEAD_TAG, source: LEAD_SOURCE });
-    }
 
     const tags = [LEAD_TAG, LEAD_SOURCE];
     if (motivation) tags.push(motivation);
@@ -1571,6 +1580,10 @@
         body: JSON.stringify(payload)
       });
       if (res.ok) {
+        if (typeof posthog !== 'undefined') {
+          posthog.identify(emailVal, { email: emailVal, name: firstName + ' ' + lastName });
+          posthog.capture('lead_submitted', { program: LEAD_TAG, source: LEAD_SOURCE });
+        }
         document.getElementById('leadForm').style.display = 'none';
         document.getElementById('successState').style.display = 'block';
       } else {
@@ -1586,5 +1599,6 @@
 </script>
 <script src="../shared/smart-way-strip.js"></script>
 <script src="../shared/animations.js"></script>
+<script src="../shared/nav-shrink.js"></script>
 </body>
 </html>

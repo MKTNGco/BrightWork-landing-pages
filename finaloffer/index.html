@@ -1439,6 +1439,21 @@
   const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
   const LEAD_TAG      = 'final-offer-inquiry';
   const LEAD_SOURCE   = 'Final Offer Landing Page';
+  const PROGRAM       = LEAD_TAG;
+
+  if (typeof posthog !== 'undefined') {
+    posthog.capture('page_view_program', { program: PROGRAM });
+  }
+
+  let formStarted = false;
+  document.getElementById('leadForm').querySelectorAll('input, textarea, select').forEach(function(el) {
+    el.addEventListener('focus', function() {
+      if (!formStarted && typeof posthog !== 'undefined') {
+        formStarted = true;
+        posthog.capture('form_started', { program: PROGRAM });
+      }
+    });
+  });
 
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -1456,23 +1471,6 @@
     const phoneVal         = document.getElementById('phone').value.trim();
     const propertyAddress  = document.getElementById('propertyAddress').value.trim();
     const referralSource   = document.getElementById('referralSource').value.trim();
-
-    // PostHog identity link must fire before FUB call
-    if (typeof posthog !== 'undefined') {
-      posthog.identify(emailVal, {
-        email: emailVal,
-        name: firstName + ' ' + lastName,
-        fub_source: LEAD_SOURCE,
-        property_address: propertyAddress || undefined,
-        referral_source: referralSource || undefined
-      });
-      posthog.capture('lead_submitted', {
-        program: LEAD_TAG,
-        source: LEAD_SOURCE,
-        has_address: !!propertyAddress,
-        referral_source: referralSource || null
-      });
-    }
 
     // Tags: always include LEAD_TAG and LEAD_SOURCE.
     // Attribution: prefix the optional referral source so it's filterable in FUB
@@ -1504,6 +1502,21 @@
         body: JSON.stringify(payload)
       });
       if (res.ok) {
+        if (typeof posthog !== 'undefined') {
+          posthog.identify(emailVal, {
+            email: emailVal,
+            name: firstName + ' ' + lastName,
+            fub_source: LEAD_SOURCE,
+            property_address: propertyAddress || undefined,
+            referral_source: referralSource || undefined
+          });
+          posthog.capture('lead_submitted', {
+            program: LEAD_TAG,
+            source: LEAD_SOURCE,
+            has_address: !!propertyAddress,
+            referral_source: referralSource || null
+          });
+        }
         document.getElementById('leadForm').style.display = 'none';
         document.getElementById('successState').style.display = 'block';
       } else {
@@ -1519,5 +1532,6 @@
 </script>
 <script src="../shared/smart-way-strip.js"></script>
 <script src="../shared/animations.js"></script>
+<script src="../shared/nav-shrink.js"></script>
 </body>
 </html>

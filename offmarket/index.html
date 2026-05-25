@@ -1116,7 +1116,23 @@
   const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
   const LEAD_TAG = 'off-market-lead';
   const SOURCE = 'Off-Market Landing Page';
+  const PROGRAM = LEAD_TAG;
+  const LEAD_SOURCE = 'Off-Market Access';
   // ─────────────────────────────────────────────────────────
+
+  if (typeof posthog !== 'undefined') {
+    posthog.capture('page_view_program', { program: PROGRAM });
+  }
+
+  let formStarted = false;
+  document.getElementById('leadForm').querySelectorAll('input, textarea, select').forEach(function(el) {
+    el.addEventListener('focus', function() {
+      if (!formStarted && typeof posthog !== 'undefined') {
+        formStarted = true;
+        posthog.capture('form_started', { program: PROGRAM });
+      }
+    });
+  });
 
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -1139,6 +1155,14 @@
     const emailRaw  = document.getElementById('email').value.trim();
     const phoneRaw  = document.getElementById('phone').value.trim();
 
+    if (typeof posthog !== 'undefined') {
+      posthog.identify(emailRaw, {
+        email: emailRaw,
+        name: firstName + ' ' + lastName,
+        fub_source: LEAD_SOURCE
+      });
+    }
+
     // Worker expects FUB-style body with a top-level `person` object (flat root returns 400).
     const payload = {
       person: {
@@ -1158,6 +1182,9 @@
       });
 
       if (res.ok) {
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('lead_submitted', { program: LEAD_TAG, source: LEAD_SOURCE });
+        }
         document.getElementById('leadForm').style.display = 'none';
         document.getElementById('successState').style.display = 'block';
       } else {
@@ -1173,5 +1200,6 @@
 </script>
 <script src="../shared/smart-way-strip.js"></script>
 <script src="../shared/animations.js"></script>
+<script src="../shared/nav-shrink.js"></script>
 </body>
 </html>
