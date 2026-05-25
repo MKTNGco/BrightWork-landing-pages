@@ -707,12 +707,49 @@
       opacity: 0.9;
     }
     .footer-blurb {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 300;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.75;
-      max-width: 320px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      max-width: 680px;
+      padding-left: 0;
+      margin-top: 4px;
+      text-align: left;
     }
+    .footer-tagline {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .footer-tagline-smart {
+      color: var(--yellow);
+    }
+    .blurb-wrap {
+      max-width: 680px;
+      margin-bottom: 0;
+    }
+    .blurb-thesis {
+      color: rgba(255, 255, 255, 0.9);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .blurb-items {
+      padding-left: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .blurb-items p {
+      color: rgba(255, 255, 255, 0.85);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0;
+    }
+
     .footer-phone {
       font-size: 13px;
       font-weight: 600;
@@ -822,6 +859,12 @@
       }
       .footer-compliance { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
       .footer-bar { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 800px) {
+      .blurb-items {
+        padding-left: 18px;
+      }
     }
   </style>
   <script src="posthog-init.js"></script>
@@ -1127,7 +1170,15 @@
              class="footer-logo"
              onerror="this.style.display='none'" />
       </a>
-      <p class="footer-blurb">Rooted in Lamorinda since 1977. BrightWork is built on the premise that great outcomes start before a home ever lists: preparation and marketing most agents reserve for their best listings, financial programs most sellers never knew to ask for, and transactions designed so everyone gets to the closing table feeling good. That's The SMART Way to Real Estate.</p>
+      <div class="blurb-wrap">
+        <p class="blurb-thesis">Rooted in Lamorinda since 1977. BrightWork is built on the premise that the best outcomes start before a home ever lists.</p>
+        <div class="blurb-items">
+          <p>An orchestrated campaign designed for your home's buyer, not the average buyer.</p>
+          <p>Programs that turn seller constraints into options.</p>
+          <p>Transactions designed so everyone gets to the closing table feeling good.</p>
+        </div>
+      </div>
+      <p class="footer-blurb">That's <span class="footer-tagline">The <span class="footer-tagline-smart">SMART</span> Way to Real Estate</span>.</p>
       <a href="tel:9252006000" class="footer-phone">(925) 200-6000</a>
     </div>
 
