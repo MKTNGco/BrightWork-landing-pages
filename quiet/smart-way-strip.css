@@ -1,0 +1,158 @@
+/* Smart Way strip — shared across program landing pages */
+
+.smart-way-strip {
+  background: var(--off-white);
+  padding: 72px var(--page-gutter);
+  border-top: 1px solid var(--border);
+}
+
+.sws-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sws-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.sws-heading {
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 800;
+  color: var(--teal);
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+}
+
+.sws-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.sws-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  padding: 24px 22px;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 93, 122, 0.06);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.sws-card[data-href] {
+  cursor: pointer;
+}
+
+.sws-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 93, 122, 0.28);
+  box-shadow: 0 8px 22px rgba(0, 93, 122, 0.12);
+}
+
+.sws-card[data-href]:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 8px 24px rgba(0, 174, 219, 0.18);
+}
+
+.sws-card--current {
+  border: 2px solid var(--yellow);
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(255, 226, 0, 0.18);
+}
+
+.sws-card--current:hover {
+  transform: translateY(-3px);
+  border-color: var(--yellow);
+  box-shadow: 0 8px 24px rgba(255, 226, 0, 0.28);
+}
+
+.sws-current-label {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: var(--yellow);
+  padding: 4px 8px;
+  line-height: 1;
+  z-index: 1;
+}
+
+.sws-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--teal);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.sws-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.sws-card--current .sws-title {
+  padding-right: 72px;
+}
+
+.sws-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.sws-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.sws-links a {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cyan);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.sws-links a:hover {
+  color: var(--cyan-dark);
+}
+
+.sws-links a.sws-link--current {
+  color: var(--teal);
+  font-weight: 700;
+  pointer-events: none;
+}
+
+@media (max-width: 1000px) {
+  .sws-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 800px) {
+  .smart-way-strip { padding: 48px var(--page-gutter); }
+  .sws-grid { grid-template-columns: 1fr; gap: 14px; }
+  .sws-heading { margin-bottom: 32px; }
+  .sws-title { padding-right: 0; }
+}
