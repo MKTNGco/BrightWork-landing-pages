@@ -51,6 +51,7 @@ Every agent must internalize these before writing a single line of code or copy.
 - Font: **Montserrat only** — loaded from Google Fonts. No Inter, DM Sans, or system fonts.
 - All pages must include the HTTPS redirect snippet
 - All pages must include the PostHog init script from `../shared/posthog-init.js`
+- All pages must load the Follow Up Boss widget tracker: `widget-tracker.js` (canonical copy in `shared/widget-tracker.js`) immediately after PostHog in `<head>`
 - Suite I fix: `sed -i 's/Suite 1, Moraga/Suite I, Moraga/g'` if needed
 
 **Color**
@@ -172,6 +173,7 @@ brightwork-landing-pages/
 │   └── handbook.md            ← this file
 ├── shared/
 │   ├── posthog-init.js
+│   ├── widget-tracker.js
 │   ├── animations.js          ← scroll-reveal (all program pages except seniors/workshop)
 │   ├── brand.css
 │   └── logo.png
@@ -1329,6 +1331,7 @@ When building any new page in this repo:
 - [ ] Copy `shared/logo.png` to `[pagename]/images/logo.png`; use `images/logo.png` in nav and footer
 - [ ] Include HTTPS redirect snippet in `<head>`
 - [ ] Add `<script src="../shared/posthog-init.js"></script>` before `</head>`
+- [ ] Copy `shared/widget-tracker.js` to `[pagename]/widget-tracker.js` and add `<script src="widget-tracker.js"></script>` immediately after PostHog
 - [ ] Set `<link rel="canonical">` to the page's full URL
 - [ ] Page `<title>` leads with keyword phrase
 - [ ] Set correct `LEAD_TAG` and `LEAD_SOURCE` constants

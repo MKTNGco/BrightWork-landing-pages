@@ -30,6 +30,7 @@ brightwork-landing-pages/
 │   └── handbook.md          ← read this
 ├── shared/
 │   ├── posthog-init.js
+│   ├── widget-tracker.js
 │   ├── animations.js
 │   ├── brand.css
 │   └── BrightWork_logo.png
@@ -85,6 +86,12 @@ The init must include `cross_subdomain_cookie: true` so users across
 subdomains are tracked as one person. Key: `phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i`
 
 On form submit, call `posthog.identify(email, {...})` before the FUB fetch.
+
+---
+
+## Follow Up Boss Widget Tracker
+
+Shared loader: `shared/widget-tracker.js` (duplicate into each Workers folder like PostHog). Every page loads it in `<head>` immediately after PostHog: `<script src="widget-tracker.js"></script>`
 
 ---
 
