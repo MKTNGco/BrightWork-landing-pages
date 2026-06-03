@@ -79,11 +79,17 @@ check the allowed origins list in the Cloudflare dashboard for the Worker.
 
 ## PostHog
 
-Shared init file: `shared/posthog-init.js`
-Every page loads it: `<script src="../shared/posthog-init.js"></script>`
+PostHog is loaded via an inline `<script>` block directly in each page's `<head>`. Do NOT use an external script tag referencing `../shared/posthog-init.js` — Cloudflare Workers deploys each page as an isolated static bundle and cannot resolve sibling directory paths at runtime.
 
-The init must include `cross_subdomain_cookie: true` so users across
-subdomains are tracked as one person. Key: `phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i`
+The inline snippet uses:
+- Project key: `phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i`
+- `api_host: 'https://us.i.posthog.com'`
+- `cross_subdomain_cookie: true` — required for cross-subdomain session stitching
+- `defaults: '2026-01-30'`
+- `person_profiles: 'identified_only'`
+- localhost opt-out guard in the `loaded` callback
+
+The canonical snippet source is `shared/posthog-init.js`. When updating any config option, update that file AND re-inline it across all 9 HTML files. Do not reference it via script src.
 
 On form submit, call `posthog.identify(email, {...})` before the FUB fetch.
 
