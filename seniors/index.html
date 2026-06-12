@@ -1441,15 +1441,28 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       lastName,
       emails: [{ value: emailVal, type: 'work' }],
       phones: [{ value: phoneVal, type: 'mobile' }],
-      tags: [LEAD_TAG, LEAD_SOURCE]
+      source: 'seniors.brightworkrealty.com',
+      stage: 'Lead',
+      assignedTo: 'Ben Olsen',
+      tags: [LEAD_TAG]
     };
     if (messageVal) person.backgroundInformation = messageVal;
+
+    const payload = {
+      person,
+      event: {
+        type: 'Registration',
+        source: 'seniors.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
+      }
+    };
 
     try {
       const res = await fetch(FUB_PROXY_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ person })
+        body: JSON.stringify(payload)
       });
 
       if (res.ok) {

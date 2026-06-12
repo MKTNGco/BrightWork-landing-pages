@@ -208,10 +208,33 @@ export default {
     }
 
     const personId = fubPerson?.person?.id ?? fubPerson?.id ?? null;
+
+    if (body.event && personId) {
+      try {
+        const eventRes = await fetch('https://api.followupboss.com/v1/events', {
+          method: 'POST',
+          headers: {
+            Authorization: fubAuthHeader(env),
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...body.event,
+            person: { id: personId },
+          }),
+        });
+
+        if (!eventRes.ok) {
+          console.error('FUB event POST failed:', eventRes.status, await eventRes.text());
+        }
+      } catch (err) {
+        console.error('FUB event POST error:', err);
+      }
+    }
+
     if (personId) {
       await syncTimeframeAndTags(personId, body.person, env);
     }
 
-    return jsonResponse(JSON.stringify({ success: true, personId }), corsOrigin, fubRes.status);
+    return jsonResponse(JSON.stringify({ success: true, personId }), corsOrigin, 200);
   },
 };

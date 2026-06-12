@@ -1506,16 +1506,23 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const phoneVal  = document.getElementById('phone').value.trim();
     const situation = document.getElementById('situation').value;
 
-    const tags = [LEAD_TAG, LEAD_SOURCE];
-    if (situation) tags.push(situation);
-
     const payload = {
       person: {
         firstName,
         lastName,
         emails: [{ value: emailVal, type: 'work' }],
         phones: [{ value: phoneVal, type: 'mobile' }],
-        tags
+        source: 'quiet.brightworkrealty.com',
+        stage: 'Lead',
+        assignedTo: 'Ben Olsen',
+        tags: [LEAD_TAG],
+        timeframe: situation || null
+      },
+      event: {
+        type: 'Registration',
+        source: 'quiet.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
       }
     };
 

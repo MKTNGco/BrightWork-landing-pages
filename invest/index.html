@@ -1630,7 +1630,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const phoneVal   = document.getElementById('phone').value.trim();
     const motivation = document.getElementById('motivation').value;
 
-    const tags = [LEAD_TAG, LEAD_SOURCE];
+    const tags = [LEAD_TAG];
     if (motivation) tags.push(motivation);
 
     const payload = {
@@ -1639,7 +1639,16 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
         lastName,
         emails: [{ value: emailVal, type: 'work' }],
         phones: [{ value: phoneVal, type: 'mobile' }],
+        source: 'invest.brightworkrealty.com',
+        stage: 'Lead',
+        assignedTo: 'Ben Olsen',
         tags
+      },
+      event: {
+        type: 'Registration',
+        source: 'invest.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
       }
     };
 

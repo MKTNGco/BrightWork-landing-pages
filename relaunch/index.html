@@ -1362,13 +1362,24 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       lastName,
       emails: [{ value: emailVal, type: 'work' }],
       phones: [{ value: phoneVal, type: 'mobile' }],
-      tags:   [LEAD_TAG, LEAD_SOURCE]
+      source: 'relaunch.brightworkrealty.com',
+      stage: 'Lead',
+      assignedTo: 'Ben Olsen',
+      tags: [LEAD_TAG]
     };
     if (backgroundParts.length) {
       person.background = backgroundParts.join('\n');
     }
 
-    const payload = { person };
+    const payload = {
+      person,
+      event: {
+        type: 'Registration',
+        source: 'relaunch.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
+      }
+    };
 
     try {
       const res = await fetch(FUB_PROXY_URL, {

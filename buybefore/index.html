@@ -1601,16 +1601,23 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const phoneRaw  = document.getElementById('phone').value.trim();
     const timeline  = document.getElementById('timeline').value;
 
-    const tags = [LEAD_TAG, SOURCE];
-    if (timeline) tags.push(timeline);
-
     const payload = {
       person: {
         firstName,
         lastName,
         emails: [{ value: emailRaw, type: 'work' }],
         phones: [{ value: phoneRaw, type: 'mobile' }],
-        tags
+        source: 'buybefore.brightworkrealty.com',
+        stage: 'Lead',
+        assignedTo: 'Ben Olsen',
+        tags: [LEAD_TAG],
+        timeframe: timeline || null
+      },
+      event: {
+        type: 'Registration',
+        source: 'buybefore.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
       }
     };
 

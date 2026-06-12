@@ -1225,14 +1225,22 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const emailRaw  = document.getElementById('email').value.trim();
     const phoneRaw  = document.getElementById('phone').value.trim();
 
-    // Worker expects FUB-style body with a top-level `person` object (flat root returns 400).
     const payload = {
       person: {
         firstName,
         lastName,
         emails: [{ value: emailRaw, type: 'work' }],
         phones: [{ value: phoneRaw, type: 'mobile' }],
-        tags: [LEAD_TAG, SOURCE]
+        source: 'offmarket.brightworkrealty.com',
+        stage: 'Lead',
+        assignedTo: 'Ben Olsen',
+        tags: [LEAD_TAG]
+      },
+      event: {
+        type: 'Registration',
+        source: 'offmarket.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
       }
     };
 

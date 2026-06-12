@@ -1542,28 +1542,32 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const propertyAddress  = document.getElementById('propertyAddress').value.trim();
     const referralSource   = document.getElementById('referralSource').value.trim();
 
-    // Tags: always include LEAD_TAG and LEAD_SOURCE.
-    // Attribution: prefix the optional referral source so it's filterable in FUB
-    // (Worker payload only supports the `person` shape, so we encode optional
-    // context into tags rather than custom fields).
-    const tags = [LEAD_TAG, LEAD_SOURCE];
-    if (referralSource) tags.push('heard-via:' + referralSource);
-    if (propertyAddress) tags.push('property-address-provided');
-
-    // Property address goes into the person.addresses array if supplied,
-    // so it lands in the FUB contact record directly rather than only in tags.
     const personPayload = {
       firstName,
       lastName,
       emails: [{ value: emailVal, type: 'work' }],
       phones: [{ value: phoneVal, type: 'mobile' }],
-      tags
+      source: 'finaloffer.brightworkrealty.com',
+      stage: 'Lead',
+      assignedTo: 'Ben Olsen',
+      tags: [LEAD_TAG]
     };
     if (propertyAddress) {
       personPayload.addresses = [{ street: propertyAddress, type: 'home' }];
     }
+    if (referralSource) {
+      personPayload.background = 'How they heard about us: ' + referralSource;
+    }
 
-    const payload = { person: personPayload };
+    const payload = {
+      person: personPayload,
+      event: {
+        type: 'Registration',
+        source: 'finaloffer.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
+      }
+    };
 
     try {
       const res = await fetch(FUB_PROXY_URL, {

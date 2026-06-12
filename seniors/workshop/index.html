@@ -1328,7 +1328,16 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
         lastName,
         emails: [{ value: emailVal, type: 'work' }],
         phones: [{ value: phoneVal, type: 'mobile' }],
-        tags: [LEAD_TAG, LEAD_SOURCE]
+        source: 'seniors.brightworkrealty.com/workshop',
+        stage: 'Lead',
+        assignedTo: 'Ben Olsen',
+        tags: [LEAD_TAG]
+      },
+      event: {
+        type: 'Registration',
+        source: 'seniors.brightworkrealty.com/workshop',
+        pageUrl: window.location.href,
+        pageTitle: document.title
       }
     };
 

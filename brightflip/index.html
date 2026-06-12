@@ -1660,23 +1660,31 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const propertyAddress = document.getElementById('propertyAddress').value.trim();
     const concern         = document.getElementById('concern').value.trim();
 
-    // Property address and concern go into the FUB note/background fields,
-    // plus property address is mirrored in tags for FUB list filtering.
-    const tags = [LEAD_TAG, LEAD_SOURCE];
-    if (propertyAddress) tags.push('property:' + propertyAddress);
-
     const backgroundParts = [];
     if (propertyAddress) backgroundParts.push('Property: ' + propertyAddress);
     if (concern)         backgroundParts.push('Biggest concern: ' + concern);
 
+    const person = {
+      firstName,
+      lastName,
+      emails: [{ value: emailVal, type: 'work' }],
+      phones: [{ value: phoneVal, type: 'mobile' }],
+      source: 'brightflip.brightworkrealty.com',
+      stage: 'Lead',
+      assignedTo: 'Ben Olsen',
+      tags: [LEAD_TAG]
+    };
+    if (backgroundParts.length) {
+      person.background = backgroundParts.join('\n\n');
+    }
+
     const payload = {
-      person: {
-        firstName,
-        lastName,
-        emails: [{ value: emailVal, type: 'work' }],
-        phones: [{ value: phoneVal, type: 'mobile' }],
-        tags,
-        background: backgroundParts.join('\n\n')
+      person,
+      event: {
+        type: 'Registration',
+        source: 'brightflip.brightworkrealty.com',
+        pageUrl: window.location.href,
+        pageTitle: document.title
       }
     };
 
