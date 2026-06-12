@@ -1225,14 +1225,6 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const emailRaw  = document.getElementById('email').value.trim();
     const phoneRaw  = document.getElementById('phone').value.trim();
 
-    if (typeof posthog !== 'undefined') {
-      posthog.identify(emailRaw, {
-        email: emailRaw,
-        name: firstName + ' ' + lastName,
-        fub_source: LEAD_SOURCE
-      });
-    }
-
     // Worker expects FUB-style body with a top-level `person` object (flat root returns 400).
     const payload = {
       person: {
@@ -1252,7 +1244,17 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       });
 
       if (res.ok) {
+        const data = await res.json();
         if (typeof posthog !== 'undefined') {
+          if (data.success && data.personId) {
+            posthog.identify(emailRaw, {
+              email: emailRaw,
+              name: firstName + ' ' + lastName,
+              fub_source: LEAD_SOURCE,
+              fub_person_id: data.personId,
+              fub_identified_at: new Date().toISOString()
+            });
+          }
           posthog.capture('lead_submitted', { program: LEAD_TAG, source: LEAD_SOURCE });
         }
         document.getElementById('leadForm').style.display = 'none';

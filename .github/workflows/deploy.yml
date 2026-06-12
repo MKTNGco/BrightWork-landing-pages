@@ -24,3 +24,17 @@ jobs:
           command: deploy --config ${{ matrix.page }}/wrangler.toml
         env:
           WRANGLER_LOG: debug
+
+  deploy-proxy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy bw-fub-proxy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: bw-fub-proxy
+          command: deploy
+        env:
+          WRANGLER_LOG: debug

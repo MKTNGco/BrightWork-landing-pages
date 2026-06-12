@@ -50,7 +50,7 @@ Every agent must internalize these before writing a single line of code or copy.
 **Technical**
 - Font: **Montserrat only** — loaded from Google Fonts. No Inter, DM Sans, or system fonts.
 - All pages must include the HTTPS redirect snippet
-- All pages must include the PostHog init snippet inline in `<head>`. Do not use an external script src referencing `../shared/posthog-init.js` — that path does not resolve in Cloudflare Workers deployments. Canonical config lives in `shared/posthog-init.js` for reference only.
+- All pages must include the PostHog init snippet inline in `<head>`. Do not use an external script src referencing `../shared/posthog-init.js` — that path does not resolve in Cloudflare Workers deployments. Canonical config lives in `shared/posthog-init.js`; copy the full stub loader + `posthog.init()` block from there into each page. The deployed pattern uses the current `array.js` stub (`__SV=1.7`) with `api_host`, `ui_host`, and `asset_host` set explicitly.
 - All pages must load the Follow Up Boss widget tracker: `widget-tracker.js` (canonical copy in `shared/widget-tracker.js`) immediately after PostHog in `<head>`
 - Suite I fix: `sed -i 's/Suite 1, Moraga/Suite I, Moraga/g'` if needed
 
@@ -220,7 +220,7 @@ brightwork-landing-pages/
     └── wrangler.toml
 ```
 
-**Seniors deployment note:** Cloudflare Workers static assets deploy from the `seniors/` folder root. The workshop lives at `seniors/workshop/index.html` (URL: `seniors.brightworkrealty.com/workshop`). Copy all shared assets into `seniors/images/` — do not reference `../shared/` for images (Worker cannot access sibling folders). PostHog init: `../shared/posthog-init.js` on `seniors/index.html`, `../../shared/posthog-init.js` on `seniors/workshop/index.html`.
+**Seniors deployment note:** Cloudflare Workers static assets deploy from the `seniors/` folder root. The workshop lives at `seniors/workshop/index.html` (URL: `seniors.brightworkrealty.com/workshop`). Copy all shared assets into `seniors/images/` — do not reference `../shared/` for images (Worker cannot access sibling folders). PostHog: inline the full snippet from `shared/posthog-init.js` in both `seniors/index.html` and `seniors/workshop/index.html` — same pattern as all other pages, no external script src.
 
 When building a new page: create `[pagename]/index.html` and `[pagename]/images/`. Copy `shared/logo.png` into `[pagename]/images/logo.png`. Reference the logo in nav and footer as `images/logo.png` (not `../shared/logo.png`). Each page is self-contained for Cloudflare Workers static asset deployment.
 
@@ -269,11 +269,14 @@ Every page follows this order. Do not deviate without documented reason.
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <!-- PostHog — inline snippet, do not use external src -->
+  <!-- PostHog — inline snippet, do not use external src; copy from shared/posthog-init.js -->
   <script>
-    !(function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/ph.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||(window.posthog=[])));
-    posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgWC79i', {
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set set_once unset register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId getSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1.7)}(document,window.posthog||(window.posthog=[]));
+
+    posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       api_host: 'https://us.i.posthog.com',
+      ui_host: 'https://us.posthog.com',
+      asset_host: 'https://us-assets.i.posthog.com',
       defaults: '2026-01-30',
       cross_subdomain_cookie: true,
       person_profiles: 'identified_only',
@@ -1341,7 +1344,7 @@ When building any new page in this repo:
 - [ ] Create `[pagename]/index.html` and `[pagename]/images/`
 - [ ] Copy `shared/logo.png` to `[pagename]/images/logo.png`; use `images/logo.png` in nav and footer
 - [ ] Include HTTPS redirect snippet in `<head>`
-- [ ] Inline the PostHog snippet directly in `<head>` — copy from `shared/posthog-init.js`. Do not use an external script src.
+- [ ] Inline the PostHog snippet directly in `<head>` — copy the full stub loader + `posthog.init()` block from `shared/posthog-init.js` into the page. Do not use an external script src. Re-inline all 9 HTML files whenever the canonical file changes.
 - [ ] Copy `shared/widget-tracker.js` to `[pagename]/widget-tracker.js` and add `<script src="widget-tracker.js"></script>` immediately after PostHog
 - [ ] Set `<link rel="canonical">` to the page's full URL
 - [ ] Page `<title>` leads with keyword phrase

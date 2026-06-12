@@ -81,15 +81,20 @@ check the allowed origins list in the Cloudflare dashboard for the Worker.
 
 PostHog is loaded via an inline `<script>` block directly in each page's `<head>`. Do NOT use an external script tag referencing `../shared/posthog-init.js` — Cloudflare Workers deploys each page as an isolated static bundle and cannot resolve sibling directory paths at runtime.
 
-The inline snippet uses:
-- Project key: `phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i`
-- `api_host: 'https://us.i.posthog.com'`
-- `cross_subdomain_cookie: true` — required for cross-subdomain session stitching
-- `defaults: '2026-01-30'`
-- `person_profiles: 'identified_only'`
-- localhost opt-out guard in the `loaded` callback
+**Working pattern (deployed):**
 
-The canonical snippet source is `shared/posthog-init.js`. When updating any config option, update that file AND re-inline it across all 9 HTML files. Do not reference it via script src.
+1. **Stub loader** — current PostHog snippet (`__SV=1.7`) that loads `array.js` (not the deprecated `ph.js` stub). The loader sets `crossOrigin="anonymous"` and guards against double-init with `window.posthog.__loaded`.
+2. **`posthog.init()` config:**
+   - Project key: `phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i`
+   - `api_host: 'https://us.i.posthog.com'` — event ingestion
+   - `ui_host: 'https://us.posthog.com'` — PostHog UI links
+   - `asset_host: 'https://us-assets.i.posthog.com'` — SDK asset delivery
+   - `defaults: '2026-01-30'`
+   - `cross_subdomain_cookie: true` — required for cross-subdomain session stitching on `*.brightworkrealty.com`
+   - `person_profiles: 'identified_only'`
+   - `loaded` callback opts out capturing on `localhost`
+
+The canonical snippet source is `shared/posthog-init.js`. When updating the stub loader or any config option, update that file AND re-inline the full block across all 9 HTML files (including `seniors/workshop/index.html`). Do not reference it via script src.
 
 On form submit, call `posthog.identify(email, {...})` before the FUB fetch.
 

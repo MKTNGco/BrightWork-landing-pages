@@ -1526,12 +1526,17 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
         body: JSON.stringify(payload)
       });
       if (res.ok) {
+        const data = await res.json();
         if (typeof posthog !== 'undefined') {
-          posthog.identify(emailVal, {
-            email: emailVal,
-            name: firstName + ' ' + lastName,
-            fub_source: LEAD_SOURCE
-          });
+          if (data.success && data.personId) {
+            posthog.identify(emailVal, {
+              email: emailVal,
+              name: firstName + ' ' + lastName,
+              fub_source: LEAD_SOURCE,
+              fub_person_id: data.personId,
+              fub_identified_at: new Date().toISOString()
+            });
+          }
           posthog.capture('lead_submitted', {
             program: 'quiet-listing',
             source: LEAD_SOURCE,

@@ -102,6 +102,25 @@ check the Cloudflare dashboard.
 
 ---
 
+## bw-fub-proxy Worker
+
+The `bw-fub-proxy/` directory contains the Cloudflare Worker that proxies form
+submissions from all BrightWork landing pages to the Follow Up Boss API.
+
+- Worker name in Cloudflare: `bw-fub-proxy`
+- Account ID: `5f50d138eb76f9beb59f76d0f356543f`
+- Source of truth: this repo (`bw-fub-proxy/src/index.js`)
+- Deploy: automatic via GitHub Actions on push to main (deploy-proxy job)
+- Accepts POST requests from `*.brightworkrealty.com` and `moragacountryclubrealestate.com`
+- Passes FUB_API_KEY from Cloudflare Worker environment secrets (not in this repo)
+
+### History
+Originally deployed directly in Cloudflare with no versioned source. Brought into
+this repo on June 12, 2026 when PostHog identity stitching was added. As of that
+date this repo is the single source of truth for the worker.
+
+---
+
 ## Analytics
 
 PostHog tracks cross-page behavior. All pages load `shared/posthog-init.js`.  
