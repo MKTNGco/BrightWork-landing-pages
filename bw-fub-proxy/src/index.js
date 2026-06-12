@@ -232,7 +232,11 @@ export default {
     }
 
     if (personId) {
-      await syncTimeframeAndTags(personId, body.person, env);
+      const timeframeSource = {
+        ...body.person,
+        timeframe: body.timeframe ?? body.person?.timeframe ?? null
+      };
+      await syncTimeframeAndTags(personId, timeframeSource, env);
     }
 
     return jsonResponse(JSON.stringify({ success: true, personId }), corsOrigin, 200);
