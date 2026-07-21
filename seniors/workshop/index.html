@@ -26,7 +26,7 @@
         "name": "What is the BrightWork senior real estate planning workshop?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A 90-minute educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session, joined by Jennifer Raftis, a Certified Professional Organizer who specializes in senior downsizing and move management. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps."
+          "text": "A two-hour educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session, joined by Jennifer Raftis, a Certified Professional Organizer who specializes in senior downsizing and move management. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps."
         }
       },
       {
@@ -449,12 +449,15 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       margin-top: 20px;
+      align-items: stretch;
     }
     .presenter {
       padding: 28px;
       background: var(--white);
       border: 1px solid var(--border);
       text-align: center;
+      display: flex;
+      flex-direction: column;
     }
     .presenter-img {
       width: 100%;
@@ -487,6 +490,25 @@
       text-decoration: none;
     }
     .presenter-org a:hover { color: var(--cyan); }
+    .presenter-bio {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-top: 14px;
+      text-align: left;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .presenter-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      text-decoration: none;
+      margin-top: 12px;
+      display: inline-block;
+    }
+    .presenter-link:hover { text-decoration: underline; }
     .register-section {
       background: var(--cyan);
       padding: 80px var(--page-gutter);
@@ -929,7 +951,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     <div class="hero-badge show-when-active">Upcoming Event &middot; August 22, 2026</div>
     <div class="hero-badge show-when-inactive">Senior Real Estate Planning</div>
     <h1>Plan the Transition<br />Before It Plans You</h1>
-    <p class="show-when-active">A 90-minute planning session for Lamorinda families navigating senior real estate decisions: what to do now, what can wait, and how to avoid the mistakes families make when they wait too long.</p>
+    <p class="show-when-active">A two-hour planning session for Lamorinda families navigating senior real estate decisions: what to do now, what can wait, and how to avoid the mistakes families make when they wait too long.</p>
     <p class="show-when-inactive">Ben hosts occasional workshops for Lamorinda homeowners and their families. Add your name to the list.</p>
     <a href="#register" class="hero-cta">
       <span class="show-when-active">Reserve Your Spot</span>
@@ -954,14 +976,14 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <p class="detail-label">Location</p>
-        <p class="detail-value">[VENUE TBD, Moraga area]</p>
+        <p class="detail-value">Moraga Country Club</p>
       </div>
       <div class="detail-card">
         <div class="detail-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <p class="detail-label">Format</p>
-        <p class="detail-value">90 minutes &middot; Presentation &middot; Q&amp;A</p>
+        <p class="detail-value">2 hours &middot; Presentation &middot; Q&amp;A</p>
       </div>
     </div>
     <div class="presenters-wrap">
@@ -971,12 +993,15 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
           <img src="../images/ben-olsen.png" alt="Ben Olsen, REALTOR with BrightWork Realty Advocates" class="presenter-img" />
           <p class="presenter-name">Ben Olsen</p>
           <p class="presenter-role">REALTOR, BrightWork Realty Advocates</p>
+          <p class="presenter-bio">Ben has worked exclusively with Lamorinda homeowners for more than a decade. He built BrightWork Realty Advocates around one idea: that families navigating a senior real estate decision deserve a process, not a pitch. These workshops are how that starts.</p>
         </div>
         <div class="presenter">
           <img src="../images/jennifer-raftis.jpg" alt="Jennifer Raftis, Certified Professional Organizer and founder of Efficiency Matters" class="presenter-img" />
           <p class="presenter-name">Jennifer Raftis, CPO</p>
           <p class="presenter-role">Certified Professional Organizer</p>
-          <p class="presenter-org"><a href="https://www.efficiencymattersllc.com" target="_blank" rel="noopener">Efficiency Matters, LLC</a></p>
+          <p class="presenter-org"><a href="https://www.efficiencymattersllc.com" target="_blank" rel="noopener noreferrer">Efficiency Matters, LLC</a></p>
+          <p class="presenter-bio">Jennifer is a Certified Professional Organizer specializing in senior transitions and downsizing. She helps families work through decades of belongings in a way that is methodical, respectful, and actually finishable. She brings the logistics that most real estate conversations leave out.</p>
+          <a href="https://www.efficiencymattersllc.com" target="_blank" rel="noopener noreferrer" class="presenter-link">Efficiency Matters &rarr;</a>
         </div>
       </div>
     </div>
@@ -1013,7 +1038,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
 <section class="covers-section">
   <div class="covers-inner">
     <p class="eyebrow">Workshop Agenda</p>
-    <h2 class="section-heading">What Happens in 90 Minutes</h2>
+    <h2 class="section-heading">What Happens in Two Hours</h2>
     <div class="covers-grid">
       <div class="cover-item">
         <div class="cover-icon">
@@ -1126,7 +1151,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     <h2>Workshop Questions, Answered</h2>
     <div class="faq-item">
       <h3>What is the BrightWork senior real estate planning workshop?</h3>
-      <p>A 90-minute educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session, joined by Jennifer Raftis, a Certified Professional Organizer who specializes in senior downsizing and move management. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps.</p>
+      <p>A two-hour educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session, joined by Jennifer Raftis, a Certified Professional Organizer who specializes in senior downsizing and move management. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps.</p>
     </div>
     <div class="faq-item">
       <h3>Who should attend the senior real estate planning workshop?</h3>
