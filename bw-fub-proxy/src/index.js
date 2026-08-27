@@ -200,44 +200,47 @@ export default {
       });
     }
 
-    const fubRes = await fetch('https://api.followupboss.com/v1/people', {
+    // FUB recommends POST /v1/events with person emails/phones so existing contacts
+    // are matched instead of creating duplicates via POST /v1/people.
+    const eventPayload = {
+      type: 'Registration',
+      ...(body.event ?? {}),
+      person: body.person,
+    };
+
+    const eventRes = await fetch('https://api.followupboss.com/v1/events', {
       method: 'POST',
       headers: {
         Authorization: fubAuthHeader(env),
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body.person),
+      body: JSON.stringify(eventPayload),
     });
 
-    const fubPerson = await fubRes.json();
-
-    if (!fubRes.ok) {
-      return jsonResponse(JSON.stringify(fubPerson), corsOrigin, fubRes.status);
+    if (eventRes.status === 204) {
+      console.warn('FUB event ignored (archived lead flow):', eventPayload.source ?? body.person?.source);
+      return jsonResponse(JSON.stringify({ success: true, personId: null }), corsOrigin, 200);
     }
 
-    const personId = fubPerson?.person?.id ?? fubPerson?.id ?? null;
-
-    if (body.event && personId) {
+    const eventText = await eventRes.text();
+    let fubData = null;
+    if (eventText) {
       try {
-        const eventRes = await fetch('https://api.followupboss.com/v1/events', {
-          method: 'POST',
-          headers: {
-            Authorization: fubAuthHeader(env),
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...body.event,
-            person: { id: personId },
-          }),
-        });
-
-        if (!eventRes.ok) {
-          console.error('FUB event POST failed:', eventRes.status, await eventRes.text());
-        }
-      } catch (err) {
-        console.error('FUB event POST error:', err);
+        fubData = JSON.parse(eventText);
+      } catch {
+        console.error('FUB event response was not JSON:', eventText.slice(0, 200));
       }
     }
+
+    if (!eventRes.ok) {
+      return jsonResponse(
+        JSON.stringify(fubData ?? { errorMessage: 'Follow Up Boss event request failed.' }),
+        corsOrigin,
+        eventRes.status
+      );
+    }
+
+    const personId = fubData?.person?.id ?? fubData?.id ?? null;
 
     if (personId) {
       const timeframeSource = {
