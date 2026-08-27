@@ -23,14 +23,11 @@ import {
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-const COMPLIANCE_SLUGS = new Set(['seniors', 'invest', 'brightflip', 'finaloffer']);
+const COMPLIANCE_SLUGS = new Set(['seniors', 'invest']);
 
 const PROGRAM_STRIP_KEYS = new Set([
   'limitations',
-  'compliance',
-  'capitalLanguage',
-  'positioning',
-  'copyRules'
+  'compliance'
 ]);
 
 const PROGRAM_KEY_ORDER = [
@@ -91,20 +88,6 @@ function complianceForSlug(slug, program) {
 
   if (slug === 'invest') {
     return program.compliance;
-  }
-
-  if (slug === 'brightflip') {
-    return program.capitalLanguage;
-  }
-
-  if (slug === 'finaloffer') {
-    const lines = [program.positioning];
-    const narFact = program.platformFacts && program.platformFacts.find((f) => f.includes('NAR Clear Cooperation'));
-    if (narFact) lines.push(narFact);
-    if (program.copyRules) {
-      program.copyRules.forEach((rule) => lines.push(rule));
-    }
-    return lines;
   }
 
   return null;

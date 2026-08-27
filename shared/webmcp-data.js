@@ -239,7 +239,7 @@
         "Legacy home decisions: stay, downsize, rent, or sell on your timeline",
         "Trust and titling coordination with your estate attorney",
         "Timing a transition without pressure",
-        "Options many families do not know they have, including 1031 exchanges, DSTs, and step-up in basis concepts to discuss with advisors"
+        "Options many families are unaware of, including 1031 exchanges, DSTs, and step-up in basis concepts to discuss with advisors"
       ],
       "whatBenDoes": [
         "Helps families plan transitions on their own terms",
@@ -290,7 +290,7 @@
       "audience": "Lamorinda homeowners who want to sell privately: privacy-first sellers, previously unsold listings, senior transitions, or sellers testing price and timing.",
       "howItWorks": [
         "Ben markets the home to a curated private buyer network before deciding whether to start the public MLS clock.",
-        "Stages include private invitation-only exposure, controlled pre-market signals, and full on-market launch if earlier stages do not produce the right offer.",
+        "Stages include private invitation-only exposure, controlled pre-market signals, and full on-market launch if earlier stages fail to produce the right offer.",
         "Every quiet listing is documented and conducted in compliance with MLS rules and NAR Clear Cooperation Policy.",
         "If the private phase does not produce the right result, you can go to market better informed with a clean slate."
       ],
@@ -390,7 +390,7 @@
       "tagline": "The Smart Way to Real Estate",
       "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, with repayment from closing proceeds when the math favors the seller.",
       "audience": "Lamorinda sellers with deferred maintenance or cosmetic issues who will not fund renovation themselves before listing.",
-      "positioning": "BrightFlip manages the work and advances capital, recommends scope only when numbers favor the seller, and differs from advance-only concierge models.",
+      "positioning": "BrightFlip offers multiple capital options at attractive terms, with no monthly payments during the project and listing period. Specific program details and dollar figures are discussed directly with Ben.",
       "howItWorks": [
         "Ben compares realistic as-is sale value to realistic post-improvement value for a defined scope.",
         "If the math clearly favors the seller, capital and project management proceed with no monthly payments during the project and listing period.",
@@ -419,7 +419,6 @@
         "East Bay, CA"
       ],
       "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004 and brings a construction background to improvement recommendations.",
-      "capitalLanguage": "Use attractive terms and multiple capital options. Do not promise interest-free capital or name specific lenders.",
       "faq": [
         {
           "question": "What home improvements add the most value before selling in Lamorinda?",
@@ -449,7 +448,7 @@
       "tagline": "The Smart Way to Real Estate",
       "summary": "Structured multi-offer environment Ben deploys selectively when transparent competition helps discover true market value.",
       "audience": "Sellers interviewing agents or researching offer-management options for homes where structured competition may improve price discovery.",
-      "positioning": "Final Offer is a selective premium tool, not a baseline listing service. Ben deploys it when property and market conditions justify structured competition.",
+      "positioning": "Final Offer is a structured, transparent offer-management process, not an auction. Ben deploys it selectively, on listings with strong multi-offer potential, not as a baseline service included on every listing.",
       "howItWorks": [
         "Serious buyers following the listing see offer activity in real time instead of submitting blind offers.",
         "Visibility creates genuine competition rather than manufactured pressure.",
@@ -469,10 +468,6 @@
         "East Bay, CA"
       ],
       "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.",
-      "copyRules": [
-        "Do not use the word auction in residential copy.",
-        "Do not list Final Offer alongside baseline services like photography."
-      ],
       "faq": [
         {
           "question": "What is Final Offer in residential real estate?",
