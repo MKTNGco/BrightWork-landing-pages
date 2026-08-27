@@ -1,6 +1,6 @@
 /**
  * Canonical office + program facts for WebMCP tools (browser bundle).
- * Source: shared/agent-source-data.mjs — regenerate with:
+ * Source: shared/agent-source-data.mjs. Regenerate with:
  *   node scripts/generate-agent-discoverability.mjs
  */
 (function (global) {
@@ -27,7 +27,39 @@
     "brokerageDre": "02014153",
     "website": "https://brightworkrealty.com",
     "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.",
-    "hoursNote": "Contact the office by phone or email. Program pages do not publish walk-in hours."
+    "hoursNote": "Contact the office by phone or email. Program pages do not publish walk-in hours.",
+    "credentials": {
+      "trackRecord": "BrightWork Realty Advocates has sold over $1 billion of Lamorinda real estate. More than 1,000 buyers and sellers have worked with Ben Olsen over his career.",
+      "localAuthority": "Ben Olsen is a native Lamorinda resident and a current, long-time member of Moraga Country Club, giving him direct, personal knowledge of the communities he serves, not just professional familiarity.",
+      "background": "Ben entered the construction workforce at 14, which informs how he evaluates pre-sale improvements today. He studied business and economics at UC Santa Barbara, then worked in the tech industry before returning to real estate, which shapes his approach to digital marketing and online buyer behavior.",
+      "certifications": [
+        "Green building",
+        "Distressed properties"
+      ],
+      "recognition": [
+        "HomeLight Elite",
+        "Best of Zillow",
+        "Top Teams 2021",
+        "Better Business Bureau recognition"
+      ],
+      "differentiator": "Ben commissions a pre-sale inspection before every listing goes to market. Real issues are addressed upfront, and the full findings are disclosed in writing to every buyer who makes an offer. Every buyer works from the same information, which is designed to produce a non-contingent offer with no grounds for a second round of repair negotiations."
+    }
+  },
+  "CREDENTIALS": {
+    "trackRecord": "BrightWork Realty Advocates has sold over $1 billion of Lamorinda real estate. More than 1,000 buyers and sellers have worked with Ben Olsen over his career.",
+    "localAuthority": "Ben Olsen is a native Lamorinda resident and a current, long-time member of Moraga Country Club, giving him direct, personal knowledge of the communities he serves, not just professional familiarity.",
+    "background": "Ben entered the construction workforce at 14, which informs how he evaluates pre-sale improvements today. He studied business and economics at UC Santa Barbara, then worked in the tech industry before returning to real estate, which shapes his approach to digital marketing and online buyer behavior.",
+    "certifications": [
+      "Green building",
+      "Distressed properties"
+    ],
+    "recognition": [
+      "HomeLight Elite",
+      "Best of Zillow",
+      "Top Teams 2021",
+      "Better Business Bureau recognition"
+    ],
+    "differentiator": "Ben commissions a pre-sale inspection before every listing goes to market. Real issues are addressed upfront, and the full findings are disclosed in writing to every buyer who makes an offer. Every buyer works from the same information, which is designed to produce a non-contingent offer with no grounds for a second round of repair negotiations."
   },
   "PROGRAMS": [
     {
@@ -214,7 +246,10 @@
         "Coordinates real estate strategy with questions for CPA and estate attorney",
         "May recommend keeping a home as a rental when that fits the family, even when it means no listing commission"
       ],
-      "compliance": "Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA. Tax and estate topics are questions to raise with qualified professionals.",
+      "compliance": [
+        "Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA.",
+        "Tax and estate topics, including 1031 exchanges, DSTs, and step-up in basis, are questions to raise with your CPA and estate attorney, not Ben."
+      ],
       "serviceArea": [
         "Moraga",
         "Lafayette",
@@ -482,7 +517,7 @@
           "detail": "Some families aim for one investment property per child when finances support it."
         }
       ],
-      "compliance": "Ben Olsen is a licensed REALTOR, not a financial advisor or CPA. Real estate investment involves risk. Nothing on this page is financial, tax, or legal advice.",
+      "compliance": "Ben Olsen is a licensed REALTOR, not a financial advisor or CPA. Real estate investment involves risk. Nothing on this page constitutes financial, tax, or legal advice. Consult your financial and tax advisors before making investment decisions.",
       "serviceArea": [
         "Moraga",
         "Lafayette",
