@@ -1558,12 +1558,12 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   </div>
 </footer>
 
+<script src="fub-lead.js"></script>
+<script src="webmcp-core.js"></script>
+<script src="webmcp-shared.js"></script>
+<script src="webmcp-buybefore.js"></script>
 <script>
-  const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  const LEAD_TAG = 'buy-before-you-sell-lead';
-  const SOURCE   = 'Buy Before You Sell Landing Page';
-  const PROGRAM = LEAD_TAG;
-  const LEAD_SOURCE = 'Buy Before You Sell';
+  const PROGRAM = BrightWorkLead.LEAD_TAG;
 
   if (typeof posthog !== 'undefined') {
     posthog.capture('page_view_program', { program: PROGRAM });
@@ -1586,7 +1586,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const btnText = document.getElementById('btnText');
     const spinner = document.getElementById('spinner');
 
-    if (!FUB_PROXY_URL || !/^https:\/\//i.test(FUB_PROXY_URL)) {
+    if (!BrightWorkLead.FUB_PROXY_URL || !/^https:\/\//i.test(BrightWorkLead.FUB_PROXY_URL)) {
       alert('Form delivery is not configured yet. Please call us at (925) 200-6000.');
       return;
     }
@@ -1595,58 +1595,16 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     btnText.textContent = 'Submitting...';
     spinner.style.display = 'block';
 
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName  = document.getElementById('lastName').value.trim();
-    const emailRaw  = document.getElementById('email').value.trim();
-    const phoneRaw  = document.getElementById('phone').value.trim();
-    const timeline  = document.getElementById('timeline').value;
-
-    const payload = {
-      person: {
-        firstName,
-        lastName,
-        emails: [{ value: emailRaw, type: 'work' }],
-        phones: [{ value: phoneRaw, type: 'mobile' }],
-        source: 'buybefore.brightworkrealty.com',
-        stage: 'Lead',
-        assignedTo: 'Ben Olsen',
-        tags: [LEAD_TAG]
-      },
-      timeframe: timeline || null,
-      event: {
-        type: 'Registration',
-        source: 'buybefore.brightworkrealty.com',
-        pageUrl: window.location.href,
-        pageTitle: document.title
-      }
-    };
-
     try {
-      const res = await fetch(FUB_PROXY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      await BrightWorkLead.submit({
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        timeline: document.getElementById('timeline').value
       });
-
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof posthog !== 'undefined') {
-          if (data.success && data.personId) {
-            posthog.identify(emailRaw, {
-              email: emailRaw,
-              name: firstName + ' ' + lastName,
-              fub_source: LEAD_SOURCE,
-              fub_person_id: data.personId,
-              fub_identified_at: new Date().toISOString()
-            });
-          }
-          posthog.capture('lead_submitted', { program: LEAD_TAG, source: LEAD_SOURCE });
-        }
-        document.getElementById('leadForm').style.display = 'none';
-        document.getElementById('successState').style.display = 'block';
-      } else {
-        throw new Error('Proxy error');
-      }
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
     } catch (err) {
       alert('Something went wrong. Please call us at (925) 200-6000.');
       btn.disabled = false;

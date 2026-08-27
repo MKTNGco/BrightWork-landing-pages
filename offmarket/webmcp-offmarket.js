@@ -1,21 +1,24 @@
 /**
  * WebMCP tools for offmarket.brightworkrealty.com
- * Registers only when modelContext is available (native browser or Cloudflare bridge).
  */
 (function (global) {
   'use strict';
 
   var core = global.BrightWorkWebMCP;
-  var lead = global.OffmarketLead;
+  var shared = global.BrightWorkWebMCPShared;
+  var lead = global.BrightWorkLead;
 
-  if (!core || !lead) return;
+  if (!core || !shared || !lead) return;
+
+  core.pingReady({ page: 'offmarket', program: lead.LEAD_TAG });
+
   if (!core.isSupported()) return;
 
   var PROGRAM_META = { program: lead.LEAD_TAG, page: 'offmarket' };
 
   var OFFMARKET_PROGRAM = {
     name: 'Off-Market Access',
-    url: 'https://offmarket.brightworkrealty.com',
+    url: 'https://offmarket.brightworkrealty.com/',
     tagline: 'The Smart Way to Real Estate',
     summary: 'Private VIP buyer list for off-market homes in Lamorinda before they appear on Zillow or the MLS.',
     audience: 'Serious Bay Area buyers who want early access to homes sold quietly, without public listing exposure.',
@@ -58,29 +61,7 @@
     ]
   };
 
-  var OFFICE_INFO = {
-    brandName: 'BrightWork Realty Advocates',
-    tagline: 'The Smart Way to Real Estate',
-    realtor: {
-      name: 'Ben Olsen',
-      title: 'REALTOR',
-      profileUrl: 'https://brightworkrealty.com/about-us'
-    },
-    phone: '(925) 200-6000',
-    phoneTel: 'tel:9252006000',
-    email: 'ben@brightworkrealty.com',
-    address: {
-      street: '455 Moraga Road, Suite I',
-      city: 'Moraga',
-      state: 'CA',
-      postalCode: '94556',
-      formatted: '455 Moraga Road, Suite I, Moraga, CA 94556'
-    },
-    brokerageDre: '02014153',
-    website: 'https://brightworkrealty.com',
-    programPage: 'https://offmarket.brightworkrealty.com',
-    hoursNote: 'Contact the office by phone or email. This page does not publish walk-in hours.'
-  };
+  shared.registerSharedTools(PROGRAM_META);
 
   core.registerTools([
     {
@@ -92,17 +73,6 @@
       },
       execute: function () {
         return core.jsonResult(OFFMARKET_PROGRAM);
-      }
-    },
-    {
-      name: 'get_office',
-      description: 'Return BrightWork Realty Advocates office and contact information for Ben Olsen, as stated on the off-market landing page.',
-      inputSchema: {
-        type: 'object',
-        properties: {}
-      },
-      execute: function () {
-        return core.jsonResult(OFFICE_INFO);
       }
     },
     {

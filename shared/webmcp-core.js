@@ -37,6 +37,16 @@
     }
   }
 
+  function pingReady(meta) {
+    if (typeof global.posthog !== 'undefined') {
+      global.posthog.capture('webmcp_ready', {
+        supported: isWebMcpSupported(),
+        page: meta && meta.page ? meta.page : null,
+        program: meta && meta.program ? meta.program : null
+      });
+    }
+  }
+
   function textResult(text) {
     return {
       content: [{ type: 'text', text: String(text) }]
@@ -81,6 +91,7 @@
   global.BrightWorkWebMCP = {
     getModelContext: getModelContext,
     isSupported: isWebMcpSupported,
+    pingReady: pingReady,
     registerTools: registerTools,
     textResult: textResult,
     jsonResult: jsonResult,

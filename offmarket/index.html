@@ -1182,9 +1182,10 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
 
 <script src="fub-lead.js"></script>
 <script src="webmcp-core.js"></script>
+<script src="webmcp-shared.js"></script>
 <script src="webmcp-offmarket.js"></script>
 <script>
-  const PROGRAM = OffmarketLead.LEAD_TAG;
+  const PROGRAM = BrightWorkLead.LEAD_TAG;
 
   if (typeof posthog !== 'undefined') {
     posthog.capture('page_view_program', { program: PROGRAM });
@@ -1212,7 +1213,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     spinner.style.display = 'block';
 
     try {
-      await OffmarketLead.submit({
+      await BrightWorkLead.submit({
         firstName: document.getElementById('firstName').value,
         lastName: document.getElementById('lastName').value,
         email: document.getElementById('email').value,

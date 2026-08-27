@@ -1,14 +1,13 @@
 /**
- * Off-Market Access lead submission to bw-fub-proxy.
- * Shared by the human form and the WebMCP request_consult tool.
+ * Quiet Listing lead submission to bw-fub-proxy.
  */
 (function (global) {
   'use strict';
 
   var FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  var LEAD_TAG = 'off-market-lead';
-  var LEAD_SOURCE = 'Off-Market Access';
-  var PAGE_HOST = 'offmarket.brightworkrealty.com';
+  var LEAD_TAG = 'quiet-listing-inquiry';
+  var LEAD_SOURCE = 'Quiet Listing Landing Page';
+  var PAGE_HOST = 'quiet.brightworkrealty.com';
   var WEBMCP_TAG = 'webmcp-consult';
 
   function buildPayload(firstName, lastName, email, phone, options) {
@@ -16,15 +15,10 @@
     var tags = [LEAD_TAG];
     if (viaWebMcp) tags.push(WEBMCP_TAG);
 
-    var personSource = viaWebMcp
-      ? PAGE_HOST + ' (WebMCP agent)'
-      : PAGE_HOST;
+    var personSource = viaWebMcp ? PAGE_HOST + ' (WebMCP agent)' : PAGE_HOST;
+    var eventSource = viaWebMcp ? 'WebMCP / agent' : PAGE_HOST;
 
-    var eventSource = viaWebMcp
-      ? 'WebMCP / agent'
-      : PAGE_HOST;
-
-    return {
+    var payload = {
       person: {
         firstName: firstName,
         lastName: lastName,
@@ -39,12 +33,19 @@
         type: 'Registration',
         source: eventSource,
         pageUrl: global.location.href,
-        pageTitle: global.document.title,
-        description: viaWebMcp
-          ? 'VIP list request submitted via WebMCP agent on off-market landing page.'
-          : undefined
+        pageTitle: global.document.title
       }
     };
+
+    if (options && options.situation) {
+      payload.timeframe = options.situation;
+    }
+
+    if (viaWebMcp) {
+      payload.event.description = 'Quiet listing consult request submitted via WebMCP agent.';
+    }
+
+    return payload;
   }
 
   async function submitLead(fields, options) {
@@ -61,7 +62,10 @@
       throw new Error('firstName, lastName, email, and phone are required.');
     }
 
-    var payload = buildPayload(firstName, lastName, email, phone, options);
+    var submitOptions = Object.assign({}, options || {});
+    if (fields.situation) submitOptions.situation = fields.situation;
+
+    var payload = buildPayload(firstName, lastName, email, phone, submitOptions);
 
     var res = await fetch(FUB_PROXY_URL, {
       method: 'POST',
@@ -86,9 +90,10 @@
         });
       }
       global.posthog.capture('lead_submitted', {
-        program: LEAD_TAG,
+        program: 'quiet-listing',
         source: options && options.viaWebMcp ? 'WebMCP / agent' : LEAD_SOURCE,
-        via_webmcp: !!(options && options.viaWebMcp)
+        via_webmcp: !!(options && options.viaWebMcp),
+        situation: fields.situation || 'not-provided'
       });
     }
 

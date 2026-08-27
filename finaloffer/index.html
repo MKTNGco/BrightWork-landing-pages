@@ -1505,11 +1505,12 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   </div>
 </footer>
 
+<script src="fub-lead.js"></script>
+<script src="webmcp-core.js"></script>
+<script src="webmcp-shared.js"></script>
+<script src="webmcp-finaloffer.js"></script>
 <script>
-  const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  const LEAD_TAG      = 'final-offer-inquiry';
-  const LEAD_SOURCE   = 'Final Offer Landing Page';
-  const PROGRAM       = LEAD_TAG;
+  const PROGRAM = BrightWorkLead.LEAD_TAG;
 
   if (typeof posthog !== 'undefined') {
     posthog.capture('page_view_program', { program: PROGRAM });
@@ -1535,72 +1536,17 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     btnText.textContent = 'Submitting...';
     spinner.style.display = 'block';
 
-    const firstName        = document.getElementById('firstName').value.trim();
-    const lastName         = document.getElementById('lastName').value.trim();
-    const emailVal         = document.getElementById('email').value.trim();
-    const phoneVal         = document.getElementById('phone').value.trim();
-    const propertyAddress  = document.getElementById('propertyAddress').value.trim();
-    const referralSource   = document.getElementById('referralSource').value.trim();
-
-    const personPayload = {
-      firstName,
-      lastName,
-      emails: [{ value: emailVal, type: 'work' }],
-      phones: [{ value: phoneVal, type: 'mobile' }],
-      source: 'finaloffer.brightworkrealty.com',
-      stage: 'Lead',
-      assignedTo: 'Ben Olsen',
-      tags: [LEAD_TAG]
-    };
-    if (propertyAddress) {
-      personPayload.addresses = [{ street: propertyAddress, type: 'home' }];
-    }
-    if (referralSource) {
-      personPayload.background = 'How they heard about us: ' + referralSource;
-    }
-
-    const payload = {
-      person: personPayload,
-      event: {
-        type: 'Registration',
-        source: 'finaloffer.brightworkrealty.com',
-        pageUrl: window.location.href,
-        pageTitle: document.title
-      }
-    };
-
     try {
-      const res = await fetch(FUB_PROXY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      await BrightWorkLead.submit({
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        propertyAddress: document.getElementById('propertyAddress').value,
+        referralSource: document.getElementById('referralSource').value
       });
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof posthog !== 'undefined') {
-          if (data.success && data.personId) {
-            posthog.identify(emailVal, {
-              email: emailVal,
-              name: firstName + ' ' + lastName,
-              fub_source: LEAD_SOURCE,
-              property_address: propertyAddress || undefined,
-              referral_source: referralSource || undefined,
-              fub_person_id: data.personId,
-              fub_identified_at: new Date().toISOString()
-            });
-          }
-          posthog.capture('lead_submitted', {
-            program: LEAD_TAG,
-            source: LEAD_SOURCE,
-            has_address: !!propertyAddress,
-            referral_source: referralSource || null
-          });
-        }
-        document.getElementById('leadForm').style.display = 'none';
-        document.getElementById('successState').style.display = 'block';
-      } else {
-        throw new Error('Proxy error');
-      }
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
     } catch (err) {
       alert('Something went wrong. Please call us at (925) 200-6000.');
       btn.disabled = false;

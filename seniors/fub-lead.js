@@ -1,50 +1,51 @@
 /**
- * Off-Market Access lead submission to bw-fub-proxy.
- * Shared by the human form and the WebMCP request_consult tool.
+ * Senior Real Estate Planning lead submission to bw-fub-proxy.
  */
 (function (global) {
   'use strict';
 
   var FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  var LEAD_TAG = 'off-market-lead';
-  var LEAD_SOURCE = 'Off-Market Access';
-  var PAGE_HOST = 'offmarket.brightworkrealty.com';
+  var LEAD_TAG = 'senior-services-inquiry';
+  var LEAD_SOURCE = 'Senior Services Page';
+  var PAGE_HOST = 'seniors.brightworkrealty.com';
   var WEBMCP_TAG = 'webmcp-consult';
+  var POSTHOG_PROGRAM = 'seniors';
 
   function buildPayload(firstName, lastName, email, phone, options) {
     var viaWebMcp = options && options.viaWebMcp;
     var tags = [LEAD_TAG];
     if (viaWebMcp) tags.push(WEBMCP_TAG);
 
-    var personSource = viaWebMcp
-      ? PAGE_HOST + ' (WebMCP agent)'
-      : PAGE_HOST;
+    var personSource = viaWebMcp ? PAGE_HOST + ' (WebMCP agent)' : PAGE_HOST;
+    var eventSource = viaWebMcp ? 'WebMCP / agent' : PAGE_HOST;
 
-    var eventSource = viaWebMcp
-      ? 'WebMCP / agent'
-      : PAGE_HOST;
-
-    return {
-      person: {
-        firstName: firstName,
-        lastName: lastName,
-        emails: [{ value: email, type: 'work' }],
-        phones: [{ value: phone, type: 'mobile' }],
-        source: personSource,
-        stage: 'Lead',
-        assignedTo: 'Ben Olsen',
-        tags: tags
-      },
-      event: {
-        type: 'Registration',
-        source: eventSource,
-        pageUrl: global.location.href,
-        pageTitle: global.document.title,
-        description: viaWebMcp
-          ? 'VIP list request submitted via WebMCP agent on off-market landing page.'
-          : undefined
-      }
+    var person = {
+      firstName: firstName,
+      lastName: lastName,
+      emails: [{ value: email, type: 'work' }],
+      phones: [{ value: phone, type: 'mobile' }],
+      source: personSource,
+      stage: 'Lead',
+      assignedTo: 'Ben Olsen',
+      tags: tags
     };
+
+    if (options && options.message) {
+      person.backgroundInformation = options.message;
+    }
+
+    var event = {
+      type: 'Registration',
+      source: eventSource,
+      pageUrl: global.location.href,
+      pageTitle: global.document.title
+    };
+
+    if (viaWebMcp) {
+      event.description = 'Senior real estate planning consult submitted via WebMCP agent.';
+    }
+
+    return { person: person, event: event };
   }
 
   async function submitLead(fields, options) {
@@ -61,7 +62,10 @@
       throw new Error('firstName, lastName, email, and phone are required.');
     }
 
-    var payload = buildPayload(firstName, lastName, email, phone, options);
+    var submitOptions = Object.assign({}, options || {});
+    if (fields.message) submitOptions.message = fields.message;
+
+    var payload = buildPayload(firstName, lastName, email, phone, submitOptions);
 
     var res = await fetch(FUB_PROXY_URL, {
       method: 'POST',
@@ -86,7 +90,7 @@
         });
       }
       global.posthog.capture('lead_submitted', {
-        program: LEAD_TAG,
+        program: POSTHOG_PROGRAM,
         source: options && options.viaWebMcp ? 'WebMCP / agent' : LEAD_SOURCE,
         via_webmcp: !!(options && options.viaWebMcp)
       });
@@ -100,6 +104,7 @@
     LEAD_TAG: LEAD_TAG,
     LEAD_SOURCE: LEAD_SOURCE,
     PAGE_HOST: PAGE_HOST,
+    POSTHOG_PROGRAM: POSTHOG_PROGRAM,
     WEBMCP_TAG: WEBMCP_TAG,
     buildPayload: buildPayload,
     submit: submitLead
