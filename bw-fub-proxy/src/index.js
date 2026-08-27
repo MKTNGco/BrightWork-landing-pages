@@ -192,6 +192,14 @@ export default {
       );
     }
 
+    const tags = body.person.tags ?? [];
+    if (tags.includes('webmcp-consult')) {
+      console.log('WebMCP consult lead', {
+        source: body.person.source,
+        pageUrl: body.event?.pageUrl ?? null,
+      });
+    }
+
     const fubRes = await fetch('https://api.followupboss.com/v1/people', {
       method: 'POST',
       headers: {
