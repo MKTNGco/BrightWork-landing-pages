@@ -7,59 +7,16 @@
   var core = global.BrightWorkWebMCP;
   var shared = global.BrightWorkWebMCPShared;
   var lead = global.BrightWorkLead;
+  var data = global.BrightWorkWebMCPData;
 
-  if (!core || !shared || !lead) return;
+  if (!core || !shared || !lead || !data) return;
 
   core.pingReady({ page: 'offmarket', program: lead.LEAD_TAG });
 
   if (!core.isSupported()) return;
 
   var PROGRAM_META = { program: lead.LEAD_TAG, page: 'offmarket' };
-
-  var OFFMARKET_PROGRAM = {
-    name: 'Off-Market Access',
-    url: 'https://offmarket.brightworkrealty.com/',
-    tagline: 'The Smart Way to Real Estate',
-    summary: 'Private VIP buyer list for off-market homes in Lamorinda before they appear on Zillow or the MLS.',
-    audience: 'Serious Bay Area buyers who want early access to homes sold quietly, without public listing exposure.',
-    howAccessWorks: [
-      'Join the private VIP buyer list at no charge.',
-      'When a new off-market home comes to BrightWork, you receive a text alert the same day.',
-      'Homes are shown selectively to qualified buyers through a private buyer network, not broadcast publicly.',
-      'Your information is never shared with third parties.'
-    ],
-    benefits: [
-      { title: 'Privacy-First Sellers', detail: 'Homeowners who want a quiet sale without open houses or public exposure.' },
-      { title: 'Zero Competition', detail: 'Fewer buyers means less pressure. Negotiate on your terms without a bidding frenzy.' },
-      { title: 'Pre-Market Head Start', detail: 'Many listings are available before sellers commit to a full public launch.' },
-      { title: 'Instant Text Notification', detail: 'You get a text the moment a new property comes to BrightWork.' }
-    ],
-    serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-    marketTenure: 'Ben Olsen and BrightWork Realty Advocates have worked Lamorinda since 2004, with team roots in the area since 1977.',
-    mlsNote: 'MLS regulations require these listings not be published publicly, which is why access is through a private conversation.',
-    faq: [
-      {
-        question: 'What is an off-market listing in Lamorinda?',
-        answer: 'A home sold without a public MLS or portal listing. Sellers often want a quiet sale with no open houses, yard sign, or public days-on-market counter.'
-      },
-      {
-        question: 'How do I get access to off-market homes before they hit Zillow?',
-        answer: 'Join a private buyer list maintained by an agent who represents these sellers. The VIP list sends same-day text alerts when new off-market homes arrive.'
-      },
-      {
-        question: 'Are off-market homes in Moraga and Lafayette available without an agent?',
-        answer: 'In practice, no. These homes move through agent relationships and private buyer networks, not public portals.'
-      },
-      {
-        question: 'What areas does the private buyer list cover?',
-        answer: 'Lamorinda (Moraga, Lafayette, Orinda) and select East Bay pockets.'
-      }
-    ],
-    limitations: [
-      'This tool returns program information from the page only.',
-      'It does not provide MLS inventory, listing addresses, or CRM read access.'
-    ]
-  };
+  var OFFMARKET_PROGRAM = data.PROGRAMS_BY_SLUG.offmarket;
 
   shared.registerSharedTools(PROGRAM_META);
 
@@ -89,7 +46,7 @@
         required: ['firstName', 'lastName', 'email', 'phone']
       },
       execute: async function (args) {
-        var data = await lead.submit({
+        var submitData = await lead.submit({
           firstName: args.firstName,
           lastName: args.lastName,
           email: args.email,
@@ -99,7 +56,7 @@
         return core.jsonResult({
           success: true,
           message: 'Request received. BrightWork will text you when a new off-market property becomes available.',
-          personId: data.personId || null,
+          personId: submitData.personId || null,
           source: 'WebMCP / agent'
         });
       }

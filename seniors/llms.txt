@@ -1,0 +1,35 @@
+# Senior Real Estate Planning — BrightWork Realty Advocates
+
+> Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing.
+
+BrightWork Realty Advocates. Ben Olsen, REALTOR. Serving Moraga, Lafayette, and Orinda (Lamorinda), CA. The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.
+
+## What this page is for
+
+Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, trusts, timing, and transition options in Lamorinda. Senior homeowners planning their next chapter and adult children who need a structured way to start the conversation before a crisis.
+
+## Key facts
+
+- Phone: (925) 200-6000
+- Email: ben@brightworkrealty.com
+- Address: 455 Moraga Road, Suite I, Moraga, CA 94556
+- DRE: 02014153
+
+## Compliance
+
+- Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA. Tax and estate topics are questions to raise with qualified professionals.
+
+## Other BrightWork programs
+
+- [Off-Market Access](https://offmarket.brightworkrealty.com/)
+- [Buy Before You Sell](https://buybefore.brightworkrealty.com/)
+- [Senior Real Estate Planning](https://seniors.brightworkrealty.com/)
+- [Quiet Listing](https://quiet.brightworkrealty.com/)
+- [Relaunch Strategy](https://relaunch.brightworkrealty.com/)
+- [BrightFlip](https://brightflip.brightworkrealty.com/)
+- [Final Offer](https://finaloffer.brightworkrealty.com/)
+- [Real Estate Investing](https://invest.brightworkrealty.com/)
+
+## For AI agents
+
+This site also exposes structured data at /agents.json (no browser required) and in-browser tools via WebMCP at /agents.txt (requires a WebMCP-capable runtime). Agents do not get MLS inventory, listing addresses, or CRM read access.

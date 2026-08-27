@@ -1,0 +1,139 @@
+{
+  "protocolVersion": "1.0",
+  "site": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "realtor": {
+      "name": "Ben Olsen",
+      "title": "REALTOR"
+    },
+    "phone": "(925) 200-6000",
+    "email": "ben@brightworkrealty.com",
+    "address": "455 Moraga Road, Suite I, Moraga, CA 94556",
+    "dre": "02014153",
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
+  },
+  "program": {
+    "name": "Relaunch Strategy",
+    "url": "https://relaunch.brightworkrealty.com/",
+    "tagline": "The Smart Way to Real Estate",
+    "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling.",
+    "audience": "Homeowners whose listing expired with a previous agent and want an honest breakdown of what went wrong before relisting.",
+    "approach": "Ben starts with a forensic review of the previous listing, not a new sign. The review covers pricing in context, photography, listing narrative, portal placement, and prep decisions.",
+    "reviewAreas": [
+      "Pricing in context relative to condition and comparable sales",
+      "Photography and visual storytelling",
+      "Listing copy and buyer narrative",
+      "Portal placement and campaign execution, including premium tools when warranted",
+      "Prep and improvement decisions with realistic scope"
+    ],
+    "whatChangesOnRelaunch": [
+      "New photography and video, not a refresh of old assets",
+      "Rewritten listing narrative for how Lamorinda buyers evaluate homes",
+      "A pricing conversation, not just a price cut",
+      "Choice between quiet reintroduction to the private buyer network or a full MLS campaign",
+      "Selective use of premium tools such as Zillow Showcase, 3D tours, Final Offer, or pre-sale capital when justified"
+    ],
+    "serviceArea": [
+      "Moraga",
+      "Lafayette",
+      "Orinda",
+      "Lamorinda",
+      "East Bay, CA"
+    ],
+    "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.",
+    "faq": [
+      {
+        "question": "Why didn't my home sell in Lamorinda?",
+        "answer": "Common causes include pricing misalignment, weak presentation, poor campaign execution, or the wrong go-to-market strategy for the property."
+      },
+      {
+        "question": "How is a relaunch different from relisting with a new agent?",
+        "answer": "A relaunch addresses what failed in the previous campaign with a specific plan, not a rerun of the same approach."
+      },
+      {
+        "question": "What does a forensic listing review actually include?",
+        "answer": "A structured look at price, photos, copy, marketing placement, and prep relative to comparable sales and buyer behavior."
+      },
+      {
+        "question": "Can expired listings still sell for full market value?",
+        "answer": "Outcomes vary by property and market conditions. Ben does not guarantee a specific sale price."
+      }
+    ],
+    "limitations": [
+      "This tool returns program information from the page only.",
+      "It does not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "otherPrograms": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "programs": [
+      {
+        "name": "Off-Market Access",
+        "slug": "offmarket",
+        "url": "https://offmarket.brightworkrealty.com/",
+        "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on public portals."
+      },
+      {
+        "name": "Buy Before You Sell",
+        "slug": "buybefore",
+        "url": "https://buybefore.brightworkrealty.com/",
+        "summary": "Buy your next home before selling your current one with structured capital programs and non-contingent offers."
+      },
+      {
+        "name": "Senior Real Estate Planning",
+        "slug": "seniors",
+        "url": "https://seniors.brightworkrealty.com/",
+        "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing."
+      },
+      {
+        "name": "Quiet Listing",
+        "slug": "quiet",
+        "url": "https://quiet.brightworkrealty.com/",
+        "summary": "Sell privately to qualified buyers without a public MLS launch, yard sign, or days-on-market pressure."
+      },
+      {
+        "name": "Relaunch Strategy",
+        "slug": "relaunch",
+        "url": "https://relaunch.brightworkrealty.com/",
+        "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling."
+      },
+      {
+        "name": "BrightFlip",
+        "slug": "brightflip",
+        "url": "https://brightflip.brightworkrealty.com/",
+        "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, repaid from closing proceeds."
+      },
+      {
+        "name": "Final Offer",
+        "slug": "finaloffer",
+        "url": "https://finaloffer.brightworkrealty.com/",
+        "summary": "Structured multi-offer environment for select listings when transparent competition helps discover true market value."
+      },
+      {
+        "name": "Real Estate Investing",
+        "slug": "invest",
+        "url": "https://invest.brightworkrealty.com/",
+        "summary": "Planning conversations for Lamorinda families considering a first local investment property."
+      }
+    ],
+    "limitations": [
+      "These tools return program and office facts from BrightWork landing pages only.",
+      "They do not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "actions": [
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
+      "method": "POST",
+      "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
+      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+    }
+  ],
+  "limitations": [
+    "No MLS inventory, listing addresses, or CRM read access.",
+    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+  ]
+}

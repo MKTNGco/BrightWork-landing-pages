@@ -1,6 +1,8 @@
 # BrightWork Realty Advocates program pages with in-browser WebMCP tools.
 # https://agents-txt.com/spec
 
+Robots-Txt: /robots.txt
+
 WebMCP: https://offmarket.brightworkrealty.com/
 WebMCP: https://buybefore.brightworkrealty.com/
 WebMCP: https://seniors.brightworkrealty.com/

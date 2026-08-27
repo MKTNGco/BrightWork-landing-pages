@@ -1,0 +1,138 @@
+{
+  "protocolVersion": "1.0",
+  "site": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "realtor": {
+      "name": "Ben Olsen",
+      "title": "REALTOR"
+    },
+    "phone": "(925) 200-6000",
+    "email": "ben@brightworkrealty.com",
+    "address": "455 Moraga Road, Suite I, Moraga, CA 94556",
+    "dre": "02014153",
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
+  },
+  "program": {
+    "name": "Senior Real Estate Planning",
+    "url": "https://seniors.brightworkrealty.com/",
+    "tagline": "The Smart Way to Real Estate",
+    "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, trusts, timing, and transition options in Lamorinda.",
+    "audience": "Senior homeowners planning their next chapter and adult children who need a structured way to start the conversation before a crisis.",
+    "topics": [
+      "Prop 13 tax basis and capital gains questions to raise with your CPA",
+      "Legacy home decisions: stay, downsize, rent, or sell on your timeline",
+      "Trust and titling coordination with your estate attorney",
+      "Timing a transition without pressure",
+      "Options many families do not know they have, including 1031 exchanges, DSTs, and step-up in basis concepts to discuss with advisors"
+    ],
+    "whatBenDoes": [
+      "Helps families plan transitions on their own terms",
+      "Coordinates real estate strategy with questions for CPA and estate attorney",
+      "May recommend keeping a home as a rental when that fits the family, even when it means no listing commission"
+    ],
+    "compliance": "Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA. Tax and estate topics are questions to raise with qualified professionals.",
+    "serviceArea": [
+      "Moraga",
+      "Lafayette",
+      "Orinda",
+      "Lamorinda",
+      "East Bay, CA"
+    ],
+    "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.",
+    "workshopNote": "Ben occasionally hosts senior real estate planning workshops. See seniors.brightworkrealty.com/workshop for workshop details.",
+    "faq": [
+      {
+        "question": "When should a senior homeowner start thinking about a real estate transition?",
+        "answer": "Before a health event forces urgent decisions. Planning ahead preserves more options and autonomy."
+      },
+      {
+        "question": "What is Prop 13 and why does it matter if I am thinking about selling?",
+        "answer": "Long-held California homes often have low assessed values. Selling can trigger capital gains your CPA should model with you first."
+      },
+      {
+        "question": "Should I sell my Lamorinda home or keep it as a rental?",
+        "answer": "Depends on Prop 13 basis, equity, family housing needs, and rental demand. Ben helps evaluate the tradeoffs without giving tax advice."
+      },
+      {
+        "question": "Does Ben charge for a senior real estate planning consultation?",
+        "answer": "Contact the office to discuss consultation format. This page does not publish fee schedules."
+      }
+    ],
+    "limitations": [
+      "This tool returns program information from the page only.",
+      "It does not provide MLS inventory, legal or tax advice, or CRM read access."
+    ]
+  },
+  "otherPrograms": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "programs": [
+      {
+        "name": "Off-Market Access",
+        "slug": "offmarket",
+        "url": "https://offmarket.brightworkrealty.com/",
+        "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on public portals."
+      },
+      {
+        "name": "Buy Before You Sell",
+        "slug": "buybefore",
+        "url": "https://buybefore.brightworkrealty.com/",
+        "summary": "Buy your next home before selling your current one with structured capital programs and non-contingent offers."
+      },
+      {
+        "name": "Senior Real Estate Planning",
+        "slug": "seniors",
+        "url": "https://seniors.brightworkrealty.com/",
+        "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing."
+      },
+      {
+        "name": "Quiet Listing",
+        "slug": "quiet",
+        "url": "https://quiet.brightworkrealty.com/",
+        "summary": "Sell privately to qualified buyers without a public MLS launch, yard sign, or days-on-market pressure."
+      },
+      {
+        "name": "Relaunch Strategy",
+        "slug": "relaunch",
+        "url": "https://relaunch.brightworkrealty.com/",
+        "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling."
+      },
+      {
+        "name": "BrightFlip",
+        "slug": "brightflip",
+        "url": "https://brightflip.brightworkrealty.com/",
+        "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, repaid from closing proceeds."
+      },
+      {
+        "name": "Final Offer",
+        "slug": "finaloffer",
+        "url": "https://finaloffer.brightworkrealty.com/",
+        "summary": "Structured multi-offer environment for select listings when transparent competition helps discover true market value."
+      },
+      {
+        "name": "Real Estate Investing",
+        "slug": "invest",
+        "url": "https://invest.brightworkrealty.com/",
+        "summary": "Planning conversations for Lamorinda families considering a first local investment property."
+      }
+    ],
+    "limitations": [
+      "These tools return program and office facts from BrightWork landing pages only.",
+      "They do not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "actions": [
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
+      "method": "POST",
+      "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
+      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+    }
+  ],
+  "limitations": [
+    "No MLS inventory, listing addresses, or CRM read access.",
+    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+  ]
+}

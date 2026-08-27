@@ -1,5 +1,12 @@
 /*
   Link: <https://invest.brightworkrealty.com/>; rel="webmcp"
+  Link: </agents.json>; rel="alternate"; type="application/json"
 
 /agents.txt
+  Content-Type: text/plain; charset=utf-8
+
+/agents.json
+  Content-Type: application/json; charset=utf-8
+
+/llms.txt
   Content-Type: text/plain; charset=utf-8

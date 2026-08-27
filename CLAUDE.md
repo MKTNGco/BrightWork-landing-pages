@@ -106,6 +106,18 @@ Shared loader: `shared/widget-tracker.js` (duplicate into each Workers folder li
 
 ---
 
+## Agent discoverability (program landing pages)
+
+Office and program facts for WebMCP tools, `agents.json`, and `llms.txt` live in **`shared/agent-source-data.mjs`**. After editing copy there, regenerate static agent files and the browser bundle:
+
+```bash
+node scripts/generate-agent-discoverability.mjs
+```
+
+That script writes `robots.txt`, `llms.txt`, `agents.json`, and `webmcp-data.js` into each of the eight Worker folders (not `seniors/workshop/`). It also updates `shared/webmcp-data.js`. Program pages load `webmcp-data.js` before `webmcp-core.js`. Do not hand-maintain duplicate program JSON in each folder.
+
+---
+
 ## Common Session Tasks
 
 Reference existing pages as patterns:

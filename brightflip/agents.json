@@ -1,0 +1,146 @@
+{
+  "protocolVersion": "1.0",
+  "site": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "realtor": {
+      "name": "Ben Olsen",
+      "title": "REALTOR"
+    },
+    "phone": "(925) 200-6000",
+    "email": "ben@brightworkrealty.com",
+    "address": "455 Moraga Road, Suite I, Moraga, CA 94556",
+    "dre": "02014153",
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
+  },
+  "program": {
+    "name": "BrightFlip",
+    "url": "https://brightflip.brightworkrealty.com/",
+    "tagline": "The Smart Way to Real Estate",
+    "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, with repayment from closing proceeds when the math favors the seller.",
+    "audience": "Lamorinda sellers with deferred maintenance or cosmetic issues who will not fund renovation themselves before listing.",
+    "positioning": "BrightFlip manages the work and advances capital, recommends scope only when numbers favor the seller, and differs from advance-only concierge models.",
+    "howItWorks": [
+      "Ben compares realistic as-is sale value to realistic post-improvement value for a defined scope.",
+      "If the math clearly favors the seller, capital and project management proceed with no monthly payments during the project and listing period.",
+      "Repayment comes from closing proceeds. Terms vary by project scope and capital source.",
+      "If the math does not favor the seller, Ben does not recommend the project."
+    ],
+    "tiers": [
+      {
+        "name": "Cosmetic Refresh",
+        "detail": "Paint, floors, lighting, fixtures, curb appeal, and targeted kitchen or bath updates."
+      },
+      {
+        "name": "Partial Remodel",
+        "detail": "Kitchen refreshes, bathroom remodels, and significant exterior work when net value justifies scope."
+      },
+      {
+        "name": "Major Renovation and Partnered Projects",
+        "detail": "Select larger projects such as ADU work, underwritten carefully. Not every home qualifies."
+      }
+    ],
+    "serviceArea": [
+      "Moraga",
+      "Lafayette",
+      "Orinda",
+      "Lamorinda",
+      "East Bay, CA"
+    ],
+    "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004 and brings a construction background to improvement recommendations.",
+    "capitalLanguage": "Use attractive terms and multiple capital options. Do not promise interest-free capital or name specific lenders.",
+    "faq": [
+      {
+        "question": "What home improvements add the most value before selling in Lamorinda?",
+        "answer": "High-return cosmetic updates that change how buyers feel when they walk in, scoped to what comparable sales support."
+      },
+      {
+        "question": "How does pre-sale renovation financing work and who pays for it?",
+        "answer": "Capital is structured so sellers typically pay nothing out of pocket until close, with repayment from proceeds when a project is approved."
+      },
+      {
+        "question": "Who manages the contractors in a BrightFlip project?",
+        "answer": "Ben's team handles project management, vetted contractors, and timelines aligned to the listing calendar."
+      },
+      {
+        "question": "How long does a pre-sale improvement project typically take?",
+        "answer": "Duration depends on scope. Ben sets expectations before any work begins."
+      }
+    ],
+    "limitations": [
+      "This tool returns program information from the page only.",
+      "It does not provide MLS inventory, contractor bids, lender terms, or CRM read access."
+    ]
+  },
+  "otherPrograms": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "programs": [
+      {
+        "name": "Off-Market Access",
+        "slug": "offmarket",
+        "url": "https://offmarket.brightworkrealty.com/",
+        "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on public portals."
+      },
+      {
+        "name": "Buy Before You Sell",
+        "slug": "buybefore",
+        "url": "https://buybefore.brightworkrealty.com/",
+        "summary": "Buy your next home before selling your current one with structured capital programs and non-contingent offers."
+      },
+      {
+        "name": "Senior Real Estate Planning",
+        "slug": "seniors",
+        "url": "https://seniors.brightworkrealty.com/",
+        "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing."
+      },
+      {
+        "name": "Quiet Listing",
+        "slug": "quiet",
+        "url": "https://quiet.brightworkrealty.com/",
+        "summary": "Sell privately to qualified buyers without a public MLS launch, yard sign, or days-on-market pressure."
+      },
+      {
+        "name": "Relaunch Strategy",
+        "slug": "relaunch",
+        "url": "https://relaunch.brightworkrealty.com/",
+        "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling."
+      },
+      {
+        "name": "BrightFlip",
+        "slug": "brightflip",
+        "url": "https://brightflip.brightworkrealty.com/",
+        "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, repaid from closing proceeds."
+      },
+      {
+        "name": "Final Offer",
+        "slug": "finaloffer",
+        "url": "https://finaloffer.brightworkrealty.com/",
+        "summary": "Structured multi-offer environment for select listings when transparent competition helps discover true market value."
+      },
+      {
+        "name": "Real Estate Investing",
+        "slug": "invest",
+        "url": "https://invest.brightworkrealty.com/",
+        "summary": "Planning conversations for Lamorinda families considering a first local investment property."
+      }
+    ],
+    "limitations": [
+      "These tools return program and office facts from BrightWork landing pages only.",
+      "They do not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "actions": [
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
+      "method": "POST",
+      "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
+      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+    }
+  ],
+  "limitations": [
+    "No MLS inventory, listing addresses, or CRM read access.",
+    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+  ]
+}

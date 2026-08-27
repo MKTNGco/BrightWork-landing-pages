@@ -1,0 +1,137 @@
+{
+  "protocolVersion": "1.0",
+  "site": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "realtor": {
+      "name": "Ben Olsen",
+      "title": "REALTOR"
+    },
+    "phone": "(925) 200-6000",
+    "email": "ben@brightworkrealty.com",
+    "address": "455 Moraga Road, Suite I, Moraga, CA 94556",
+    "dre": "02014153",
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
+  },
+  "program": {
+    "name": "Quiet Listing",
+    "url": "https://quiet.brightworkrealty.com/",
+    "tagline": "The Smart Way to Real Estate",
+    "summary": "A private listing strategy for Lamorinda sellers who want qualified buyers without a public MLS launch, yard sign, or days-on-market pressure.",
+    "audience": "Lamorinda homeowners who want to sell privately: privacy-first sellers, previously unsold listings, senior transitions, or sellers testing price and timing.",
+    "howItWorks": [
+      "Ben markets the home to a curated private buyer network before deciding whether to start the public MLS clock.",
+      "Stages include private invitation-only exposure, controlled pre-market signals, and full on-market launch if earlier stages do not produce the right offer.",
+      "Every quiet listing is documented and conducted in compliance with MLS rules and NAR Clear Cooperation Policy.",
+      "If the private phase does not produce the right result, you can go to market better informed with a clean slate."
+    ],
+    "benefits": [
+      "No days-on-market pressure until you decide to start the MLS clock",
+      "Fewer showings from serious, qualified buyers",
+      "Privacy where it matters: no public listing history until you choose",
+      "Option to pivot to a full MLS campaign with real market feedback"
+    ],
+    "serviceArea": [
+      "Moraga",
+      "Lafayette",
+      "Orinda",
+      "Lamorinda",
+      "East Bay, CA"
+    ],
+    "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.",
+    "complianceNote": "Private means selective exposure to qualified buyers, not a workaround of MLS rules.",
+    "faq": [
+      {
+        "question": "What is a quiet listing in real estate?",
+        "answer": "A structured private marketing phase where serious buyers see the home before a full public MLS launch."
+      },
+      {
+        "question": "Do quiet listings in Lamorinda sell for less than MLS listings?",
+        "answer": "Not necessarily. The goal is the right buyer and terms without public exposure pressure, not a guaranteed discount."
+      },
+      {
+        "question": "Is selling a home quietly legal in California?",
+        "answer": "Yes when conducted through compliant agent representation and MLS documentation requirements."
+      },
+      {
+        "question": "How long does a quiet listing phase typically last before going to MLS?",
+        "answer": "Timing depends on seller goals and buyer response. Ben sets expectations in the initial conversation."
+      }
+    ],
+    "limitations": [
+      "This tool returns program information from the page only.",
+      "It does not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "otherPrograms": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "programs": [
+      {
+        "name": "Off-Market Access",
+        "slug": "offmarket",
+        "url": "https://offmarket.brightworkrealty.com/",
+        "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on public portals."
+      },
+      {
+        "name": "Buy Before You Sell",
+        "slug": "buybefore",
+        "url": "https://buybefore.brightworkrealty.com/",
+        "summary": "Buy your next home before selling your current one with structured capital programs and non-contingent offers."
+      },
+      {
+        "name": "Senior Real Estate Planning",
+        "slug": "seniors",
+        "url": "https://seniors.brightworkrealty.com/",
+        "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing."
+      },
+      {
+        "name": "Quiet Listing",
+        "slug": "quiet",
+        "url": "https://quiet.brightworkrealty.com/",
+        "summary": "Sell privately to qualified buyers without a public MLS launch, yard sign, or days-on-market pressure."
+      },
+      {
+        "name": "Relaunch Strategy",
+        "slug": "relaunch",
+        "url": "https://relaunch.brightworkrealty.com/",
+        "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling."
+      },
+      {
+        "name": "BrightFlip",
+        "slug": "brightflip",
+        "url": "https://brightflip.brightworkrealty.com/",
+        "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, repaid from closing proceeds."
+      },
+      {
+        "name": "Final Offer",
+        "slug": "finaloffer",
+        "url": "https://finaloffer.brightworkrealty.com/",
+        "summary": "Structured multi-offer environment for select listings when transparent competition helps discover true market value."
+      },
+      {
+        "name": "Real Estate Investing",
+        "slug": "invest",
+        "url": "https://invest.brightworkrealty.com/",
+        "summary": "Planning conversations for Lamorinda families considering a first local investment property."
+      }
+    ],
+    "limitations": [
+      "These tools return program and office facts from BrightWork landing pages only.",
+      "They do not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "actions": [
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
+      "method": "POST",
+      "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
+      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+    }
+  ],
+  "limitations": [
+    "No MLS inventory, listing addresses, or CRM read access.",
+    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+  ]
+}

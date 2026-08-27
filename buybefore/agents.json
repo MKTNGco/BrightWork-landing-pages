@@ -1,0 +1,137 @@
+{
+  "protocolVersion": "1.0",
+  "site": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "realtor": {
+      "name": "Ben Olsen",
+      "title": "REALTOR"
+    },
+    "phone": "(925) 200-6000",
+    "email": "ben@brightworkrealty.com",
+    "address": "455 Moraga Road, Suite I, Moraga, CA 94556",
+    "dre": "02014153",
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
+  },
+  "program": {
+    "name": "Buy Before You Sell",
+    "url": "https://buybefore.brightworkrealty.com/",
+    "tagline": "The Smart Way to Real Estate",
+    "summary": "A structure that lets Lamorinda sellers buy their next home before selling their current one, often with a non-contingent offer.",
+    "audience": "Homeowners who need to buy before they sell and want to avoid losing offers because of a sale contingency.",
+    "problem": "Contingent offers lose in competitive Lamorinda markets. Sellers see a sale contingency as risk even when your offer is strong on paper.",
+    "howItWorks": [
+      "Through capital programs BrightWork maintains access to, you may receive a purchase price on your current home.",
+      "That lets you make a non-contingent offer on your next home before your current home sells.",
+      "When your home sells, boosted proceeds can reduce pressure to accept a fast, discounted sale.",
+      "Ben maps options for your timeline without naming specific lenders or dollar amounts on this page."
+    ],
+    "benefits": [
+      "Non-contingent offers that compete on terms, not just price",
+      "Multiple program options matched to your situation",
+      "Sell on your timeline, prepared rather than pressured",
+      "Local Lamorinda expertise since 1977 on the BrightWork team"
+    ],
+    "serviceArea": [
+      "Moraga",
+      "Lafayette",
+      "Orinda",
+      "Lamorinda",
+      "East Bay, CA"
+    ],
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.",
+    "faq": [
+      {
+        "question": "How does buy before you sell work in California?",
+        "answer": "Structured programs can advance capital against your current home so you can purchase the next one without a sale contingency on your offer."
+      },
+      {
+        "question": "What is the difference between buy before you sell and a bridge loan?",
+        "answer": "Programs vary, but the goal is the same: remove the contingency that makes sellers choose another buyer while you still own your current home."
+      },
+      {
+        "question": "Can I make a non-contingent offer before selling my home in Lamorinda?",
+        "answer": "That is the core use case when you qualify for the right program structure for your equity and timeline."
+      },
+      {
+        "question": "What happens if my current home sells for more than expected?",
+        "answer": "Program terms vary. Ben walks through realistic scenarios before you commit, without guaranteeing a specific outcome."
+      }
+    ],
+    "limitations": [
+      "This tool returns program information from the page only.",
+      "It does not provide MLS inventory, listing addresses, lender quotes, or CRM read access."
+    ]
+  },
+  "otherPrograms": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "programs": [
+      {
+        "name": "Off-Market Access",
+        "slug": "offmarket",
+        "url": "https://offmarket.brightworkrealty.com/",
+        "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on public portals."
+      },
+      {
+        "name": "Buy Before You Sell",
+        "slug": "buybefore",
+        "url": "https://buybefore.brightworkrealty.com/",
+        "summary": "Buy your next home before selling your current one with structured capital programs and non-contingent offers."
+      },
+      {
+        "name": "Senior Real Estate Planning",
+        "slug": "seniors",
+        "url": "https://seniors.brightworkrealty.com/",
+        "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing."
+      },
+      {
+        "name": "Quiet Listing",
+        "slug": "quiet",
+        "url": "https://quiet.brightworkrealty.com/",
+        "summary": "Sell privately to qualified buyers without a public MLS launch, yard sign, or days-on-market pressure."
+      },
+      {
+        "name": "Relaunch Strategy",
+        "slug": "relaunch",
+        "url": "https://relaunch.brightworkrealty.com/",
+        "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling."
+      },
+      {
+        "name": "BrightFlip",
+        "slug": "brightflip",
+        "url": "https://brightflip.brightworkrealty.com/",
+        "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, repaid from closing proceeds."
+      },
+      {
+        "name": "Final Offer",
+        "slug": "finaloffer",
+        "url": "https://finaloffer.brightworkrealty.com/",
+        "summary": "Structured multi-offer environment for select listings when transparent competition helps discover true market value."
+      },
+      {
+        "name": "Real Estate Investing",
+        "slug": "invest",
+        "url": "https://invest.brightworkrealty.com/",
+        "summary": "Planning conversations for Lamorinda families considering a first local investment property."
+      }
+    ],
+    "limitations": [
+      "These tools return program and office facts from BrightWork landing pages only.",
+      "They do not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "actions": [
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
+      "method": "POST",
+      "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
+      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+    }
+  ],
+  "limitations": [
+    "No MLS inventory, listing addresses, or CRM read access.",
+    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+  ]
+}
