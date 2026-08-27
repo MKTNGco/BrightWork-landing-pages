@@ -7,58 +7,16 @@
   var core = global.BrightWorkWebMCP;
   var shared = global.BrightWorkWebMCPShared;
   var lead = global.BrightWorkLead;
+  var data = global.BrightWorkWebMCPData;
 
-  if (!core || !shared || !lead) return;
+  if (!core || !shared || !lead || !data) return;
 
   core.pingReady({ page: 'finaloffer', program: lead.LEAD_TAG });
 
   if (!core.isSupported()) return;
 
   var PROGRAM_META = { program: lead.LEAD_TAG, page: 'finaloffer' };
-
-  var FINALOFFER_PROGRAM = {
-    name: 'Final Offer',
-    url: 'https://finaloffer.brightworkrealty.com/',
-    tagline: 'The Smart Way to Real Estate',
-    summary: 'Structured multi-offer environment Ben deploys selectively when transparent competition helps discover true market value.',
-    audience: 'Sellers interviewing agents or researching offer-management options for homes where structured competition may improve price discovery.',
-    positioning: 'Final Offer is a selective premium tool, not a baseline listing service. Ben deploys it when property and market conditions justify structured competition.',
-    howItWorks: [
-      'Serious buyers following the listing see offer activity in real time instead of submitting blind offers.',
-      'Visibility creates genuine competition rather than manufactured pressure.',
-      'Standard purchase contracts still apply. Final Offer manages the competitive environment.',
-      '100% of leads route back to the listing team.'
-    ],
-    platformFacts: [
-      'Compliant nationwide and aligned with NAR Clear Cooperation Policy',
-      'Standard contracts still work alongside the offer environment',
-      'Useful when automated valuations undervalue unique Lamorinda homes with limited comps'
-    ],
-    serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-    marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.',
-    copyRules: [
-      'Do not use the word auction in residential copy.',
-      'Do not list Final Offer alongside baseline services like photography.'
-    ],
-    faq: [
-      {
-        question: 'What is Final Offer in residential real estate?',
-        answer: 'A structured offer environment where buyers see competing activity in real time so sellers can discover market value with more transparency.'
-      },
-      {
-        question: 'Is Final Offer used on every BrightWork listing?',
-        answer: 'No. Ben treats it as a precision instrument deployed when conditions warrant it.'
-      },
-      {
-        question: 'Do standard California purchase contracts still apply?',
-        answer: 'Yes. Final Offer manages the competitive environment around standard contract documents.'
-      }
-    ],
-    limitations: [
-      'This tool returns program information from the page only.',
-      'It does not provide MLS inventory, listing addresses, or CRM read access.'
-    ]
-  };
+  var FINALOFFER_PROGRAM = data.PROGRAMS_BY_SLUG.finaloffer;
 
   shared.registerSharedTools(PROGRAM_META);
 
@@ -85,7 +43,7 @@
         required: ['firstName', 'lastName', 'email', 'phone']
       },
       execute: async function (args) {
-        var data = await lead.submit({
+        var submitData = await lead.submit({
           firstName: args.firstName,
           lastName: args.lastName,
           email: args.email,
@@ -95,7 +53,7 @@
         return core.jsonResult({
           success: true,
           message: 'Request received. Ben will follow up about Final Offer candidacy for your home.',
-          personId: data.personId || null,
+          personId: submitData.personId || null,
           source: 'WebMCP / agent'
         });
       }

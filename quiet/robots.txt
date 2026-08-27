@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Agent-readable resources
+# llms.txt: https://quiet.brightworkrealty.com/llms.txt
+# agents.txt: https://quiet.brightworkrealty.com/agents.txt
+# agents.json: https://quiet.brightworkrealty.com/agents.json

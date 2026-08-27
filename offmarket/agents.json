@@ -1,0 +1,149 @@
+{
+  "protocolVersion": "1.0",
+  "site": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "realtor": {
+      "name": "Ben Olsen",
+      "title": "REALTOR"
+    },
+    "phone": "(925) 200-6000",
+    "email": "ben@brightworkrealty.com",
+    "address": "455 Moraga Road, Suite I, Moraga, CA 94556",
+    "dre": "02014153",
+    "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
+  },
+  "program": {
+    "name": "Off-Market Access",
+    "url": "https://offmarket.brightworkrealty.com/",
+    "tagline": "The Smart Way to Real Estate",
+    "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on Zillow or the MLS.",
+    "audience": "Serious Bay Area buyers who want early access to homes sold quietly, without public listing exposure.",
+    "howAccessWorks": [
+      "Join the private VIP buyer list at no charge.",
+      "When a new off-market home comes to BrightWork, you receive a text alert the same day.",
+      "Homes are shown selectively to qualified buyers through a private buyer network, not broadcast publicly.",
+      "Your information is never shared with third parties."
+    ],
+    "benefits": [
+      {
+        "title": "Privacy-First Sellers",
+        "detail": "Homeowners who want a quiet sale without open houses or public exposure."
+      },
+      {
+        "title": "Zero Competition",
+        "detail": "Fewer buyers means less pressure. Negotiate on your terms without a bidding frenzy."
+      },
+      {
+        "title": "Pre-Market Head Start",
+        "detail": "Many listings are available before sellers commit to a full public launch."
+      },
+      {
+        "title": "Instant Text Notification",
+        "detail": "You get a text the moment a new property comes to BrightWork."
+      }
+    ],
+    "serviceArea": [
+      "Moraga",
+      "Lafayette",
+      "Orinda",
+      "Lamorinda",
+      "East Bay, CA"
+    ],
+    "marketTenure": "Ben Olsen and BrightWork Realty Advocates have worked Lamorinda since 2004, with team roots in the area since 1977.",
+    "mlsNote": "MLS regulations require these listings not be published publicly, which is why access is through a private conversation.",
+    "faq": [
+      {
+        "question": "What is an off-market listing in Lamorinda?",
+        "answer": "A home sold without a public MLS or portal listing. Sellers often want a quiet sale with no open houses, yard sign, or public days-on-market counter."
+      },
+      {
+        "question": "How do I get access to off-market homes before they hit Zillow?",
+        "answer": "Join a private buyer list maintained by an agent who represents these sellers. The VIP list sends same-day text alerts when new off-market homes arrive."
+      },
+      {
+        "question": "Are off-market homes in Moraga and Lafayette available without an agent?",
+        "answer": "In practice, no. These homes move through agent relationships and private buyer networks, not public portals."
+      },
+      {
+        "question": "What areas does the private buyer list cover?",
+        "answer": "Lamorinda (Moraga, Lafayette, Orinda) and select East Bay pockets."
+      }
+    ],
+    "limitations": [
+      "This tool returns program information from the page only.",
+      "It does not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "otherPrograms": {
+    "brandName": "BrightWork Realty Advocates",
+    "tagline": "The Smart Way to Real Estate",
+    "programs": [
+      {
+        "name": "Off-Market Access",
+        "slug": "offmarket",
+        "url": "https://offmarket.brightworkrealty.com/",
+        "summary": "Private VIP buyer list for off-market homes in Lamorinda before they appear on public portals."
+      },
+      {
+        "name": "Buy Before You Sell",
+        "slug": "buybefore",
+        "url": "https://buybefore.brightworkrealty.com/",
+        "summary": "Buy your next home before selling your current one with structured capital programs and non-contingent offers."
+      },
+      {
+        "name": "Senior Real Estate Planning",
+        "slug": "seniors",
+        "url": "https://seniors.brightworkrealty.com/",
+        "summary": "Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, and transition timing."
+      },
+      {
+        "name": "Quiet Listing",
+        "slug": "quiet",
+        "url": "https://quiet.brightworkrealty.com/",
+        "summary": "Sell privately to qualified buyers without a public MLS launch, yard sign, or days-on-market pressure."
+      },
+      {
+        "name": "Relaunch Strategy",
+        "slug": "relaunch",
+        "url": "https://relaunch.brightworkrealty.com/",
+        "summary": "Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling."
+      },
+      {
+        "name": "BrightFlip",
+        "slug": "brightflip",
+        "url": "https://brightflip.brightworkrealty.com/",
+        "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, repaid from closing proceeds."
+      },
+      {
+        "name": "Final Offer",
+        "slug": "finaloffer",
+        "url": "https://finaloffer.brightworkrealty.com/",
+        "summary": "Structured multi-offer environment for select listings when transparent competition helps discover true market value."
+      },
+      {
+        "name": "Real Estate Investing",
+        "slug": "invest",
+        "url": "https://invest.brightworkrealty.com/",
+        "summary": "Planning conversations for Lamorinda families considering a first local investment property."
+      }
+    ],
+    "limitations": [
+      "These tools return program and office facts from BrightWork landing pages only.",
+      "They do not provide MLS inventory, listing addresses, or CRM read access."
+    ]
+  },
+  "actions": [
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
+      "method": "POST",
+      "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
+      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+    }
+  ],
+  "limitations": [
+    "No MLS inventory, listing addresses, or CRM read access.",
+    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+  ]
+}

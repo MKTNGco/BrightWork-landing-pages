@@ -1,0 +1,31 @@
+# Buy Before You Sell — BrightWork Realty Advocates
+
+> Buy your next home before selling your current one with structured capital programs and non-contingent offers.
+
+BrightWork Realty Advocates. Ben Olsen, REALTOR. Serving Moraga, Lafayette, and Orinda (Lamorinda), CA. The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.
+
+## What this page is for
+
+A structure that lets Lamorinda sellers buy their next home before selling their current one, often with a non-contingent offer. Homeowners who need to buy before they sell and want to avoid losing offers because of a sale contingency.
+
+## Key facts
+
+- Phone: (925) 200-6000
+- Email: ben@brightworkrealty.com
+- Address: 455 Moraga Road, Suite I, Moraga, CA 94556
+- DRE: 02014153
+
+## Other BrightWork programs
+
+- [Off-Market Access](https://offmarket.brightworkrealty.com/)
+- [Buy Before You Sell](https://buybefore.brightworkrealty.com/)
+- [Senior Real Estate Planning](https://seniors.brightworkrealty.com/)
+- [Quiet Listing](https://quiet.brightworkrealty.com/)
+- [Relaunch Strategy](https://relaunch.brightworkrealty.com/)
+- [BrightFlip](https://brightflip.brightworkrealty.com/)
+- [Final Offer](https://finaloffer.brightworkrealty.com/)
+- [Real Estate Investing](https://invest.brightworkrealty.com/)
+
+## For AI agents
+
+This site also exposes structured data at /agents.json (no browser required) and in-browser tools via WebMCP at /agents.txt (requires a WebMCP-capable runtime). Agents do not get MLS inventory, listing addresses, or CRM read access.
