@@ -1391,11 +1391,12 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   </div>
 </footer>
 
+<script src="fub-lead.js"></script>
+<script src="webmcp-core.js"></script>
+<script src="webmcp-shared.js"></script>
+<script src="webmcp-seniors.js"></script>
 <script>
-  const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  const LEAD_TAG = 'senior-services-inquiry';
-  const LEAD_SOURCE = 'Senior Services Page';
-  const PROGRAM = 'seniors';
+  const PROGRAM = BrightWorkLead.POSTHOG_PROGRAM;
 
   if (typeof posthog !== 'undefined') {
     posthog.capture('page_view_program', { program: PROGRAM });
@@ -1419,7 +1420,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     const spinner = document.getElementById('spinner');
     const alertEl = document.getElementById('formAlert');
 
-    if (!FUB_PROXY_URL || !/^https:\/\//i.test(FUB_PROXY_URL)) {
+    if (!BrightWorkLead.FUB_PROXY_URL || !/^https:\/\//i.test(BrightWorkLead.FUB_PROXY_URL)) {
       alertEl.textContent = 'Form delivery is not configured yet. Please call us at (925) 200-6000.';
       alertEl.classList.add('is-visible');
       return;
@@ -1430,60 +1431,16 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     btnText.textContent = 'Submitting...';
     spinner.style.display = 'block';
 
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const emailVal = document.getElementById('email').value.trim();
-    const phoneVal = document.getElementById('phone').value.trim();
-    const messageVal = document.getElementById('message').value.trim();
-
-    const person = {
-      firstName,
-      lastName,
-      emails: [{ value: emailVal, type: 'work' }],
-      phones: [{ value: phoneVal, type: 'mobile' }],
-      source: 'seniors.brightworkrealty.com',
-      stage: 'Lead',
-      assignedTo: 'Ben Olsen',
-      tags: [LEAD_TAG]
-    };
-    if (messageVal) person.backgroundInformation = messageVal;
-
-    const payload = {
-      person,
-      event: {
-        type: 'Registration',
-        source: 'seniors.brightworkrealty.com',
-        pageUrl: window.location.href,
-        pageTitle: document.title
-      }
-    };
-
     try {
-      const res = await fetch(FUB_PROXY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      await BrightWorkLead.submit({
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value
       });
-
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof posthog !== 'undefined') {
-          if (data.success && data.personId) {
-            posthog.identify(emailVal, {
-              email: emailVal,
-              name: firstName + ' ' + lastName,
-              fub_source: LEAD_SOURCE,
-              fub_person_id: data.personId,
-              fub_identified_at: new Date().toISOString()
-            });
-          }
-          posthog.capture('lead_submitted', { program: PROGRAM, source: LEAD_SOURCE });
-        }
-        document.getElementById('leadForm').style.display = 'none';
-        document.getElementById('successState').style.display = 'block';
-      } else {
-        throw new Error('Proxy error');
-      }
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
     } catch (err) {
       alertEl.classList.add('is-visible');
       btn.disabled = false;

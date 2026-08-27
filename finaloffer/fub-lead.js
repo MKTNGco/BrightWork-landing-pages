@@ -1,14 +1,13 @@
 /**
- * Off-Market Access lead submission to bw-fub-proxy.
- * Shared by the human form and the WebMCP request_consult tool.
+ * Final Offer lead submission to bw-fub-proxy.
  */
 (function (global) {
   'use strict';
 
   var FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  var LEAD_TAG = 'off-market-lead';
-  var LEAD_SOURCE = 'Off-Market Access';
-  var PAGE_HOST = 'offmarket.brightworkrealty.com';
+  var LEAD_TAG = 'final-offer-inquiry';
+  var LEAD_SOURCE = 'Final Offer Landing Page';
+  var PAGE_HOST = 'finaloffer.brightworkrealty.com';
   var WEBMCP_TAG = 'webmcp-consult';
 
   function buildPayload(firstName, lastName, email, phone, options) {
@@ -16,35 +15,39 @@
     var tags = [LEAD_TAG];
     if (viaWebMcp) tags.push(WEBMCP_TAG);
 
-    var personSource = viaWebMcp
-      ? PAGE_HOST + ' (WebMCP agent)'
-      : PAGE_HOST;
+    var personSource = viaWebMcp ? PAGE_HOST + ' (WebMCP agent)' : PAGE_HOST;
+    var eventSource = viaWebMcp ? 'WebMCP / agent' : PAGE_HOST;
 
-    var eventSource = viaWebMcp
-      ? 'WebMCP / agent'
-      : PAGE_HOST;
-
-    return {
-      person: {
-        firstName: firstName,
-        lastName: lastName,
-        emails: [{ value: email, type: 'work' }],
-        phones: [{ value: phone, type: 'mobile' }],
-        source: personSource,
-        stage: 'Lead',
-        assignedTo: 'Ben Olsen',
-        tags: tags
-      },
-      event: {
-        type: 'Registration',
-        source: eventSource,
-        pageUrl: global.location.href,
-        pageTitle: global.document.title,
-        description: viaWebMcp
-          ? 'VIP list request submitted via WebMCP agent on off-market landing page.'
-          : undefined
-      }
+    var person = {
+      firstName: firstName,
+      lastName: lastName,
+      emails: [{ value: email, type: 'work' }],
+      phones: [{ value: phone, type: 'mobile' }],
+      source: personSource,
+      stage: 'Lead',
+      assignedTo: 'Ben Olsen',
+      tags: tags
     };
+
+    if (options && options.propertyAddress) {
+      person.addresses = [{ street: options.propertyAddress, type: 'home' }];
+    }
+    if (options && options.referralSource) {
+      person.background = 'How they heard about us: ' + options.referralSource;
+    }
+
+    var event = {
+      type: 'Registration',
+      source: eventSource,
+      pageUrl: global.location.href,
+      pageTitle: global.document.title
+    };
+
+    if (viaWebMcp) {
+      event.description = 'Final Offer candidacy consult submitted via WebMCP agent.';
+    }
+
+    return { person: person, event: event };
   }
 
   async function submitLead(fields, options) {
@@ -61,7 +64,11 @@
       throw new Error('firstName, lastName, email, and phone are required.');
     }
 
-    var payload = buildPayload(firstName, lastName, email, phone, options);
+    var submitOptions = Object.assign({}, options || {});
+    if (fields.propertyAddress) submitOptions.propertyAddress = fields.propertyAddress;
+    if (fields.referralSource) submitOptions.referralSource = fields.referralSource;
+
+    var payload = buildPayload(firstName, lastName, email, phone, submitOptions);
 
     var res = await fetch(FUB_PROXY_URL, {
       method: 'POST',
@@ -81,6 +88,8 @@
           email: email,
           name: firstName + ' ' + lastName,
           fub_source: LEAD_SOURCE,
+          property_address: fields.propertyAddress || undefined,
+          referral_source: fields.referralSource || undefined,
           fub_person_id: data.personId,
           fub_identified_at: new Date().toISOString()
         });
@@ -88,7 +97,9 @@
       global.posthog.capture('lead_submitted', {
         program: LEAD_TAG,
         source: options && options.viaWebMcp ? 'WebMCP / agent' : LEAD_SOURCE,
-        via_webmcp: !!(options && options.viaWebMcp)
+        via_webmcp: !!(options && options.viaWebMcp),
+        has_address: !!(fields.propertyAddress),
+        referral_source: fields.referralSource || null
       });
     }
 

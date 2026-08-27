@@ -1311,11 +1311,12 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   </div>
 </footer>
 
+<script src="fub-lead.js"></script>
+<script src="webmcp-core.js"></script>
+<script src="webmcp-shared.js"></script>
+<script src="webmcp-relaunch.js"></script>
 <script>
-  const FUB_PROXY_URL = 'https://bw-fub-proxy.scott-5f5.workers.dev';
-  const LEAD_TAG      = 'relaunch-inquiry';
-  const LEAD_SOURCE   = 'Relaunch Strategy Page';
-  const PROGRAM       = LEAD_TAG;
+  const PROGRAM = BrightWorkLead.LEAD_TAG;
 
   if (typeof posthog !== 'undefined') {
     posthog.capture('page_view_program', { program: PROGRAM });
@@ -1341,75 +1342,17 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     btnText.textContent = 'Submitting...';
     spinner.style.display = 'block';
 
-    const firstName       = document.getElementById('firstName').value.trim();
-    const lastName        = document.getElementById('lastName').value.trim();
-    const emailVal        = document.getElementById('email').value.trim();
-    const phoneVal        = document.getElementById('phone').value.trim();
-    const propertyAddress = document.getElementById('propertyAddress').value.trim();
-    const concern         = document.getElementById('concern').value.trim();
-
-    // Build payload. The FUB proxy accepts the standard person shape;
-    // property address goes into a 'background' note field (one of the
-    // documented FUB person fields) so it lands in the lead record
-    // without polluting the tags array. The optional concern, if provided,
-    // is appended to background as a labeled note.
-    const backgroundParts = [];
-    if (propertyAddress) backgroundParts.push('Property address: ' + propertyAddress);
-    if (concern)         backgroundParts.push('Previous listing concern: ' + concern);
-
-    const person = {
-      firstName,
-      lastName,
-      emails: [{ value: emailVal, type: 'work' }],
-      phones: [{ value: phoneVal, type: 'mobile' }],
-      source: 'relaunch.brightworkrealty.com',
-      stage: 'Lead',
-      assignedTo: 'Ben Olsen',
-      tags: [LEAD_TAG]
-    };
-    if (backgroundParts.length) {
-      person.background = backgroundParts.join('\n');
-    }
-
-    const payload = {
-      person,
-      event: {
-        type: 'Registration',
-        source: 'relaunch.brightworkrealty.com',
-        pageUrl: window.location.href,
-        pageTitle: document.title
-      }
-    };
-
     try {
-      const res = await fetch(FUB_PROXY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      await BrightWorkLead.submit({
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        propertyAddress: document.getElementById('propertyAddress').value,
+        concern: document.getElementById('concern').value
       });
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof posthog !== 'undefined') {
-          if (data.success && data.personId) {
-            posthog.identify(emailVal, {
-              email: emailVal,
-              name: firstName + ' ' + lastName,
-              property_address: propertyAddress,
-              fub_person_id: data.personId,
-              fub_identified_at: new Date().toISOString()
-            });
-          }
-          posthog.capture('lead_submitted', {
-            program: LEAD_TAG,
-            source: LEAD_SOURCE,
-            has_concern_note: concern.length > 0
-          });
-        }
-        document.getElementById('leadForm').style.display = 'none';
-        document.getElementById('successState').style.display = 'block';
-      } else {
-        throw new Error('Proxy error');
-      }
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
     } catch (err) {
       alert('Something went wrong. Please call us at (925) 200-6000.');
       btn.disabled = false;
