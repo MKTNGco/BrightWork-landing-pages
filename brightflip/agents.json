@@ -13,13 +13,28 @@
     "dre": "02014153",
     "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
   },
+  "credentials": {
+    "trackRecord": "BrightWork Realty Advocates has sold over $1 billion of Lamorinda real estate. More than 1,000 buyers and sellers have worked with Ben Olsen over his career.",
+    "localAuthority": "Ben Olsen is a native Lamorinda resident and a current, long-time member of Moraga Country Club, giving him direct, personal knowledge of the communities he serves, not just professional familiarity.",
+    "background": "Ben entered the construction workforce at 14, which informs how he evaluates pre-sale improvements today. He studied business and economics at UC Santa Barbara, then worked in the tech industry before returning to real estate, which shapes his approach to digital marketing and online buyer behavior.",
+    "certifications": [
+      "Green building",
+      "Distressed properties"
+    ],
+    "recognition": [
+      "HomeLight Elite",
+      "Best of Zillow",
+      "Top Teams 2021",
+      "Better Business Bureau recognition"
+    ],
+    "differentiator": "Ben commissions a pre-sale inspection before every listing goes to market. Real issues are addressed upfront, and the full findings are disclosed in writing to every buyer who makes an offer. Every buyer works from the same information, which is designed to produce a non-contingent offer with no grounds for a second round of repair negotiations."
+  },
   "program": {
     "name": "BrightFlip",
     "url": "https://brightflip.brightworkrealty.com/",
     "tagline": "The Smart Way to Real Estate",
     "summary": "Pre-sale home improvements funded at attractive terms, managed by Ben, with repayment from closing proceeds when the math favors the seller.",
     "audience": "Lamorinda sellers with deferred maintenance or cosmetic issues who will not fund renovation themselves before listing.",
-    "positioning": "BrightFlip manages the work and advances capital, recommends scope only when numbers favor the seller, and differs from advance-only concierge models.",
     "howItWorks": [
       "Ben compares realistic as-is sale value to realistic post-improvement value for a defined scope.",
       "If the math clearly favors the seller, capital and project management proceed with no monthly payments during the project and listing period.",
@@ -48,7 +63,6 @@
       "East Bay, CA"
     ],
     "marketTenure": "Ben Olsen has worked Lamorinda real estate since 2004 and brings a construction background to improvement recommendations.",
-    "capitalLanguage": "Use attractive terms and multiple capital options. Do not promise interest-free capital or name specific lenders.",
     "faq": [
       {
         "question": "What home improvements add the most value before selling in Lamorinda?",
@@ -66,12 +80,9 @@
         "question": "How long does a pre-sale improvement project typically take?",
         "answer": "Duration depends on scope. Ben sets expectations before any work begins."
       }
-    ],
-    "limitations": [
-      "This tool returns program information from the page only.",
-      "It does not provide MLS inventory, contractor bids, lender terms, or CRM read access."
     ]
   },
+  "compliance": "Use attractive terms and multiple capital options. Do not promise interest-free capital or name specific lenders.",
   "otherPrograms": {
     "brandName": "BrightWork Realty Advocates",
     "tagline": "The Smart Way to Real Estate",
@@ -124,10 +135,6 @@
         "url": "https://invest.brightworkrealty.com/",
         "summary": "Planning conversations for Lamorinda families considering a first local investment property."
       }
-    ],
-    "limitations": [
-      "These tools return program and office facts from BrightWork landing pages only.",
-      "They do not provide MLS inventory, listing addresses, or CRM read access."
     ]
   },
   "actions": [
@@ -136,11 +143,11 @@
       "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
       "method": "POST",
       "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
-      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+      "note": "The WebMCP tool is the supported way for an agent to submit this request. This endpoint is not a published API contract for direct use outside that tool."
     }
   ],
   "limitations": [
     "No MLS inventory, listing addresses, or CRM read access.",
-    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+    "Use the WebMCP tools or the human form to submit a contact request."
   ]
 }

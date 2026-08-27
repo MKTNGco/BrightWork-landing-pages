@@ -13,19 +13,35 @@
     "dre": "02014153",
     "marketTenure": "The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004."
   },
+  "credentials": {
+    "trackRecord": "BrightWork Realty Advocates has sold over $1 billion of Lamorinda real estate. More than 1,000 buyers and sellers have worked with Ben Olsen over his career.",
+    "localAuthority": "Ben Olsen is a native Lamorinda resident and a current, long-time member of Moraga Country Club, giving him direct, personal knowledge of the communities he serves, not just professional familiarity.",
+    "background": "Ben entered the construction workforce at 14, which informs how he evaluates pre-sale improvements today. He studied business and economics at UC Santa Barbara, then worked in the tech industry before returning to real estate, which shapes his approach to digital marketing and online buyer behavior.",
+    "certifications": [
+      "Green building",
+      "Distressed properties"
+    ],
+    "recognition": [
+      "HomeLight Elite",
+      "Best of Zillow",
+      "Top Teams 2021",
+      "Better Business Bureau recognition"
+    ],
+    "differentiator": "Ben commissions a pre-sale inspection before every listing goes to market. Real issues are addressed upfront, and the full findings are disclosed in writing to every buyer who makes an offer. Every buyer works from the same information, which is designed to produce a non-contingent offer with no grounds for a second round of repair negotiations."
+  },
   "program": {
     "name": "Buy Before You Sell",
     "url": "https://buybefore.brightworkrealty.com/",
     "tagline": "The Smart Way to Real Estate",
     "summary": "A structure that lets Lamorinda sellers buy their next home before selling their current one, often with a non-contingent offer.",
     "audience": "Homeowners who need to buy before they sell and want to avoid losing offers because of a sale contingency.",
-    "problem": "Contingent offers lose in competitive Lamorinda markets. Sellers see a sale contingency as risk even when your offer is strong on paper.",
     "howItWorks": [
       "Through capital programs BrightWork maintains access to, you may receive a purchase price on your current home.",
       "That lets you make a non-contingent offer on your next home before your current home sells.",
       "When your home sells, boosted proceeds can reduce pressure to accept a fast, discounted sale.",
       "Ben maps options for your timeline without naming specific lenders or dollar amounts on this page."
     ],
+    "problem": "Contingent offers lose in competitive Lamorinda markets. Sellers see a sale contingency as risk even when your offer is strong on paper.",
     "benefits": [
       "Non-contingent offers that compete on terms, not just price",
       "Multiple program options matched to your situation",
@@ -57,10 +73,6 @@
         "question": "What happens if my current home sells for more than expected?",
         "answer": "Program terms vary. Ben walks through realistic scenarios before you commit, without guaranteeing a specific outcome."
       }
-    ],
-    "limitations": [
-      "This tool returns program information from the page only.",
-      "It does not provide MLS inventory, listing addresses, lender quotes, or CRM read access."
     ]
   },
   "otherPrograms": {
@@ -115,10 +127,6 @@
         "url": "https://invest.brightworkrealty.com/",
         "summary": "Planning conversations for Lamorinda families considering a first local investment property."
       }
-    ],
-    "limitations": [
-      "These tools return program and office facts from BrightWork landing pages only.",
-      "They do not provide MLS inventory, listing addresses, or CRM read access."
     ]
   },
   "actions": [
@@ -127,11 +135,11 @@
       "description": "Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.",
       "method": "POST",
       "endpoint": "https://bw-fub-proxy.scott-5f5.workers.dev",
-      "note": "Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it."
+      "note": "The WebMCP tool is the supported way for an agent to submit this request. This endpoint is not a published API contract for direct use outside that tool."
     }
   ],
   "limitations": [
     "No MLS inventory, listing addresses, or CRM read access.",
-    "This file is descriptive. Use the WebMCP tools or the human form to submit a contact request."
+    "Use the WebMCP tools or the human form to submit a contact request."
   ]
 }

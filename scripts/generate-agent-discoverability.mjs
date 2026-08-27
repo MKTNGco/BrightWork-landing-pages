@@ -14,6 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   OFFICE_INFO,
+  CREDENTIALS,
   PROGRAMS,
   SHARED_TOOL_LIMITATIONS,
   PROGRAMS_BY_SLUG,
@@ -22,12 +23,48 @@ import {
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+const COMPLIANCE_SLUGS = new Set(['seniors', 'invest', 'brightflip', 'finaloffer']);
+
+const PROGRAM_STRIP_KEYS = new Set([
+  'limitations',
+  'compliance',
+  'capitalLanguage',
+  'positioning',
+  'copyRules'
+]);
+
+const PROGRAM_KEY_ORDER = [
+  'name',
+  'url',
+  'tagline',
+  'summary',
+  'audience',
+  'howAccessWorks',
+  'howItWorks',
+  'problem',
+  'approach',
+  'benefits',
+  'topics',
+  'whatBenDoes',
+  'reviewAreas',
+  'whatChangesOnRelaunch',
+  'positioning',
+  'tiers',
+  'pillars',
+  'platformFacts',
+  'serviceArea',
+  'marketTenure',
+  'mlsNote',
+  'complianceNote',
+  'workshopNote',
+  'faq'
+];
+
 function listProgramsPayload() {
   return {
     brandName: OFFICE_INFO.brandName,
     tagline: OFFICE_INFO.tagline,
-    programs: PROGRAMS,
-    limitations: SHARED_TOOL_LIMITATIONS
+    programs: PROGRAMS
   };
 }
 
@@ -47,74 +84,127 @@ function sitePayload() {
   };
 }
 
+function complianceForSlug(slug, program) {
+  if (slug === 'seniors') {
+    return program.compliance;
+  }
+
+  if (slug === 'invest') {
+    return program.compliance;
+  }
+
+  if (slug === 'brightflip') {
+    return program.capitalLanguage;
+  }
+
+  if (slug === 'finaloffer') {
+    const lines = [program.positioning];
+    const narFact = program.platformFacts && program.platformFacts.find((f) => f.includes('NAR Clear Cooperation'));
+    if (narFact) lines.push(narFact);
+    if (program.copyRules) {
+      program.copyRules.forEach((rule) => lines.push(rule));
+    }
+    return lines;
+  }
+
+  return null;
+}
+
+function orderProgramKeys(program, slug) {
+  const stripped = { ...program };
+  PROGRAM_STRIP_KEYS.forEach((key) => delete stripped[key]);
+
+  const ordered = {};
+  for (const key of PROGRAM_KEY_ORDER) {
+    if (stripped[key] !== undefined) {
+      ordered[key] = stripped[key];
+    }
+  }
+  for (const key of Object.keys(stripped)) {
+    if (!ordered[key]) {
+      ordered[key] = stripped[key];
+    }
+  }
+  return ordered;
+}
+
 function agentsJson(slug) {
-  return {
+  const program = PROGRAMS_BY_SLUG[slug];
+  const compliance = complianceForSlug(slug, program);
+
+  const doc = {
     protocolVersion: '1.0',
     site: sitePayload(),
-    program: PROGRAMS_BY_SLUG[slug],
-    otherPrograms: listProgramsPayload(),
-    actions: [
-      {
-        name: 'request_consult',
-        description: 'Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.',
-        method: 'POST',
-        endpoint: 'https://bw-fub-proxy.scott-5f5.workers.dev',
-        note: 'Structured POST contract documented separately; WebMCP tool is the supported invocation path for agents that support it.'
-      }
-    ],
-    limitations: [
-      'No MLS inventory, listing addresses, or CRM read access.',
-      'This file is descriptive. Use the WebMCP tools or the human form to submit a contact request.'
-    ]
+    credentials: CREDENTIALS,
+    program: orderProgramKeys(program, slug)
   };
+
+  if (COMPLIANCE_SLUGS.has(slug) && compliance) {
+    doc.compliance = compliance;
+  }
+
+  doc.otherPrograms = listProgramsPayload();
+  doc.actions = [
+    {
+      name: 'request_consult',
+      description: 'Submit a contact request. Writes to Follow Up Boss. Contacts only, no CRM read.',
+      method: 'POST',
+      endpoint: 'https://bw-fub-proxy.scott-5f5.workers.dev',
+      note: 'The WebMCP tool is the supported way for an agent to submit this request. This endpoint is not a published API contract for direct use outside that tool.'
+    }
+  ];
+  doc.limitations = [
+    'No MLS inventory, listing addresses, or CRM read access.',
+    'Use the WebMCP tools or the human form to submit a contact request.'
+  ];
+
+  return doc;
 }
 
 function programListLine(program) {
   return `- [${program.name}](${program.url})`;
 }
 
+function complianceLines(slug, program) {
+  const compliance = complianceForSlug(slug, program);
+  if (!compliance) return [];
+
+  if (Array.isArray(compliance)) return compliance;
+  return [compliance];
+}
+
 function complianceBlock(slug, program) {
-  const lines = [];
-
-  if (slug === 'seniors' && program.compliance) {
-    lines.push(program.compliance);
-  }
-
-  if (slug === 'invest' && program.compliance) {
-    lines.push(program.compliance);
-  }
-
-  if (slug === 'brightflip' && program.capitalLanguage) {
-    lines.push(program.capitalLanguage);
-  }
-
-  if (slug === 'finaloffer') {
-    if (program.positioning) lines.push(program.positioning);
-    const narFact = program.platformFacts && program.platformFacts.find((f) => f.includes('NAR Clear Cooperation'));
-    if (narFact) lines.push(narFact);
-    if (program.copyRules) {
-      program.copyRules.forEach((rule) => lines.push(rule));
-    }
-  }
-
+  const lines = complianceLines(slug, program);
   if (lines.length === 0) return '';
 
   return `\n## Compliance\n\n${lines.map((line) => `- ${line}`).join('\n')}\n`;
+}
+
+function credentialsBlock() {
+  return `## Credentials
+
+- Track record: ${CREDENTIALS.trackRecord}
+- Local authority: ${CREDENTIALS.localAuthority}
+- Background: ${CREDENTIALS.background}
+- Certifications: ${CREDENTIALS.certifications.join(', ')}
+- Recognition: ${CREDENTIALS.recognition.join(', ')}
+- Differentiator: ${CREDENTIALS.differentiator}
+`;
 }
 
 function llmsTxt(slug) {
   const program = PROGRAMS_BY_SLUG[slug];
   const catalog = PROGRAMS.find((p) => p.slug === slug);
   const oneLine = catalog ? catalog.summary : program.summary;
-
   const whatFor = `${program.summary} ${program.audience}`;
 
-  return `# ${program.name} — BrightWork Realty Advocates
+  return `# ${program.name}: BrightWork Realty Advocates
 
 > ${oneLine}
 
 BrightWork Realty Advocates. Ben Olsen, REALTOR. Serving Moraga, Lafayette, and Orinda (Lamorinda), CA. The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.
 
+${credentialsBlock()}
 ## What this page is for
 
 ${whatFor}
@@ -132,7 +222,7 @@ ${PROGRAMS.map(programListLine).join('\n')}
 
 ## For AI agents
 
-This site also exposes structured data at /agents.json (no browser required) and in-browser tools via WebMCP at /agents.txt (requires a WebMCP-capable runtime). Agents do not get MLS inventory, listing addresses, or CRM read access.
+This site also exposes structured data at /agents.json (no browser required) and in-browser tools via WebMCP at /agents.txt (requires a WebMCP-capable runtime).
 `;
 }
 
@@ -149,8 +239,14 @@ Allow: /
 }
 
 function webmcpDataJs() {
+  const officeWithCredentials = {
+    ...OFFICE_INFO,
+    credentials: CREDENTIALS
+  };
+
   const payload = {
-    OFFICE_INFO,
+    OFFICE_INFO: officeWithCredentials,
+    CREDENTIALS,
     PROGRAMS,
     SHARED_TOOL_LIMITATIONS,
     PROGRAMS_BY_SLUG
@@ -158,7 +254,7 @@ function webmcpDataJs() {
 
   return `/**
  * Canonical office + program facts for WebMCP tools (browser bundle).
- * Source: shared/agent-source-data.mjs — regenerate with:
+ * Source: shared/agent-source-data.mjs. Regenerate with:
  *   node scripts/generate-agent-discoverability.mjs
  */
 (function (global) {
