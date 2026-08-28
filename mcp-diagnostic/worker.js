@@ -1,5 +1,5 @@
 const POSTHOG_KEY = "phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i";
-const POSTHOG_CAPTURE = "https://us.i.posthog.com/capture/";
+const POSTHOG_CAPTURE = "https://us.i.posthog.com/i/v0/e/";
 const BODY_CAP_BYTES = 4096;
 
 const HONEST_404 = `No MCP server is currently hosted at this address.
@@ -86,25 +86,29 @@ async function captureProbe(request, bodySnippet) {
     const userAgent = request.headers.get("user-agent") || "";
     const distinctId = await stableDistinctId(ip, userAgent);
 
-    await fetch(POSTHOG_CAPTURE, {
+    const timestamp = new Date().toISOString();
+    const res = await fetch(POSTHOG_CAPTURE, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         api_key: POSTHOG_KEY,
         event: "mcp_probe_request",
         distinct_id: distinctId,
+        timestamp,
         properties: {
           method: request.method,
           path: url.pathname,
           query: url.search,
           headers,
           body_snippet: bodySnippet,
-          timestamp: new Date().toISOString(),
+          timestamp,
+          $process_person_profile: false,
         },
       }),
     });
-  } catch {
-    /* diagnostic capture must never affect the client response */
+    console.log("posthog_capture", res.status, await res.text());
+  } catch (err) {
+    console.log("posthog_capture_error", String(err));
   }
 }
 
