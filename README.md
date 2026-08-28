@@ -30,6 +30,8 @@ In addition to human-facing landing pages, this repo serves structured facts for
 
 **Single source of truth:** `shared/agent-source-data.mjs`
 
+That file exports `AGENT_PROTOCOL_VERSION` (currently `1.1`, one shared constant, do not hardcode per surface), `OFFICE_INFO`, `CREDENTIALS`, `PROGRAMS`, and the eight program objects. `CREDENTIALS` fields are `bio`, `specialtyAreas`, `personalTrackRecord`, `reviewsUrl`, `firmTrackRecord`, and `differentiator`. The older `trackRecord` / `localAuthority` / `background` shape no longer exists. Program objects use `howItWorks` only (never `howAccessWorks` or `approach`). `specialtyAreas` is rendered on the root file only.
+
 **Generate program-page output** after editing source data:
 
 ```bash
@@ -38,7 +40,9 @@ node scripts/generate-agent-discoverability.mjs
 
 That writes `robots.txt`, `llms.txt`, `agents.json`, and `webmcp-data.js` into each of the eight program folders. Do not hand-edit generated files.
 
-**Root domain:** `bw-agent-root/` is a scripted Cloudflare Worker (not static assets) that serves `/robots.txt`, `/llms.txt`, and `/agents.json` for `brightworkrealty.com` via Luxury Presence redirects to `bw-agent-root.scott-5f5.workers.dev`.
+**Root domain:** `bw-agent-root/` is a scripted Cloudflare Worker (not static assets) that serves `/robots.txt`, `/llms.txt`, and `/agents.json` at request time, live at `bw-agent-root.scott-5f5.workers.dev`. Apex paths reach it via Luxury Presence redirects. The destination URL must include the full path. Apex/`www` CNAME to Luxury Presence, so a Worker Route on those hostnames never sees the traffic. Keep the redirect approach; do not flip proxy status to try an on-origin 200.
+
+**Hostnames:** MKTNG owns the full `brightworkrealty.com` Cloudflare zone. Before binding any new hostname, export the live DNS records. A 404 does not mean the name is free. `mcp.brightworkrealty.com` is a live COS MCP tunnel. Do not rebind it. Removing a `[[routes]]` block and redeploying does not guarantee Cloudflare dropped the binding; verify against the zone route list.
 
 Full architecture, content principles, maintenance checklist, and testing protocol: **`artifacts/agent-discoverability.md`**
 
@@ -68,13 +72,14 @@ brightwork-landing-pages/
 │   ├── handbook.md            ← full spec: brand rules, page patterns, per-page copy
 │   └── agent-discoverability.md ← agent layer: llms.txt, agents.json, WebMCP, root Worker
 ├── shared/
-│   ├── agent-source-data.mjs  ← canonical office + program facts (agent layer source)
+│   ├── agent-source-data.mjs  ← canonical office + program facts (`CREDENTIALS`: bio, specialtyAreas, personalTrackRecord, firmTrackRecord)
 │   ├── agent-response-builders.mjs ← root-domain response builders (bw-agent-root)
 │   ├── posthog-init.js        ← PostHog analytics snippet (all pages load this)
 │   ├── animations.js          ← scroll-reveal (program pages; seniors/workshop omits)
 │   ├── brand.css              ← CSS token reference
 │   └── BrightWork_logo.png    ← logo file (copied into each page's images/ folder)
-├── bw-agent-root/             ← scripted Worker for brightworkrealty.com agent files
+├── bw-agent-root/             ← scripted Worker for apex agent files (Luxury Presence redirects, not a Worker Route)
+├── mcp-diagnostic/            ← bw-mcp-diagnostic Worker only; do not bind to mcp.brightworkrealty.com
 ├── bw-fub-proxy/              ← form submission proxy to Follow Up Boss
 ├── scripts/
 │   └── generate-agent-discoverability.mjs ← regenerates llms.txt, agents.json, webmcp-data.js
@@ -177,8 +182,9 @@ anonymous session to the named lead.
   patterns, page structure, per-page copy specs, voice rules, the new-page
   checklist, and schema templates.
 - **`artifacts/agent-discoverability.md`** — start here for the agent layer. Covers the four-layer
-  discovery model, single source of truth, per-page file reference, root Worker,
-  content principles, maintenance checklist, and testing protocol.
+  discovery model, current `CREDENTIALS` shape (`bio`, `specialtyAreas`,
+  `personalTrackRecord`, `firmTrackRecord`), root-domain redirects, hostname
+  rules, content principles, maintenance checklist, and testing protocol.
 - **`CLAUDE.md`** — Claude Code session context: hosting, form backend,
   PostHog config, Cloudflare account reference.
 

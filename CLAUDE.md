@@ -50,7 +50,8 @@ brightwork-landing-pages/
 ├── finaloffer/              → finaloffer.brightworkrealty.com [EXISTS]
 ├── invest/                  → invest.brightworkrealty.com     [EXISTS]
 ├── seniors/                 → seniors.brightworkrealty.com    [EXISTS]
-└── mcp-diagnostic/          → mcp.brightworkrealty.com (probe logger, not an MCP server)
+├── bw-agent-root/           → apex robots.txt / llms.txt / agents.json via Luxury Presence redirects (not a Worker Route)
+└── mcp-diagnostic/          → bw-mcp-diagnostic Worker only. Do not bind to mcp.brightworkrealty.com (live COS MCP tunnel).
 ```
 
 ---
@@ -66,8 +67,15 @@ Deployment pattern:
 
 **Deployment note:** The wrangler-action runs from the repo root using `command: deploy --config ${{ matrix.page }}/wrangler.toml`. Do not set `workingDirectory` to the page folder — it causes wrangler to install its dependencies inside the page folder, which then get picked up as static assets and exceed Cloudflare's 25MB limit. Each page directory has a `.assetsignore` file excluding `node_modules/`, `package.json`, `package-lock.json`, and `.wrangler/`.
 
-DNS: `brightworkrealty.com` zone is in Cloudflare. MKTNG has access.
+DNS: `brightworkrealty.com` zone is in Cloudflare. MKTNG owns the full zone.
 Add a CNAME for each new subdomain pointing to the Workers deployment URL.
+
+**Before binding any new hostname on this zone, export the live DNS
+records first.** A 404 does not mean the name is free.
+`mcp.brightworkrealty.com` is a live COS MCP tunnel (separate project).
+Do not rebind it. Removing a `[[routes]]` block and redeploying does
+not guarantee Cloudflare dropped the binding; verify against the zone
+route list.
 
 Cloudflare account: scott@mktng.co
 Account ID: `5f50d138eb76f9beb59f76d0f356543f`
@@ -125,7 +133,17 @@ Office and program facts for WebMCP tools, `agents.json`, and `llms.txt` live in
 node scripts/generate-agent-discoverability.mjs
 ```
 
-That script writes `robots.txt`, `llms.txt`, `agents.json`, and `webmcp-data.js` into each of the eight Worker folders (not `seniors/workshop/`). It also updates `shared/webmcp-data.js`. Program pages load `webmcp-data.js` before `webmcp-core.js`. Do not hand-maintain duplicate program JSON in each folder.
+That script writes `robots.txt`, `llms.txt`, `agents.json`, and `webmcp-data.js` into each of the eight Worker folders (not `seniors/workshop/`). It also updates `shared/webmcp-data.js`. Program pages load `webmcp-data.js` before `webmcp-core.js`. Do not hand-edit generated files.
+
+**Do not drift these field names:**
+- `CREDENTIALS` is `bio`, `specialtyAreas`, `personalTrackRecord`, `reviewsUrl`, `firmTrackRecord`, `differentiator`. The old `trackRecord` / `localAuthority` / `background` shape is gone.
+- Program objects use `howItWorks` only. Do not reintroduce `howAccessWorks` or `approach`.
+- `AGENT_PROTOCOL_VERSION` is one shared constant (currently `1.1`). Do not hardcode a version per surface.
+- `specialtyAreas` is root-only. Do not duplicate it onto program pages.
+
+**Root domain:** apex `robots.txt` / `llms.txt` / `agents.json` are Luxury Presence redirects to `bw-agent-root.scott-5f5.workers.dev` (full path required). Apex/`www` CNAME to Luxury Presence, so Worker Routes on those hostnames never see the traffic. Keep the redirect approach. Do not flip proxy status to try an on-origin 200.
+
+Commit and push as the final step of any agent-layer change.
 
 ---
 

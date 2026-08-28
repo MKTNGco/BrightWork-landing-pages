@@ -49,26 +49,63 @@ Everything traces back to one file:
 shared/agent-source-data.mjs
 ```
 
-This exports `OFFICE_INFO`, `CREDENTIALS`, `PROGRAMS`, and eight program
-objects (`OFFMARKET_PROGRAM`, `BUYBEFORE_PROGRAM`, etc.), each with a
-consistent shape: `name`, `url`, `tagline`, `summary`, `audience`,
-`howItWorks` (an array of mechanism-level bullets, not prose),
-`serviceArea`, `marketTenure`, `faq`, and where required, `compliance`.
+This exports `AGENT_PROTOCOL_VERSION` (currently `1.1`, one shared
+constant, used identically by every generated surface, root and all
+eight program pages, do not let this drift into per-surface hardcoded
+values again, that happened once already and an external blind test
+caught it), `OFFICE_INFO`, `CREDENTIALS`, `PROGRAMS`, and eight program
+objects (`OFFMARKET_PROGRAM`, `BUYBEFORE_PROGRAM`, etc.).
+
+**`CREDENTIALS` shape** (this is the part that changed most since the
+original build, don't reference an older version of this doc or any
+memory of the original `trackRecord`/`localAuthority`/`background`
+fields, they no longer exist):
+
+```js
+CREDENTIALS = {
+  bio: [ /* six discrete, agent-legible claims: licensure, local
+           residency + club membership, construction background,
+           education + prior career, recognition, certifications */ ],
+  specialtyAreas: [ /* seven short phrases, one per program area,
+                        root file only, not duplicated on program
+                        pages where it would repeat the "other
+                        programs" list already there */ ],
+  personalTrackRecord: /* Ben's own career figure, career-scoped,
+                           does not include pre-2004 firm history */,
+  reviewsUrl: /* link to the one page with real third-party
+                 corroboration, brightworkrealty.com/agents/ben-olsen */,
+  firmTrackRecord: /* the firm's $1B+ since-1977 figure, kept
+                       structurally separate from Ben's personal
+                       figure so the two never conflate in the same
+                       sentence */,
+  differentiator: /* the pre-sale inspection/full-disclosure
+                      mechanism, the single strongest evidence-based
+                      claim in the whole dataset */
+}
+```
+
+Each program object has a consistent shape: `name`, `url`, `tagline`,
+`summary`, `audience`, `howItWorks` (an array of mechanism-level
+bullets, the single field name used identically across all eight
+objects now, do not reintroduce `howAccessWorks` or `approach` as
+program-specific variants, that inconsistency existed once and was
+caught by the same external test that caught the protocol version
+drift), `serviceArea`, `marketTenure`, `faq`, and where required,
+`compliance`.
 
 Two things read from this file and generate everything else:
 
 - `scripts/generate-agent-discoverability.mjs` generates each program
-  page's `llms.txt`, `agents.json`, and `webmcp-data.js`
+  page's `llms.txt`, `agents.json`, and `webmcp-data.js`, and renders
+  `bio` and `howItWorks` as bulleted lists, not narrated paragraphs.
 - `shared/agent-response-builders.mjs` generates the root-domain
   `robots.txt`, `llms.txt`, and `agents.json`, served at request time by
-  the `bw-agent-root` Cloudflare Worker
+  the `bw-agent-root` Cloudflare Worker.
 
 **Never hand-edit a generated file.** Every `llms.txt` and `agents.json`
 in a program folder, and everything the root Worker serves, is output.
 Edit `agent-source-data.mjs`, run the generator, commit the regenerated
-output alongside the source change. If a fact needs to change in two
-places (it doesn't, currently, that's the point), that's a sign the data
-model needs a new shared field, not two edits.
+output alongside the source change.
 
 ## 4. Per-page file reference
 
@@ -81,7 +118,7 @@ contains:
 | `robots.txt` | Allows all crawling, comments pointing to `llms.txt` and `agents.json` |
 | `agents.txt` | WebMCP discovery per the agents-txt.com convention, cross-references `robots.txt` |
 | `agents.json` | Structured facts: `site`, `credentials`, `program`, `otherPrograms`, `actions`, `limitations` |
-| `llms.txt` | Same facts as `agents.json`, rendered as agent-readable Markdown |
+| `llms.txt` | Same facts as `agents.json`, rendered as agent-readable Markdown, including `bio`, `specialtyAreas` (root only), and per-page `howItWorks` bullets |
 | `webmcp-core.js`, `webmcp-shared.js`, `webmcp-[program].js` | Registers `get_office`, `list_programs`, `get_program`, `request_consult` via `navigator.modelContext`, live only in WebMCP-capable runtimes |
 | `_headers` | Adds `Link: rel="webmcp"` response header, plus content-type rules for the four discovery files |
 | `fub-lead.js` | Handles `request_consult` submissions, tags `webmcp-consult` plus the page's program tag, source `WebMCP / agent`, so these leads are distinguishable from human form submissions in Follow Up Boss |
@@ -94,16 +131,23 @@ Each page's `index.html` `<head>` also carries:
 
 ## 5. The root domain (brightworkrealty.com)
 
-The main site runs on Luxury Presence, which offers no way to host
-`robots.txt`, `llms.txt`, or `agents.json` as real files, and no way to
-inject `<head>` tags outside client-side JavaScript (Global Scripts).
-The solution:
+**Zone ownership:** MKTNG owns the full `brightworkrealty.com`
+Cloudflare zone (taken over from Side because of the volume of
+agent-discoverability work on this domain). This means real DNS control
+and the ability to add Worker Routes directly, not just on the eight
+program subdomains. What Luxury Presence still exclusively controls is
+the CMS content itself, page copy, templates, and the Global Scripts
+field, served from their own origin.
+
+**What actually works today:** `robots.txt`, `llms.txt`, and
+`agents.json` at the apex are served via a **redirect**, not a direct
+Worker Route:
 
 1. `bw-agent-root/` in this repo is a scripted Cloudflare Worker
    (`worker.js`, not a static-assets Worker like the eight program
    pages) that imports directly from `shared/agent-response-builders.mjs`
-   and serves `/robots.txt`, `/llms.txt`, and `/agents.json` at request
-   time, live at `bw-agent-root.scott-5f5.workers.dev`.
+   and serves the three files at request time, live at
+   `bw-agent-root.scott-5f5.workers.dev`.
 2. Three redirects, created directly in the Luxury Presence dashboard
    (Site Settings → Redirects), point `brightworkrealty.com/robots.txt`,
    `/llms.txt`, and `/agents.json` at the matching paths on that Worker.
@@ -111,11 +155,24 @@ The solution:
    bare Worker origin resolves to `/`, which the Worker doesn't
    recognize, and returns 404.
 3. Luxury Presence's redirect tool has no edit function, only
-   delete-and-recreate, worth knowing before changing the target later.
+   delete-and-recreate.
 
-This is a workaround, not a native solution. If Luxury Presence's
-platform ever adds real `<head>` injection or a robots.txt editor
-(see Section 8), migrate off the redirect approach.
+**Why this isn't a direct Worker Route, confirmed, not assumed:** apex
+and `www` are a CNAME to `production.luxuryproxy.net`, itself proxied
+through Luxury Presence's own Cloudflare-for-SaaS setup. Worker Routes
+on this zone never see that traffic, it's intercepted at Luxury
+Presence's edge first. This was tested directly: a Worker Route was
+bound to the three apex paths, deployed successfully, and apex traffic
+still hit Luxury Presence's 301 redirect chain instead of the Worker.
+`mcp.brightworkrealty.com` works with a direct Worker Route because it's
+a plain proxied record in this zone, not chained through another
+platform's SaaS setup. The one theoretical path to a real on-origin 200
+at apex is flipping apex/`www` to Orange-to-Orange proxying so this
+zone's Workers run before Luxury Presence's edge. **Deliberately not
+done.** That's a proxy-status change on the domain serving Ben's entire
+live public site, not just three paths, and the risk isn't proportionate
+to removing one redirect hop. Current recommendation: keep the redirect
+approach indefinitely unless a stronger reason than convenience appears.
 
 ## 6. Content principles
 
@@ -132,57 +189,82 @@ follows a few rules specific to writing for a model instead of a person:
   is the most reliable agent in Lamorinda." Models are specifically
   wary of unsupported superlatives. State the facts and let the
   requesting agent's own reasoning produce the conclusion.
-- **Discrete claims over narrated paragraphs.** Bullet points, not prose
-  that explains its own implications to the reader. An agent doesn't
-  need "which gives him direct, personal knowledge, not just
-  professional familiarity" explained, it can draw that inference
-  itself from the bare fact.
+- **Discrete claims over narrated paragraphs.** This is the single
+  biggest content change made after the original build: `CREDENTIALS`
+  went from three prose fields to a `bio` array of short, standalone
+  claims. An agent doesn't need "which gives him direct, personal
+  knowledge, not just professional familiarity" explained, it can draw
+  that inference itself from the bare fact.
 - **Corroborate where possible.** A claim BrightWork makes about itself
-  is weaker than a claim with somewhere to check it. Where a real,
-  linkable source exists (the testimonials on
-  `brightworkrealty.com/agents/ben-olsen`), link to it.
+  is weaker than a claim with somewhere to check it. `reviewsUrl` points
+  at the one page with real third-party testimonials for exactly this
+  reason.
 - **Define regional or non-obvious terms on first use.** "Lamorinda"
   isn't a real municipality, it's a colloquialism for Lafayette, Moraga,
-  and Orinda. Gloss it once per file on first mention:
-  `Lamorinda (Lafayette, Moraga, and Orinda, California)`. Same
-  principle already applied to MLS, DOM, 1031, DST, and Prop 13
-  elsewhere in the project.
-- **Personal claims and firm claims stay visibly separate.** Ben's
-  personal career figures (worked Lamorinda real estate since 2004,
-  1,000+ buyers and sellers) never sit in the same sentence as the
-  firm's historical figures (operated in Lamorinda since 1977, $1B+
-  sold as a firm), since the firm's tenure predates Ben's own career by
-  27 years and conflating them overstates his personal track record.
+  and Orinda. Glossed once per file on first mention, via a single
+  shared constant, not hand-typed per file (that would drift).
+- **Personal claims and firm claims stay structurally separate, never
+  in the same sentence.** `personalTrackRecord` and `firmTrackRecord`
+  are two different fields specifically so Ben's own career figures
+  never get conflated with the firm's 1977-onward history, which
+  predates his own career by 27 years.
+- **Positioning constraints get written as facts, not rules.** Early in
+  this project, BrightFlip's and Final Offer's `compliance` fields
+  contained literal copywriter instructions ("Do not use the word
+  auction," "Do not promise interest-free capital") instead of facts an
+  agent could use. That's a real failure mode, worth watching for
+  generally: a constraint on what NOT to say should get rewritten as a
+  positioning statement that satisfies the same constraint by simply
+  never introducing the thing being avoided, not exposed as a raw
+  instruction.
 
 ## 7. Known limitations, by design
 
 - **No MLS/IDX inventory exposure.** Deliberately out of scope. MLS
   listing data is licensed third-party data under an IDX agreement
   between the local MLS board and Luxury Presence's IDX vendor, not
-  something BrightWork can unilaterally decide to expose through an
-  agent-readable feed. Separately, the marginal value is low, an agent
-  looking for "what's for sale in Moraga" already has Zillow, Redfin,
-  and Trulia for that at zero cost. If this changes, it needs review of
-  the actual IDX data-use agreement first, not a technical build.
+  something BrightWork can unilaterally decide to expose. Marginal value
+  is also low, Zillow/Redfin/Trulia already answer "what's for sale in
+  Moraga" at zero cost to the requester.
 - **WebMCP tools are low-reach today.** `navigator.modelContext` is an
   experimental browser API most current agents and browsers don't
-  implement. The tools exist and are correctly built, but `agents.json`
-  and `llms.txt` are the layers doing the actual work right now.
+  implement. `agents.json` and `llms.txt` are the layers doing the
+  actual work right now.
 - **`request_consult`'s underlying endpoint is intentionally
-  undocumented in `agents.json`.** The WebMCP tool is the supported path
-  for an agent to submit a contact request. The raw `bw-fub-proxy`
-  endpoint isn't published as a callable action, publishing it invites
-  direct POSTs from anything that finds the file, not just the intended
-  tool. It's visible in `fub-lead.js` regardless, since that's how the
-  human form works too, but it's not formalized as a public contract.
+  undocumented as a callable action in `agents.json`.** The WebMCP tool
+  is the supported path. The raw `bw-fub-proxy` endpoint isn't published
+  as a public contract, though it's visible in `fub-lead.js` regardless,
+  since that's how the human form works too.
 
-## 8. Open items
+## 8. A hostname is not free just because nothing renders there
 
-- **Ben's personal lifetime sales volume.** The firm-level "$1B+ since
-  1977" figure is solid and sourced. A cleanly Ben-attributed personal
-  figure (his own production since 2004, not the firm's full history)
-  would be a stronger, unambiguous claim. Needs research on Ben's actual
-  numbers, not a placeholder.
+This is the most expensive lesson of the whole project and belongs in
+its own section, not buried in a changelog. `mcp.brightworkrealty.com`
+looked unclaimed, a plain 404, no visible content, elevated AI-crawler
+traffic in Cloudflare's dashboard. It was not unclaimed. It's a real,
+actively-used MCP server on the COS droplet (a separate system, separate
+project), reachable via a Cloudflare Tunnel that happened to route
+through this same zone. A diagnostic Worker was bound to that hostname
+to log probe traffic, which silently intercepted every real request to
+that server, including legitimate operator use, until the mistake was
+caught via a full DNS zone export and reversed.
+
+**Before binding any new hostname on this domain, export the actual DNS
+records and check what's already there.** A 404 response proves nothing
+about whether a hostname is free, it can mean "nothing here" or it can
+mean "something here that doesn't answer the way you're probing it."
+This applies beyond this project: any future subdomain work on
+`brightworkrealty.com`, or any domain where MKTNG shares zone ownership
+across multiple systems, should start with a DNS export, not an
+assumption.
+
+## 9. Open items
+
+- **Ben's personal lifetime sales volume.** `firmTrackRecord` ($1B+
+  since 1977) is solid and firm-scoped. A cleanly Ben-attributed
+  personal figure, his own production since 2004, would be a stronger,
+  unambiguous claim for `personalTrackRecord`. Needs research on Ben's
+  actual numbers, not a placeholder.
 - **Accolades currency.** "Top Teams 2021" is five years old. Not
   actively misleading, it's a named award for a specific year, not a
   decaying performance metric, but worth checking with Ben for anything
@@ -190,15 +272,17 @@ follows a few rules specific to writing for a model instead of a person:
 - **Luxury Presence native support.** Outstanding email to Luxury
   Presence asking whether `robots.txt` is natively editable, whether
   they already publish an `llms.txt` automatically, and whether `<head>`
-  injection is possible beyond the Global Scripts field. Answers would
-  determine whether the redirect-to-Worker approach in Section 5 can be
-  retired in favor of something native.
+  injection is possible beyond the Global Scripts field. Given what's
+  now confirmed in Section 5 about the apex CNAME chain, a "yes" from
+  Luxury Presence is the only realistic path to retiring the redirect
+  workaround, an internal Worker Route can't do it regardless.
 - **MCC site (moragacountryclubrealestate.com).** Same four-layer
   pattern hasn't been built there yet. Separate Astro repo, fully in
-  MKTNG's control, lower urgency since it's not the primary lead-gen
-  surface, but a reasonable next target given its content depth.
+  MKTNG's control, no CMS constraint to work around this time. See the
+  separate implementation blueprint for what should transfer directly
+  versus what needs its own pass.
 
-## 9. Maintenance checklist
+## 10. Maintenance checklist
 
 Run after any change to `agent-source-data.mjs`, before pushing:
 
@@ -239,6 +323,14 @@ for p in ['offmarket','buybefore','quiet','relaunch','brightflip','finaloffer','
 # howItWorks is the one consistent field name across all eight program objects
 grep -c "howItWorks:" shared/agent-source-data.mjs   # should be 8
 grep -c "howAccessWorks\|approach:" shared/agent-source-data.mjs   # should be 0
+
+# protocolVersion is one shared constant, not hardcoded per surface
+grep -rn "protocolVersion" */agents.json shared/agent-response-builders.mjs
+# every result should show the same version
+
+# instruction-shaped language never leaked into compliance/positioning fields
+grep -n "Do not\|do not\|never say\|avoid the word\|do not name\|do not promise" shared/agent-source-data.mjs
+# any hit outside seniors/invest's legitimate disclaimers should be rewritten as a fact
 ```
 
 **The bar for "discoverable":** a plain `curl` or plain-text fetch, no
@@ -247,27 +339,37 @@ two hops from the homepage. Test against that bar, not a live browser
 session with JavaScript enabled.
 
 **Commit discipline:** have Cursor (or whichever agent runs a content
-change) `commit` and `push` as the final step of any prompt, not just
-regenerate locally. A change that isn't pushed doesn't exist for
-verification purposes, and this project lost real time to that gap
-across several rounds before it was made an explicit requirement.
+change) `commit` and `push` as the final step of any prompt. A change
+that isn't pushed doesn't exist for verification purposes. This project
+lost real time to that gap across several rounds before it was made an
+explicit, standard requirement.
 
-## 10. Testing protocol
+**Route removal isn't reliable from the config file alone.** Removing a
+`[[routes]]` block from `wrangler.toml` and redeploying does not
+guarantee Cloudflare's zone-level route table actually drops the
+binding. Confirmed directly: after the `mcp.brightworkrealty.com`
+incident, the route was still live post-redeploy and had to be deleted
+manually via the Cloudflare API. Any future route removal should verify
+against the actual zone route list, not just the file.
+
+## 11. Testing protocol
 
 Two kinds of test, don't rely on only one:
 
-- **Source verification** (Section 9 above): confirms the repo itself
-  is internally consistent and brand-compliant. Fast, free, catches
-  regressions immediately, but proves nothing about what's actually
-  being served live.
+- **Source verification**: confirms the repo itself is internally
+  consistent and brand-compliant. Fast, free, catches regressions
+  immediately, but proves nothing about what's actually being served
+  live, or what already exists at a hostname before you touch it.
 - **Live/blind verification**: hitting the actual deployed URLs, ideally
   with a model that has zero prior context on this project, to see what
-  an uninformed agent genuinely finds and how it uses it. See
-  `grok-blind-test-prompts.md` for the two-part prompt used for this,
-  a value test (does the content change a recommendation) and a
-  technical test (can an agent cold-discover the infrastructure).
+  an uninformed agent genuinely finds and how it uses it. This caught
+  two real bugs a source-only review missed entirely: the `robots.txt`
+  em-dash/protocol-version-style drift, and, more importantly, confirmed
+  the Cloudflare AI Crawl Control panel numbers were worth taking
+  seriously as real signal, which is what led to discovering
+  `mcp.brightworkrealty.com` was already in use in the first place.
 
-## 11. Timeline
+## 12. Timeline
 
 - **Late August 2026**: WebMCP tools, `agents.txt`, and the `Link`
   response header built and deployed across all eight program pages.
@@ -280,12 +382,34 @@ Two kinds of test, don't rely on only one:
   copywriter shouldn't say, not facts about the business) and stale
   figures ($150M/2021 sales, superseded by the firm's $1B+ figure).
   Both fixed at the source.
-- Root domain (brightworkrealty.com) brought into the same system via
-  the `bw-agent-root` Cloudflare Worker and Luxury Presence redirects,
-  the one domain with no direct code access.
+- Root domain brought into the same system via the `bw-agent-root`
+  Cloudflare Worker and Luxury Presence redirects.
 - Content restructured from narrated prose to discrete, mechanism-level
-  claims across all nine files (root plus eight programs), following
-  the principles in Section 6.
-- Full repo-wide compliance sweep run clean; one pre-existing,
+  claims across all nine files, `CREDENTIALS` rebuilt as `bio`/
+  `specialtyAreas`/`personalTrackRecord`/`firmTrackRecord`.
+- Full repo-wide compliance sweep run clean. One pre-existing,
   unrelated em-dash issue found in `offmarket/index.html` human-facing
-  copy, flagged for a separate fix.
+  copy; later fixed.
+- Independent blind test (a model with zero prior context on this
+  project) confirmed the content strategy works, cited specific
+  mechanisms unprompted, correctly separated firm and personal claims,
+  and separately surfaced a real `protocolVersion` mismatch (`1.1` root
+  vs `1.0` program pages) that source review alone had missed. Fixed by
+  moving the version to one shared constant.
+- Confirmed via Cloudflare's AI Crawl Control that no AI crawlers were
+  actually blocked, the "two stacked robots.txt policies" the blind test
+  flagged was Cloudflare's Managed Robots.txt feature (opts training
+  crawlers out, leaves live-query assistants reachable), a deliberate
+  default, not a bug.
+- Sustained request volume discovered at `mcp.brightworkrealty.com`. A
+  diagnostic Worker was built and bound there to log probe traffic.
+- Full DNS zone export revealed `mcp.brightworkrealty.com` was already
+  live, actively-used infrastructure (a separate MCP server on the COS
+  droplet), unrelated to this project. The diagnostic Worker had been
+  silently intercepting real traffic to it. Route removed and manually
+  confirmed deleted from Cloudflare's zone route table, not just the
+  config file. Real service confirmed restored via `/health`.
+- Attempted to replace the apex redirect workaround with a direct
+  Worker Route. Confirmed technically not possible without a proxy
+  status change (Section 5), reverted, redirect approach retained
+  deliberately.

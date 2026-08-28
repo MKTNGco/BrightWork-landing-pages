@@ -7,3 +7,13 @@ alwaysApply: true
 Before editing any landing page HTML or writing copy, read `artifacts/handbook.md`. It contains all brand tokens, hard rules (no em dashes, Suite I not 1, REALTOR not Broker, no Side RE in copy), component patterns, and per-page specs. Do not write code or copy without consulting it first.
 
 Before editing agent discoverability files (`shared/agent-source-data.mjs`, `llms.txt`, `agents.json`, WebMCP scripts, or `bw-agent-root/`), read `artifacts/agent-discoverability.md`.
+
+Agent-layer patterns (do not drift):
+- `CREDENTIALS` fields are `bio`, `specialtyAreas`, `personalTrackRecord`, `reviewsUrl`, `firmTrackRecord`, `differentiator`. The old `trackRecord` / `localAuthority` / `background` shape no longer exists.
+- Program objects use `howItWorks` only. Do not reintroduce `howAccessWorks` or `approach`.
+- `AGENT_PROTOCOL_VERSION` is one shared constant (currently `1.1`). Do not hardcode a version per surface.
+- Never hand-edit generated `llms.txt`, `agents.json`, or `webmcp-data.js`. Edit source, run `node scripts/generate-agent-discoverability.mjs`, commit the regenerated output.
+- Apex `robots.txt` / `llms.txt` / `agents.json` are Luxury Presence redirects to `bw-agent-root`, not Worker Routes. Do not bind Worker Routes on apex/`www`.
+- Before binding any hostname on `brightworkrealty.com`, export the live DNS records first. A 404 does not mean the name is free. `mcp.brightworkrealty.com` is a live COS MCP tunnel. Do not rebind it.
+- Removing a `[[routes]]` block and redeploying does not guarantee Cloudflare dropped the binding. Verify against the zone route list.
+- Commit and push as the final step of any agent-layer change.
