@@ -49,7 +49,8 @@ brightwork-landing-pages/
 ├── brightflip/              → brightflip.brightworkrealty.com [EXISTS]
 ├── finaloffer/              → finaloffer.brightworkrealty.com [EXISTS]
 ├── invest/                  → invest.brightworkrealty.com     [EXISTS]
-└── seniors/                 → seniors.brightworkrealty.com    [EXISTS]
+├── seniors/                 → seniors.brightworkrealty.com    [EXISTS]
+└── mcp-diagnostic/          → mcp.brightworkrealty.com (probe logger, not an MCP server)
 ```
 
 ---

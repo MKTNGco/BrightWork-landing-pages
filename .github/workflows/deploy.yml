@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        page: [offmarket, buybefore, quiet, relaunch, brightflip, finaloffer, invest, seniors, bw-agent-root]
+        page: [offmarket, buybefore, quiet, relaunch, brightflip, finaloffer, invest, seniors, bw-agent-root, mcp-diagnostic]
     steps:
       - uses: actions/checkout@v4
 
