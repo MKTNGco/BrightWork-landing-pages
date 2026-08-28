@@ -8,6 +8,11 @@ All brand rules, component patterns, copy standards, per-page specs, and
 the new-page checklist live in `artifacts/handbook.md`. Read it before
 writing any code or copy. It is the authoritative source.
 
+Agent discoverability (robots.txt, llms.txt, agents.json, WebMCP,
+bw-agent-root Worker) is documented in `artifacts/agent-discoverability.md`.
+Read it before editing `shared/agent-source-data.mjs`, generated agent
+files, or the root Worker.
+
 ---
 
 ## Project
@@ -27,8 +32,11 @@ MCC site (moragacountryclubrealestate.com) is a separate Astro repo. Not here.
 brightwork-landing-pages/
 ├── CLAUDE.md
 ├── artifacts/
-│   └── handbook.md          ← read this
+│   ├── handbook.md              ← read this (brand, pages, copy)
+│   └── agent-discoverability.md ← read this (agent layer, WebMCP, root Worker)
 ├── shared/
+│   ├── agent-source-data.mjs
+│   ├── agent-response-builders.mjs
 │   ├── posthog-init.js
 │   ├── widget-tracker.js
 │   ├── animations.js
@@ -107,6 +115,8 @@ Shared loader: `shared/widget-tracker.js` (duplicate into each Workers folder li
 ---
 
 ## Agent discoverability (program landing pages)
+
+Full reference: **`artifacts/agent-discoverability.md`**.
 
 Office and program facts for WebMCP tools, `agents.json`, and `llms.txt` live in **`shared/agent-source-data.mjs`**. After editing copy there, regenerate static agent files and the browser bundle:
 

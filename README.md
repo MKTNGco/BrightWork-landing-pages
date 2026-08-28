@@ -13,6 +13,35 @@ Plain HTML, CSS, and vanilla JS. No framework. No build step.
 
 All eight program pages are built and deployed to Cloudflare Workers. CI deploys on push to `main`.
 
+Each program page also exposes an AI-agent discovery layer (plain-text and JSON facts, plus optional WebMCP tools). The root domain (`brightworkrealty.com`) is covered by the `bw-agent-root` Worker. See **Agent discoverability** below.
+
+---
+
+## Agent discoverability
+
+In addition to human-facing landing pages, this repo serves structured facts for AI agents and crawlers:
+
+| Layer | Files | Reach |
+|---|---|---|
+| 1 | `robots.txt` | Any crawler |
+| 2 | `llms.txt` | Plain-text/Markdown agents |
+| 3 | `agents.json` | Structured JSON, no JS required |
+| 4 | `agents.txt` + WebMCP | Action-capable browser agents (forward-looking) |
+
+**Single source of truth:** `shared/agent-source-data.mjs`
+
+**Generate program-page output** after editing source data:
+
+```bash
+node scripts/generate-agent-discoverability.mjs
+```
+
+That writes `robots.txt`, `llms.txt`, `agents.json`, and `webmcp-data.js` into each of the eight program folders. Do not hand-edit generated files.
+
+**Root domain:** `bw-agent-root/` is a scripted Cloudflare Worker (not static assets) that serves `/robots.txt`, `/llms.txt`, and `/agents.json` for `brightworkrealty.com` via Luxury Presence redirects to `bw-agent-root.scott-5f5.workers.dev`.
+
+Full architecture, content principles, maintenance checklist, and testing protocol: **`artifacts/agent-discoverability.md`**
+
 ---
 
 ## Pages
@@ -36,14 +65,24 @@ All eight program pages are built and deployed to Cloudflare Workers. CI deploys
 brightwork-landing-pages/
 ├── CLAUDE.md                  ← Claude Code session context
 ├── artifacts/
-│   └── handbook.md            ← full spec: brand rules, page patterns, per-page copy
+│   ├── handbook.md            ← full spec: brand rules, page patterns, per-page copy
+│   └── agent-discoverability.md ← agent layer: llms.txt, agents.json, WebMCP, root Worker
 ├── shared/
+│   ├── agent-source-data.mjs  ← canonical office + program facts (agent layer source)
+│   ├── agent-response-builders.mjs ← root-domain response builders (bw-agent-root)
 │   ├── posthog-init.js        ← PostHog analytics snippet (all pages load this)
 │   ├── animations.js          ← scroll-reveal (program pages; seniors/workshop omits)
 │   ├── brand.css              ← CSS token reference
 │   └── BrightWork_logo.png    ← logo file (copied into each page's images/ folder)
+├── bw-agent-root/             ← scripted Worker for brightworkrealty.com agent files
+├── bw-fub-proxy/              ← form submission proxy to Follow Up Boss
+├── scripts/
+│   └── generate-agent-discoverability.mjs ← regenerates llms.txt, agents.json, webmcp-data.js
 └── [pagename]/
     ├── index.html             ← entire page, CSS and JS inline
+    ├── llms.txt               ← generated agent-readable Markdown
+    ├── agents.json            ← generated structured facts
+    ├── robots.txt             ← generated crawler hints
     ├── wrangler.toml          ← Cloudflare Workers config
     ├── .assetsignore
     └── images/
@@ -134,9 +173,12 @@ anonymous session to the named lead.
 
 ## Reference Docs
 
-- **`artifacts/handbook.md`** — start here. Contains brand tokens, all CSS
+- **`artifacts/handbook.md`** — start here for human-facing pages. Contains brand tokens, all CSS
   patterns, page structure, per-page copy specs, voice rules, the new-page
   checklist, and schema templates.
+- **`artifacts/agent-discoverability.md`** — start here for the agent layer. Covers the four-layer
+  discovery model, single source of truth, per-page file reference, root Worker,
+  content principles, maintenance checklist, and testing protocol.
 - **`CLAUDE.md`** — Claude Code session context: hosting, form backend,
   PostHog config, Cloudflare account reference.
 

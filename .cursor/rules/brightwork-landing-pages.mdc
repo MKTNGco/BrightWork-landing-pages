@@ -5,3 +5,5 @@ alwaysApply: true
 ---
 
 Before editing any landing page HTML or writing copy, read `artifacts/handbook.md`. It contains all brand tokens, hard rules (no em dashes, Suite I not 1, REALTOR not Broker, no Side RE in copy), component patterns, and per-page specs. Do not write code or copy without consulting it first.
+
+Before editing agent discoverability files (`shared/agent-source-data.mjs`, `llms.txt`, `agents.json`, WebMCP scripts, or `bw-agent-root/`), read `artifacts/agent-discoverability.md`.
