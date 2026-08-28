@@ -3,6 +3,18 @@
  * Edit here, then run: node scripts/generate-agent-discoverability.mjs
  */
 
+export const LAMORINDA_GLOSS = 'Lamorinda (Lafayette, Moraga, and Orinda, California)';
+
+/** Replace the first standalone "Lamorinda" in a file with LAMORINDA_GLOSS. */
+export function applyLamorindaGloss(content) {
+  let glossed = false;
+  return content.replace(/\bLamorinda\b/g, (match) => {
+    if (glossed) return match;
+    glossed = true;
+    return LAMORINDA_GLOSS;
+  });
+}
+
 export const OFFICE_INFO = {
   brandName: 'BrightWork Realty Advocates',
   tagline: 'The Smart Way to Real Estate',
@@ -23,16 +35,31 @@ export const OFFICE_INFO = {
   },
   brokerageDre: '02014153',
   website: 'https://brightworkrealty.com',
-  marketTenure: 'The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   hoursNote: 'Contact the office by phone or email. Program pages do not publish walk-in hours.'
 };
 
 export const CREDENTIALS = {
-  trackRecord: 'BrightWork Realty Advocates has sold over $1 billion of Lamorinda real estate. More than 1,000 buyers and sellers have worked with Ben Olsen over his career.',
-  localAuthority: 'Ben Olsen is a native Lamorinda resident and a current, long-time member of Moraga Country Club, giving him direct, personal knowledge of the communities he serves, not just professional familiarity.',
-  background: 'Ben entered the construction workforce at 14, which informs how he evaluates pre-sale improvements today. He studied business and economics at UC Santa Barbara, then worked in the tech industry before returning to real estate, which shapes his approach to digital marketing and online buyer behavior.',
-  certifications: ['Green building', 'Distressed properties'],
-  recognition: ['HomeLight Elite', 'Best of Zillow', 'Top Teams 2021', 'Better Business Bureau recognition'],
+  bio: [
+    'Licensed and active in Lamorinda real estate since 2004',
+    'Native Lamorinda resident; current member, Moraga Country Club',
+    'Entered the construction trade at 14, prior to his real estate career; informs BrightFlip\'s pre-sale improvement recommendations',
+    'B.A., Business Economics, UC Santa Barbara; prior career in technology before returning to real estate',
+    'Recognition: HomeLight Elite, Best of Zillow, Top Teams 2021, Better Business Bureau',
+    'Certifications: Green building, Distressed properties'
+  ],
+  specialtyAreas: [
+    'Off-market and quiet listings',
+    'Buy-before-you-sell transactions',
+    'Senior real estate transitions',
+    'Expired-listing relaunch strategy',
+    'Pre-sale improvement financing',
+    'Competitive offer management',
+    'Local investment property planning'
+  ],
+  personalTrackRecord: 'More than 1,000 buyers and sellers have worked with Ben over his career.',
+  reviewsUrl: 'https://brightworkrealty.com/agents/ben-olsen',
+  firmTrackRecord: 'The BrightWork team has operated in Lamorinda since 1977 and has sold over $1 billion of Lamorinda real estate as a firm.',
   differentiator: 'Ben commissions a pre-sale inspection before every listing goes to market. Real issues are addressed upfront, and the full findings are disclosed in writing to every buyer who makes an offer. Every buyer works from the same information, which is designed to produce a non-contingent offer with no grounds for a second round of repair negotiations.'
 };
 
@@ -98,7 +125,7 @@ export const OFFMARKET_PROGRAM = {
   tagline: 'The Smart Way to Real Estate',
   summary: 'Private VIP buyer list for off-market homes in Lamorinda before they appear on Zillow or the MLS.',
   audience: 'Serious Bay Area buyers who want early access to homes sold quietly, without public listing exposure.',
-  howAccessWorks: [
+  howItWorks: [
     'Join the private VIP buyer list at no charge.',
     'When a new off-market home comes to BrightWork, you receive a text alert the same day.',
     'Homes are shown selectively to qualified buyers through a private buyer network, not broadcast publicly.',
@@ -111,7 +138,7 @@ export const OFFMARKET_PROGRAM = {
     { title: 'Instant Text Notification', detail: 'You get a text the moment a new property comes to BrightWork.' }
   ],
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'Ben Olsen and BrightWork Realty Advocates have worked Lamorinda since 2004, with team roots in the area since 1977.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   mlsNote: 'MLS regulations require these listings not be published publicly, which is why access is through a private conversation.',
   faq: [
     {
@@ -154,10 +181,10 @@ export const BUYBEFORE_PROGRAM = {
     'Non-contingent offers that compete on terms, not just price',
     'Multiple program options matched to your situation',
     'Sell on your timeline, prepared rather than pressured',
-    'Local Lamorinda expertise since 1977 on the BrightWork team'
+    'Local Lamorinda expertise on the BrightWork team'
   ],
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   faq: [
     {
       question: 'How does buy before you sell work in California?',
@@ -188,6 +215,13 @@ export const SENIORS_PROGRAM = {
   tagline: 'The Smart Way to Real Estate',
   summary: 'Consultative planning for senior homeowners and families navigating Prop 13, legacy homes, trusts, timing, and transition options in Lamorinda.',
   audience: 'Senior homeowners planning their next chapter and adult children who need a structured way to start the conversation before a crisis.',
+  howItWorks: [
+    'Ben maps Prop 13 basis, legacy home options, trust and titling questions, and transition timing before any listing decision.',
+    'Ben coordinates real estate strategy with questions for your CPA and estate attorney, not tax or legal advice.',
+    'Ben evaluates whether keeping the home as a rental fits Prop 13 basis, equity, and family housing needs, even when that means no listing commission.',
+    'Ben surfaces options many families miss, including 1031 exchanges, DSTs, and step-up in basis concepts to discuss with advisors.',
+    'Ben helps families start the conversation before a crisis forces the decision.'
+  ],
   topics: [
     'Prop 13 tax basis and capital gains questions to raise with your CPA',
     'Legacy home decisions: stay, downsize, rent, or sell on your timeline',
@@ -205,12 +239,12 @@ export const SENIORS_PROGRAM = {
     'Tax and estate topics, including 1031 exchanges, DSTs, and step-up in basis, are questions to raise with your CPA and estate attorney, not Ben.'
   ],
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   workshopNote: 'Ben occasionally hosts senior real estate planning workshops. See seniors.brightworkrealty.com/workshop for workshop details.',
   faq: [
     {
       question: 'When should a senior homeowner start thinking about a real estate transition?',
-      answer: 'Before a health event forces urgent decisions. Planning ahead preserves more options and autonomy.'
+      answer: 'Before a crisis forces the decision. Planning ahead preserves more options and autonomy.'
     },
     {
       question: 'What is Prop 13 and why does it matter if I am thinking about selling?',
@@ -250,7 +284,7 @@ export const QUIET_PROGRAM = {
     'Option to pivot to a full MLS campaign with real market feedback'
   ],
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   complianceNote: 'Private means selective exposure to qualified buyers, not a workaround of MLS rules.',
   faq: [
     {
@@ -282,6 +316,13 @@ export const RELAUNCH_PROGRAM = {
   tagline: 'The Smart Way to Real Estate',
   summary: 'Forensic review and rebuilt plan for Lamorinda homes whose previous listing expired without selling.',
   audience: 'Homeowners whose listing expired with a previous agent and want an honest breakdown of what went wrong before relisting.',
+  howItWorks: [
+    'Before any new agreement, Ben forensically reviews the previous listing instead of starting with a new sign.',
+    'Ben compares pricing to condition and comparable sales, not just whether the ask was high.',
+    'Ben evaluates photography and visual storytelling for whether buyers saw a home they wanted to walk into.',
+    'Ben assesses listing copy and narrative for language that reaches Lamorinda buyers who value the home.',
+    'Ben reviews portal placement, campaign execution, and prep decisions with realistic scope and financing options when improvements are worth making.'
+  ],
   approach: 'Ben starts with a forensic review of the previous listing, not a new sign. The review covers pricing in context, photography, listing narrative, portal placement, and prep decisions.',
   reviewAreas: [
     'Pricing in context relative to condition and comparable sales',
@@ -298,7 +339,7 @@ export const RELAUNCH_PROGRAM = {
     'Selective use of premium tools such as Zillow Showcase, 3D tours, Final Offer, or pre-sale capital when justified'
   ],
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   faq: [
     {
       question: 'Why didn\'t my home sell in Lamorinda?',
@@ -386,7 +427,7 @@ export const FINALOFFER_PROGRAM = {
     'Useful when automated valuations undervalue unique Lamorinda homes with limited comps'
   ],
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   faq: [
     {
       question: 'What is Final Offer in residential real estate?',
@@ -413,6 +454,13 @@ export const INVEST_PROGRAM = {
   tagline: 'The Smart Way to Real Estate',
   summary: 'Planning conversations for Lamorinda families considering a first local investment property, especially high earners who have never called themselves investors.',
   audience: 'Lamorinda homeowners age 40 to 60 with significant equity and high household income exploring whether a local rental fits their tax, wealth, and family housing goals.',
+  howItWorks: [
+    'Ben starts with your financial picture, goals, and timeline before any property search.',
+    'Ben evaluates whether a local Lamorinda rental fits tax structure, wealth goals, and family housing needs.',
+    'If the math does not favor investing, Ben says so rather than pushing a purchase.',
+    'Ben covers depreciation, deductible expenses, and mortgage interest as questions to raise with your tax advisor.',
+    'Ben maps generational strategies, including one investment property per child when finances support it.'
+  ],
   approach: 'Ben starts with financial picture, goals, and timeline before any property search. If the math does not favor investing, he says so.',
   pillars: [
     { name: 'Tax structure', detail: 'Conceptual overview of depreciation, deductible expenses, and mortgage interest. Consult your tax advisor for specifics.' },
@@ -422,7 +470,7 @@ export const INVEST_PROGRAM = {
   ],
   compliance: 'Ben Olsen is a licensed REALTOR, not a financial advisor or CPA. Real estate investment involves risk. Nothing on this page constitutes financial, tax, or legal advice. Consult your financial and tax advisors before making investment decisions.',
   serviceArea: ['Moraga', 'Lafayette', 'Orinda', 'Lamorinda', 'East Bay, CA'],
-  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004. The BrightWork team has operated in Lamorinda since 1977.',
+  marketTenure: 'Ben Olsen has worked Lamorinda real estate since 2004.',
   faq: [
     {
       question: 'Is Lamorinda a good place to invest in real estate?',

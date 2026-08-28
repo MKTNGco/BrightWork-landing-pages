@@ -18,7 +18,8 @@ import {
   PROGRAMS,
   SHARED_TOOL_LIMITATIONS,
   PROGRAMS_BY_SLUG,
-  PAGE_FOLDERS
+  PAGE_FOLDERS,
+  applyLamorindaGloss
 } from '../shared/agent-source-data.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -36,7 +37,6 @@ const PROGRAM_KEY_ORDER = [
   'tagline',
   'summary',
   'audience',
-  'howAccessWorks',
   'howItWorks',
   'problem',
   'approach',
@@ -164,15 +164,25 @@ function complianceBlock(slug, program) {
 }
 
 function credentialsBlock() {
+  const bioLines = CREDENTIALS.bio.map((line) => `- ${line}`).join('\n');
+
   return `## Credentials
 
-- Track record: ${CREDENTIALS.trackRecord}
-- Local authority: ${CREDENTIALS.localAuthority}
-- Background: ${CREDENTIALS.background}
-- Certifications: ${CREDENTIALS.certifications.join(', ')}
-- Recognition: ${CREDENTIALS.recognition.join(', ')}
+${bioLines}
+
+- Personal track record: ${CREDENTIALS.personalTrackRecord}
+- Reviews: ${CREDENTIALS.reviewsUrl}
+- Firm track record: ${CREDENTIALS.firmTrackRecord}
 - Differentiator: ${CREDENTIALS.differentiator}
 `;
+}
+
+function howItWorksBlock(program) {
+  if (!Array.isArray(program.howItWorks) || program.howItWorks.length === 0) {
+    return '';
+  }
+
+  return `\n\n${program.howItWorks.map((step) => `- ${step}`).join('\n')}\n`;
 }
 
 function llmsTxt(slug) {
@@ -181,17 +191,16 @@ function llmsTxt(slug) {
   const oneLine = catalog ? catalog.summary : program.summary;
   const whatFor = `${program.summary} ${program.audience}`;
 
-  return `# ${program.name}: BrightWork Realty Advocates
+  const content = `# ${program.name}: BrightWork Realty Advocates
 
 > ${oneLine}
 
-BrightWork Realty Advocates. Ben Olsen, REALTOR. Serving Moraga, Lafayette, and Orinda (Lamorinda), CA. The BrightWork team has operated in Lamorinda since 1977. Ben Olsen has worked Lamorinda real estate since 2004.
+BrightWork Realty Advocates. Ben Olsen, REALTOR. Serving Lamorinda.
 
 ${credentialsBlock()}
 ## What this page is for
 
-${whatFor}
-
+${whatFor}${howItWorksBlock(program)}
 ## Key facts
 
 - Phone: ${OFFICE_INFO.phone}
@@ -207,6 +216,8 @@ ${PROGRAMS.map(programListLine).join('\n')}
 
 This site also exposes structured data at /agents.json (no browser required) and in-browser tools via WebMCP at /agents.txt (requires a WebMCP-capable runtime).
 `;
+
+  return applyLamorindaGloss(content);
 }
 
 function robotsTxt(subdomain) {

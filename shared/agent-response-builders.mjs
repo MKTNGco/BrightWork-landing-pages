@@ -1,11 +1,19 @@
 import {
+  applyLamorindaGloss,
   CREDENTIALS,
   OFFICE_INFO,
   PROGRAMS,
 } from "./agent-source-data.mjs";
 
-const SERVICE_AREA = "Moraga, Lafayette, and Orinda (Lamorinda), CA";
 const ROOT_PROTOCOL_VERSION = "1.1";
+
+function bioList(credentials) {
+  return credentials.bio.map((line) => `- ${line}`).join("\n");
+}
+
+function specialtyAreasList(credentials) {
+  return credentials.specialtyAreas.map((area) => `- ${area}`).join("\n");
+}
 
 export function buildRobotsTxt(office = OFFICE_INFO) {
   return `User-agent: *
@@ -26,18 +34,23 @@ export function buildRootLlmsTxt({
     .map((program) => `- [${program.name}](${program.url}): ${program.summary}`)
     .join("\n");
 
-  return `# ${office.brandName}
+  const content = `# ${office.brandName}
 
-> ${office.tagline}. ${office.realtor.name}, ${office.realtor.title}, serving ${SERVICE_AREA}.
-
-${credentials.trackRecord} ${office.marketTenure}
+> ${office.tagline}. ${office.realtor.name}, ${office.realtor.title}, serving Lamorinda.
 
 ## Who Ben is
 
-${credentials.localAuthority} ${credentials.background}
+${bioList(credentials)}
 
-Certifications: ${credentials.certifications.join(", ")}.
-Recognition: ${credentials.recognition.join(", ")}.
+## Specialty areas
+
+${specialtyAreasList(credentials)}
+
+${credentials.personalTrackRecord}
+
+Reviews: ${credentials.reviewsUrl}
+
+${credentials.firmTrackRecord}
 
 ## What makes BrightWork different
 
@@ -58,6 +71,8 @@ DRE: ${office.brokerageDre}
 
 Structured data is available at ${office.website}/agents.json. Each program page above also has its own detailed page and, where supported, WebMCP tools for direct interaction. This site does not provide MLS inventory, listing addresses, or CRM read access.
 `;
+
+  return applyLamorindaGloss(content);
 }
 
 export function buildRootAgentsJson({
