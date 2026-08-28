@@ -13,6 +13,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  AGENT_PROTOCOL_VERSION,
   OFFICE_INFO,
   CREDENTIALS,
   PROGRAMS,
@@ -116,7 +117,7 @@ function agentsJson(slug) {
   const compliance = complianceForSlug(slug, program);
 
   const doc = {
-    protocolVersion: '1.0',
+    protocolVersion: AGENT_PROTOCOL_VERSION,
     site: sitePayload(),
     credentials: CREDENTIALS,
     program: orderProgramKeys(program, slug)

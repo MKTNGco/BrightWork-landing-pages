@@ -3,6 +3,8 @@
  * Edit here, then run: node scripts/generate-agent-discoverability.mjs
  */
 
+export const AGENT_PROTOCOL_VERSION = '1.1';
+
 export const LAMORINDA_GLOSS = 'Lamorinda (Lafayette, Moraga, and Orinda, California)';
 
 /** Replace the first standalone "Lamorinda" in a file with LAMORINDA_GLOSS. */

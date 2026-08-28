@@ -1,5 +1,5 @@
 {
-  "protocolVersion": "1.0",
+  "protocolVersion": "1.1",
   "site": {
     "brandName": "BrightWork Realty Advocates",
     "tagline": "The Smart Way to Real Estate",
@@ -49,7 +49,6 @@
       "Ben covers depreciation, deductible expenses, and mortgage interest as questions to raise with your tax advisor.",
       "Ben maps generational strategies, including one investment property per child when finances support it."
     ],
-    "approach": "Ben starts with financial picture, goals, and timeline before any property search. If the math does not favor investing, he says so.",
     "pillars": [
       {
         "name": "Tax structure",

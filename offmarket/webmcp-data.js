@@ -366,7 +366,6 @@
         "Ben assesses listing copy and narrative for language that reaches Lamorinda buyers who value the home.",
         "Ben reviews portal placement, campaign execution, and prep decisions with realistic scope and financing options when improvements are worth making."
       ],
-      "approach": "Ben starts with a forensic review of the previous listing, not a new sign. The review covers pricing in context, photography, listing narrative, portal placement, and prep decisions.",
       "reviewAreas": [
         "Pricing in context relative to condition and comparable sales",
         "Photography and visual storytelling",
@@ -528,7 +527,6 @@
         "Ben covers depreciation, deductible expenses, and mortgage interest as questions to raise with your tax advisor.",
         "Ben maps generational strategies, including one investment property per child when finances support it."
       ],
-      "approach": "Ben starts with financial picture, goals, and timeline before any property search. If the math does not favor investing, he says so.",
       "pillars": [
         {
           "name": "Tax structure",

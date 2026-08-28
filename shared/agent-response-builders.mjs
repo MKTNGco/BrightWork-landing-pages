@@ -1,11 +1,10 @@
 import {
+  AGENT_PROTOCOL_VERSION,
   applyLamorindaGloss,
   CREDENTIALS,
   OFFICE_INFO,
   PROGRAMS,
 } from "./agent-source-data.mjs";
-
-const ROOT_PROTOCOL_VERSION = "1.1";
 
 function bioList(credentials) {
   return credentials.bio.map((line) => `- ${line}`).join("\n");
@@ -81,7 +80,7 @@ export function buildRootAgentsJson({
   programs = PROGRAMS,
 } = {}) {
   return {
-    protocolVersion: ROOT_PROTOCOL_VERSION,
+    protocolVersion: AGENT_PROTOCOL_VERSION,
     site: {
       brandName: office.brandName,
       tagline: office.tagline,
