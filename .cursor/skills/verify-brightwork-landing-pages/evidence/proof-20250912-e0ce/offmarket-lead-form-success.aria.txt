@@ -1,0 +1,139 @@
+- navigation:
+  - link "BrightWork Realty Advocates":
+    - /url: https://brightworkrealty.com
+    - img "BrightWork Realty Advocates"
+  - link "(925) 200-6000":
+    - /url: tel:9252006000
+    - img
+    - text: (925) 200-6000
+- text: New Listings Available
+- heading "Find Homes Before They Hit The Market" [level=1]
+- paragraph: Get exclusive access to off-market properties not listed on Zillow. Skip the bidding wars and be the first to know.
+- link "Get Private Access":
+  - /url: "#get-access"
+  - text: Get Private Access
+  - img
+- img
+- text: Private & Confidential
+- img
+- text: Instant Text Alerts
+- img
+- text: Exclusive VIP Access
+- img
+- text: Less Competition Why Off-Market?
+- heading "Stop Losing Homes to Bidding Wars" [level=2]
+- paragraph: Off-market properties give serious buyers a real advantage. You see the home before the competition, and you negotiate without the pressure of a dozen other offers.
+- img
+- strong: Privacy-First Sellers
+- paragraph: Homeowners who want a quiet sale without open houses or public exposure, perfect for serious, discreet buyers.
+- img
+- strong: Zero Competition
+- paragraph: Fewer buyers means less pressure. You can negotiate on your terms without the frenzy of a public listing.
+- img
+- strong: Pre-Market Head Start
+- paragraph: Many of our listings are available before sellers commit to a full public launch. You get first look, every time.
+- img
+- strong: Instant Text Notification
+- paragraph: The second a new property comes to us, you'll get a text. These go fast. Being first matters.
+- heading "Get Access To Our Private Listings" [level=2]
+- paragraph: Fill out the form below and we'll text you the moment a new off-market property becomes available.
+- img
+- heading "You're on the list!" [level=3]
+- paragraph: We'll text you the moment a new off-market property hits our desk. These go fast. Keep your phone close.
+- text: Common Questions
+- heading "Off-Market Buying in Lamorinda, Answered" [level=2]
+- heading "What is an off-market listing in Lamorinda?" [level=3]
+- paragraph: An off-market listing is a home that is being sold without a public listing on the MLS or sites like Zillow and Redfin. In Lamorinda, that usually means a homeowner who wants a quiet sale, no open houses, no yard sign, and no public days-on-market counter. The home is shown selectively to qualified buyers through a private buyer network instead of being broadcast to the whole internet.
+- heading "How do I get access to off-market homes before they hit Zillow?" [level=3]
+- paragraph: You get access by joining a private buyer list maintained by an agent who actually represents these sellers. Our VIP list is exactly that. When a new off-market home comes to us, you get a text the same day, often before the seller has decided whether to take it public at all. There is no charge to join and your information is never shared with third parties.
+- heading "Are off-market homes in Moraga and Lafayette available without an agent?" [level=3]
+- paragraph: In practice, no. Off-market homes in Moraga and Lafayette move through agent relationships and private buyer networks, not public portals. If you are not connected to an agent who is in those conversations, you will not see these homes until they hit the MLS, if they ever do. Working with a local REALTOR is how you get a seat at the table.
+- heading "What areas does BrightWork's private buyer list cover?" [level=3]
+- paragraph: Our private buyer list focuses on Lamorinda, which is Moraga, Lafayette, and Orinda, along with select pockets of the broader East Bay. Ben Olsen and BrightWork Realty Advocates have worked this market since 2004, with team roots in Lamorinda going back to 1977. If you are searching in any of these communities, the list is built for you.
+- paragraph:
+  - strong: "A note on MLS rules:"
+  - text: MLS regulations require us not to publish these listings publicly, which is why this must be a private conversation. By joining our VIP list, you gain access before anyone else, and your information is never shared with third parties.
+- paragraph: Why BrightWork
+- heading "The Smart Way to Real Estate" [level=2]
+- text: "01"
+- heading "Superior Presentation" [level=3]
+- paragraph: Professional photography, floor plans, 3D tours, and Sky Tours on every listing. Not the luxury package. The baseline.
+- text: "02"
+- heading "Premium Portal Presence" [level=3]
+- paragraph: Zillow Showcase and premium homes.com membership. Higher view counts, better placement, and buyer inquiries that route to your listing team.
+- text: "03"
+- heading "Integrated Campaigns" [level=3]
+- paragraph: Every sign, mailer, and open house connects to a digital system. Curious neighbors become trackable leads.
+- text: "04"
+- heading "Modern Offer Management" [level=3]
+- paragraph: Real-time portal data guides pricing decisions. Final Offer platform for properties with strong multi-offer potential.
+- text: "05"
+- heading "Financial Tools & Capital Programs" [level=3]
+- paragraph: Capital to fund pre-sale improvements with no out-of-pocket cost until close. Plus programs that remove the timing trap entirely.
+- link "BrightFlip (Pre-Sale Improvements)":
+  - /url: https://brightflip.brightworkrealty.com
+- link "Buy Before You Sell":
+  - /url: https://buybefore.brightworkrealty.com
+- text: This page 06
+- heading "Off-Market Strategy" [level=3]
+- paragraph: A private list of serious Bay Area buyers. Test demand quietly or gain early access before properties hit MLS.
+- link "Off-Market Access (Buyers)":
+  - /url: https://offmarket.brightworkrealty.com
+- link "Quiet Listing (Sellers)":
+  - /url: https://quiet.brightworkrealty.com
+- text: "07"
+- heading "Advocacy for Unsold Homes" [level=3]
+- paragraph: When a home hasn't sold, we don't re-list at a lower price. We conduct a forensic review and relaunch with a rebuilt strategy.
+- text: "08"
+- heading "Built to Close Clean" [level=3]
+- paragraph: Pre-sale prep, real fixes, and full disclosure to every buyer before the house lists. He structures listings to attract the best first offers from a position no one can argue with. The preparation is the negotiation.
+- contentinfo:
+  - link "BrightWork Realty Advocates":
+    - /url: https://brightworkrealty.com
+    - img "BrightWork Realty Advocates"
+  - paragraph: Rooted in Lamorinda since 1977. BrightWork is built on the premise that the best outcomes start before a home ever lists.
+  - paragraph: An orchestrated campaign designed for your home's buyer, not the average buyer.
+  - paragraph: Programs that turn seller constraints into options.
+  - paragraph: Transactions designed so everyone gets to the closing table feeling good.
+  - paragraph: That's The SMART Way to Real Estate.
+  - link "(925) 200-6000":
+    - /url: tel:9252006000
+  - paragraph: Our Programs
+  - link "Off-Market Access":
+    - /url: https://offmarket.brightworkrealty.com
+  - link "Buy Before You Sell":
+    - /url: https://buybefore.brightworkrealty.com
+  - link "Quiet Listing":
+    - /url: https://quiet.brightworkrealty.com
+  - link "Relaunch Strategy":
+    - /url: https://relaunch.brightworkrealty.com
+  - link "BrightFlip":
+    - /url: https://brightflip.brightworkrealty.com
+  - link "Final Offer":
+    - /url: https://finaloffer.brightworkrealty.com
+  - link "Real Estate Investing":
+    - /url: https://invest.brightworkrealty.com
+  - link "Senior Workshop":
+    - /url: https://seniors.brightworkrealty.com
+  - paragraph: Communities We Serve
+  - link "Moraga":
+    - /url: https://brightworkrealty.com/neighborhoods/moraga
+  - link "Lafayette":
+    - /url: https://brightworkrealty.com/neighborhoods/lafayette
+  - link "Orinda":
+    - /url: https://brightworkrealty.com/neighborhoods/orinda
+  - link "Walnut Creek":
+    - /url: https://brightworkrealty.com/neighborhoods/walnut-creek
+  - link "Alamo":
+    - /url: https://brightworkrealty.com/neighborhoods/alamo
+  - link "Pleasant Hill":
+    - /url: https://brightworkrealty.com/neighborhoods/pleasant-hill
+  - link "Search All Homes →":
+    - /url: https://brightworkrealty.com/home-search/listings
+  - img "REALTOR and Equal Housing Opportunity"
+  - paragraph: All information deemed reliable but not guaranteed and should be independently reviewed and verified. BrightWork Realty Advocates is an equal opportunity employer and supports fair housing.
+  - paragraph: BrightWork Realty Advocates · DRE# 02014153 · 455 Moraga Road, Suite I, Moraga, CA 94556
+  - link "Privacy Policy":
+    - /url: https://brightworkrealty.com/terms-and-conditions
+  - link "BrightWork Realty":
+    - /url: https://brightworkrealty.com
