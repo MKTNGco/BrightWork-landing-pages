@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <script>
+    if (location.protocol === 'http:' && location.hostname !== 'localhost')
+      location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case study: 102 Brookfield went from a stale listing to a one-day sale after a BrightWork relaunch at a higher price. Repairs, tree removal, and a clear strategy." />
+  <meta name="theme-color" content="#1a2f45" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="BrightWork Realty Advocates" />
+  <meta property="og:title" content="A 7x Return on One Relaunch Decision: The 102 Brookfield Turnaround" />
+  <meta property="og:description" content="How a stalled Lamorinda listing sold in one day after targeted repairs and a relaunch $50,000 above the prior list price." />
+  <meta property="og:url" content="https://relaunch.brightworkrealty.com/case-study/" />
+  <meta property="og:image" content="https://relaunch.brightworkrealty.com/images/case-study/hero.jpg" />
+  <link rel="canonical" href="https://relaunch.brightworkrealty.com/case-study/" />
+  <title>102 Brookfield Relaunch Case Study | BrightWork Realty Advocates</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../smart-way-strip.css" />
+
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set set_once unset register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId getSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1.7)}(document,window.posthog||(window.posthog=[]));
+
+posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
+    api_host: 'https://us.i.posthog.com',
+    ui_host: 'https://us.posthog.com',
+    asset_host: 'https://us-assets.i.posthog.com',
+    defaults: '2026-01-30',
+    cross_subdomain_cookie: true,
+    person_profiles: 'identified_only',
+    loaded: function (posthog) {
+      if (location.hostname === 'localhost') posthog.opt_out_capturing();
+    }
+});
+  </script>
+  <script src="../widget-tracker.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cyan: #0bbfe0;
+      --cyan-dark: #0099b8;
+      --cyan-light: #e6f9fd;
+      --yellow: #ffe200;
+      --navy: #1a2f45;
+      --teal: #005d7a;
+      --white: #ffffff;
+      --off-white: #f7fafc;
+      --text: #1a2f45;
+      --muted: #5a7184;
+      --border: #d8edf4;
+      --page-gutter: 60px;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--page-gutter);
+      height: 72px;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img {
+      height: 55px;
+      width: auto;
+      max-width: min(360px, 52vw);
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      display: none;
+    }
+    .nav-logo-text.is-visible { display: inline; }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .nav-phone svg {
+      width: 16px; height: 16px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .hero {
+      margin-top: 72px;
+      position: relative;
+      min-height: max(52vh, 480px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 80px var(--page-gutter) 72px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: var(--teal);
+      background-image: url('../images/case-study/hero.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 40, 55, 0.9) 0%,
+        rgba(0, 50, 68, 0.72) 50%,
+        rgba(0, 65, 85, 0.35) 100%
+      );
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--cyan);
+      z-index: 3;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--yellow);
+      color: var(--navy);
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+      max-width: 760px;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.04em;
+    }
+    .hero-back {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-back:hover { color: var(--white); }
+
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px var(--page-gutter) 48px;
+    }
+    .article-wrap h2 {
+      font-size: clamp(22px, 2.2vw, 28px);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin: 48px 0 18px;
+      line-height: 1.25;
+    }
+    .article-wrap h2:first-child { margin-top: 0; }
+    .article-wrap p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+    .article-wrap ul {
+      list-style: none;
+      margin: 8px 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .article-wrap ul li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .article-wrap ul li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      margin-top: 10px;
+      display: block;
+    }
+    .article-wrap strong { font-weight: 700; color: var(--navy); }
+
+    .carousel-section {
+      background: var(--off-white);
+      padding: 56px var(--page-gutter) 64px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .carousel-inner { max-width: 640px; margin: 0 auto; }
+    .carousel-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan-dark);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .carousel-title {
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 800;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+    .ba-carousel {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 93, 122, 0.08);
+    }
+    .ba-track { position: relative; }
+    [data-ba-slide] {
+      display: none;
+      margin: 0;
+    }
+    [data-ba-slide].is-active { display: block; }
+    [data-ba-slide] img {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: middle;
+    }
+    .ba-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+    .ba-arrow {
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .ba-arrow:hover {
+      border-color: var(--cyan);
+      background: var(--cyan-light);
+    }
+    .ba-arrow svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--navy);
+      fill: none;
+      stroke-width: 2;
+    }
+    .ba-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .ba-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: var(--border);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .ba-dot.is-active {
+      background: var(--cyan);
+      transform: scale(1.15);
+    }
+
+    .metrics-band {
+      background: var(--teal);
+      padding: 56px var(--page-gutter);
+      color: var(--white);
+    }
+    .metrics-inner { max-width: 720px; margin: 0 auto; }
+    .metrics-band h2 {
+      font-size: clamp(22px, 2.2vw, 28px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+    .metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .metrics-table th,
+    .metrics-table td {
+      text-align: left;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      vertical-align: top;
+    }
+    .metrics-table th {
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      width: 52%;
+      padding-right: 16px;
+    }
+    .metrics-table td {
+      font-weight: 700;
+      color: var(--yellow);
+    }
+    .metrics-table tr:last-child th,
+    .metrics-table tr:last-child td { border-bottom: none; }
+    .metrics-follow {
+      margin-top: 24px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.88);
+    }
+    .metrics-follow em { font-style: italic; font-weight: 400; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .split-left {
+      padding: 80px 64px 80px 60px;
+      background: var(--off-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .split-left h2 {
+      font-size: clamp(24px, 2.2vw, 32px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .split-left > p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan-dark);
+      margin-bottom: 16px;
+    }
+    .split-right {
+      background: var(--cyan);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-wrap { position: relative; z-index: 1; width: 100%; }
+    .form-wrap h2 {
+      font-size: clamp(22px, 2vw, 30px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .form-wrap .subtitle {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 26px;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+    .field-row .field-group { margin-bottom: 0; }
+    .field-group label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+    }
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 13px 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      border-radius: 0;
+      resize: vertical;
+    }
+    .field-group textarea { min-height: 90px; }
+    .field-group input::placeholder,
+    .field-group textarea::placeholder { color: rgba(255,255,255,0.55); }
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,0.2);
+    }
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 14px 0 20px;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--yellow);
+      cursor: pointer;
+    }
+    .consent-row p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .consent-row a { color: rgba(255,255,255,0.92); }
+    .submit-btn {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--navy);
+      border: none;
+      padding: 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .submit-btn:hover { background: #ffd700; transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .success-state { display: none; text-align: center; }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .success-icon svg {
+      width: 32px; height: 32px;
+      stroke: var(--navy); fill: none; stroke-width: 3;
+    }
+    .success-state h3 {
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .success-state p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid transparent;
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .disclaimer-bar {
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
+      padding: 28px 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .disclaimer-bar svg {
+      width: 20px; height: 20px;
+      stroke: var(--yellow); fill: none; stroke-width: 2;
+      min-width: 20px;
+      margin-top: 2px;
+    }
+    .disclaimer-bar p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+    .disclaimer-bar strong { color: rgba(255,255,255,0.82); font-weight: 600; }
+
+    footer {
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-top {
+      padding: 52px 60px 40px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
+    .footer-logo { height: 44px; width: auto; display: block; opacity: 0.9; }
+    .footer-blurb {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      max-width: 680px;
+    }
+    .footer-tagline { color: var(--cyan); font-weight: 600; }
+    .footer-tagline-smart { color: var(--yellow); }
+    .blurb-wrap { max-width: 680px; }
+    .blurb-thesis {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .blurb-items {
+      padding-left: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .blurb-items p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .footer-phone {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    .footer-col { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 4px;
+    }
+    .footer-col a {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--cyan); }
+    .footer-col a.footer-current {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+    }
+    .footer-compliance {
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-compliance-mark { height: 44px; width: auto; opacity: 0.55; }
+    .footer-compliance-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .footer-bar {
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bar p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      font-weight: 300;
+    }
+    .footer-bar a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 11px;
+    }
+    .footer-bar-links { display: flex; gap: 20px; }
+
+    @media (max-width: 800px) {
+      :root { --page-gutter: 28px; }
+      .hero { min-height: max(48vh, 420px); padding: 64px var(--page-gutter) 56px; }
+      .article-wrap { padding: 48px var(--page-gutter) 40px; }
+      .split { grid-template-columns: 1fr; }
+      .split-left { padding: 56px 28px; }
+      .split-right { padding: 56px 28px; }
+      .field-row { grid-template-columns: 1fr; }
+      .disclaimer-bar { padding: 24px 28px; }
+      .footer-top { grid-template-columns: 1fr; padding: 40px 28px 32px; }
+      .footer-compliance { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
+      .footer-bar { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
+      .blurb-items { padding-left: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://brightworkrealty.com" class="nav-logo" target="_blank" rel="noopener noreferrer">
+    <img src="../images/logo.png" alt="BrightWork Realty Advocates" decoding="async"
+         onerror="this.style.display='none';document.getElementById('navLogoText').classList.add('is-visible');" />
+    <span class="nav-logo-text" id="navLogoText">BrightWork Realty</span>
+  </a>
+  <a href="tel:9252006000" class="nav-phone">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l1.06-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (925) 200-6000
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">BrightWork Relaunch Case Study</div>
+    <h1>A 7x Return on One Relaunch Decision:<br><span>The 102 Brookfield Turnaround</span></h1>
+    <p class="hero-sub">A BrightWork Realty case study</p>
+    <a href="../" class="hero-back">&larr; Relaunch Strategy</a>
+  </div>
+</section>
+
+<article class="article-wrap">
+  <h2>The Situation</h2>
+  <p>102 Brookfield had already been through the wringer.</p>
+  <p>The home was originally listed by another agent, hired on behalf of an out-of-town seller who couldn't be on-site to see what buyers were seeing. The listing photos didn't tell the real story. The home showed as dark, dated, and neglected. It sat. The listing agent asked for a price reduction. The seller agreed. It still didn't sell. A second price reduction was requested.</p>
+  <p>That's when the seller stopped and said, "Wait a minute."</p>
+
+  <h2>The Walkthrough</h2>
+  <p>The first move wasn't a pitch. It was a visit. Photos can hide a lot, and they had. Walking the property in person made it obvious why buyers weren't responding:</p>
+  <ul>
+    <li>Overgrown trees on the property were blocking nearly all natural light, leaving rooms feeling more like a cave than a home</li>
+    <li>An unfinished garage</li>
+    <li>Paint and minor electrical issues that would make a home inspection look far scarier than it needed to</li>
+    <li>A 144-page home inspection report from the original listing so long and dense it was practically unreadable, the kind of document that scares off buyers before they've even seen the house</li>
+  </ul>
+  <p>None of it was unfixable. It just hadn't been fixed.</p>
+
+  <h2>The Plan</h2>
+  <p>Rather than another price cut, BrightWork proposed a different move: fix the actual problems, then relaunch at a <strong>higher</strong> price.</p>
+  <p><strong>What got done, in about three weeks:</strong></p>
+  <ul>
+    <li><strong>Four large trees removed.</strong> This was the single biggest impact of the whole project. With the trees gone, the house went from feeling like a cave to bright and welcoming.</li>
+    <li><strong>Garage completed and cleaned up.</strong></li>
+    <li><strong>Targeted paint and electrical work,</strong> aimed specifically at the items that make a home inspection read as alarming rather than routine.</li>
+    <li><strong>The inspection report itself was reworked.</strong> The original 144-page report was condensed into a clear, human-readable format (roughly 35-40 pages, with a proper summary section) and turned into a punch list of repair items for a handyman to knock out before a fresh inspection. A more reasonable, more readable inspector was brought in for the re-inspection.</li>
+  </ul>
+</article>
+
+<section class="carousel-section" aria-label="Before and after photos">
+  <div class="carousel-inner">
+    <p class="carousel-label">On the ground</p>
+    <h2 class="carousel-title">What buyers actually saw</h2>
+    <div class="ba-carousel" data-ba-carousel tabindex="0" role="region" aria-roledescription="carousel" aria-label="Before and after photos at 102 Brookfield">
+      <div class="ba-track">
+        <figure data-ba-slide class="is-active">
+          <img src="../images/case-study/before-after-aerial.jpg" alt="Aerial before and after views of 102 Brookfield showing tree removal and exterior refresh" width="640" height="800" loading="eager" />
+        </figure>
+        <figure data-ba-slide>
+          <img src="../images/case-study/before-after-yard.jpg" alt="Front yard before and after at 102 Brookfield with improved curb appeal" width="640" height="800" loading="lazy" />
+        </figure>
+        <figure data-ba-slide>
+          <img src="../images/case-study/before-after-entryway.jpg" alt="Entryway before and after at 102 Brookfield with updated door and staging" width="640" height="800" loading="lazy" />
+        </figure>
+      </div>
+      <div class="ba-controls">
+        <button type="button" class="ba-arrow" data-ba-prev aria-label="Previous photo">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="ba-dots" role="tablist">
+          <button type="button" class="ba-dot is-active" data-ba-dot aria-label="Slide 1" role="tab" aria-selected="true"></button>
+          <button type="button" class="ba-dot" data-ba-dot aria-label="Slide 2" role="tab" aria-selected="false"></button>
+          <button type="button" class="ba-dot" data-ba-dot aria-label="Slide 3" role="tab" aria-selected="false"></button>
+        </div>
+        <button type="button" class="ba-arrow" data-ba-next aria-label="Next photo">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<article class="article-wrap">
+  <h2>Solving the Real Obstacle: Cash Flow, Not Willpower</h2>
+  <p>The tree removal was the linchpin of the whole turnaround, but the seller hesitated, not because they didn't want it done, but because of upfront cost. That's a solvable problem, not a dealbreaker.</p>
+  <p>Once the actual issue was cash flow, BrightWork helped the seller get the work funded up front so the project could move forward immediately, rather than waiting on the seller's own cash to free up. The seller repaid those costs after closing. It's a simple idea: <strong>remove the obstacle that's actually in the way; don't just talk about the obstacle.</strong></p>
+</article>
+
+<section class="metrics-band">
+  <div class="metrics-inner">
+    <h2>The Result</h2>
+    <table class="metrics-table">
+      <tbody>
+        <tr>
+          <th scope="row">Time to complete repairs</th>
+          <td>3 weeks</td>
+        </tr>
+        <tr>
+          <th scope="row">Biggest single investment</th>
+          <td>$7,000 (tree removal)</td>
+        </tr>
+        <tr>
+          <th scope="row">Price change at relaunch</th>
+          <td>+$50,000 over prior list price</td>
+        </tr>
+        <tr>
+          <th scope="row">Time on market after relaunch</th>
+          <td>1 day</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="metrics-follow">The home that once looked like it needed a discount to move sold <em>above</em> its previous asking price, in a single day, once buyers could actually see what they were buying.</p>
+  </div>
+</section>
+
+<article class="article-wrap">
+  <h2>Why This Matters if Your Listing Has Gone Stale</h2>
+  <p>Expired and stale listings rarely fail because the house isn't good enough. They fail because of a fixable gap: bad photos, a scary inspection report, cosmetic issues nobody addressed, or a listing strategy that never adjusted to what buyers were actually seeing.</p>
+  <p>The BrightWork approach to a relaunch isn't about charm or a flashier marketing package. It's direct, it's specific, and it starts with an honest walkthrough: what's actually wrong, what it will take to fix it, and whether it's worth fixing before going back on the market. Sometimes that means telling a seller something they don't want to hear. Sometimes it means finding a practical way to get repairs funded so cash flow isn't what's standing between a listing and a sale.</p>
+  <p>The goal isn't to be liked. It's to get the house sold, and 102 Brookfield is proof that a clear-eyed relaunch strategy can turn a stalled listing into a one-day sale.</p>
+</article>
+
+<section class="split" id="get-review">
+  <div class="split-left">
+    <div class="eyebrow">Next step</div>
+    <h2>Start with a relaunch strategy for your home.</h2>
+    <p>Fill out the form so we can start working on a relaunch strategy for your home.</p>
+  </div>
+  <div class="split-right">
+    <div class="form-wrap">
+      <h2>Request Your Listing Review</h2>
+      <p class="subtitle">Ben will review your previous listing and come to the conversation with a specific point of view about what went wrong and what he'd do differently.</p>
+      <form id="leadForm">
+        <div class="field-row">
+          <div class="field-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="Jane" required />
+          </div>
+          <div class="field-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="(925) 555-0100" required />
+        </div>
+        <div class="field-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="jane@email.com" required />
+        </div>
+        <div class="field-group">
+          <label for="propertyAddress">Property Address *</label>
+          <input type="text" id="propertyAddress" placeholder="123 Main St, Moraga, CA" required />
+        </div>
+        <div class="field-group">
+          <label for="concern">One thing that bothered you about your previous listing experience (optional)</label>
+          <textarea id="concern" placeholder="Anything Ben should know going in"></textarea>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="consent" required />
+          <p>I agree to be contacted by BrightWork Realty Advocates via call, email, and text. Reply 'stop' to opt out. Message and data rates may apply. <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>.</p>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnText">Get My Free Review</span>
+          <div class="spinner" id="spinner"></div>
+        </button>
+      </form>
+      <div class="success-state" id="successState">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Your review is in motion.</h3>
+        <p>Ben will look at your previous listing and reach out to walk through what he sees. You can also call directly at (925) 200-6000.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="disclaimer-bar">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <p><strong>Disclosure:</strong> Ben Olsen is a licensed REALTOR with BrightWork Realty Advocates, Brokered by Side Real Estate. Nothing on this page constitutes a guarantee of sale or a specific sale price. Results vary based on property condition, market conditions, and seller circumstances.</p>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://brightworkrealty.com" target="_blank" rel="noopener">
+        <img src="../images/logo-white.png" alt="BrightWork Realty Advocates" class="footer-logo" onerror="this.style.display='none'" />
+      </a>
+      <div class="blurb-wrap">
+        <p class="blurb-thesis">Rooted in Lamorinda since 1977. BrightWork is built on the premise that the best outcomes start before a home ever lists.</p>
+        <div class="blurb-items">
+          <p>An orchestrated campaign designed for your home's buyer, not the average buyer.</p>
+          <p>Programs that turn seller constraints into options.</p>
+        </div>
+      </div>
+      <p class="footer-blurb">That's <span class="footer-tagline">The <span class="footer-tagline-smart">SMART</span> Way to Real Estate</span>.</p>
+      <a href="tel:9252006000" class="footer-phone">(925) 200-6000</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">Our Programs</p>
+      <a href="https://relaunch.brightworkrealty.com/" class="footer-current">Relaunch Strategy</a>
+      <a href="https://offmarket.brightworkrealty.com">Off-Market Access</a>
+      <a href="https://brightflip.brightworkrealty.com">BrightFlip</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-label">This case study</p>
+      <a href="https://relaunch.brightworkrealty.com/case-study/" class="footer-current">102 Brookfield</a>
+      <a href="../#get-review">Request a listing review</a>
+    </div>
+  </div>
+  <div class="footer-compliance">
+    <img src="../images/REALTOR_EHO_white.png" alt="REALTOR and Equal Housing Opportunity" class="footer-compliance-mark" decoding="async" />
+    <p class="footer-compliance-text">All information deemed reliable but not guaranteed and should be independently reviewed and verified. BrightWork Realty Advocates is an equal opportunity employer and supports fair housing.</p>
+  </div>
+  <div class="footer-bar">
+    <p>BrightWork Realty Advocates &nbsp;&middot;&nbsp; DRE# 02014153 &nbsp;&middot;&nbsp; 455 Moraga Road, Suite I, Moraga, CA 94556</p>
+    <div class="footer-bar-links">
+      <a href="https://brightworkrealty.com/terms-and-conditions">Privacy Policy</a>
+      <a href="https://brightworkrealty.com">BrightWork Realty</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../fub-lead.js"></script>
+<script src="case-study-slideshow.js"></script>
+<script>
+  const PROGRAM = BrightWorkLead.LEAD_TAG;
+
+  if (typeof posthog !== 'undefined') {
+    posthog.capture('page_view_program', { program: PROGRAM, page: 'case-study' });
+  }
+
+  let formStarted = false;
+  document.getElementById('leadForm').querySelectorAll('input, textarea').forEach(function(el) {
+    el.addEventListener('focus', function() {
+      if (!formStarted && typeof posthog !== 'undefined') {
+        formStarted = true;
+        posthog.capture('form_started', { program: PROGRAM, page: 'case-study' });
+      }
+    });
+  });
+
+  document.getElementById('leadForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+
+    btn.disabled = true;
+    btnText.textContent = 'Submitting...';
+    spinner.style.display = 'block';
+
+    try {
+      await BrightWorkLead.submit({
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        propertyAddress: document.getElementById('propertyAddress').value,
+        concern: document.getElementById('concern').value
+      });
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    } catch (err) {
+      alert('Something went wrong. Please call us at (925) 200-6000.');
+      btn.disabled = false;
+      btnText.textContent = 'Get My Free Review';
+      spinner.style.display = 'none';
+    }
+  });
+</script>
+<script src="../smart-way-strip.js"></script>
+<script src="../animations.js"></script>
+<script src="../nav-shrink.js"></script>
+</body>
+</html>
