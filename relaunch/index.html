@@ -490,13 +490,17 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     }
 
     /* Case study callout (mirrors seniors/workshop pattern) */
+    .section.case-study-callout {
+      padding-top: 36px;
+      padding-bottom: 40px;
+    }
     .case-study-callout[data-active="true"] .case-study-callout-inactive { display: none; }
     .case-study-callout[data-active="false"] .case-study-callout-active { display: none; }
     .case-study-callout-active {
       max-width: 900px;
       margin: 0 auto;
       background: var(--teal);
-      padding: 48px 56px;
+      padding: 32px 40px;
       text-align: center;
     }
     .case-study-callout-active h2 {
@@ -508,10 +512,10 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       line-height: 1.2;
     }
     .case-study-callout-active p {
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 15px;
+      line-height: 1.7;
       color: rgba(255,255,255,0.85);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       max-width: 620px;
       margin-left: auto;
       margin-right: auto;
@@ -972,7 +976,8 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       .field-row { grid-template-columns: 1fr; }
       .faq-section { padding: 56px 28px; }
       .disclaimer-bar { padding: 24px 28px; }
-      .case-study-callout-active { padding: 36px 28px; }
+      .section.case-study-callout { padding-top: 28px; padding-bottom: 32px; }
+      .case-study-callout-active { padding: 28px 24px; }
     }
   </style>
 </head>
@@ -1049,6 +1054,16 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   </div>
 </section>
 
+<!-- Case study proof (full story at /case-study/) -->
+<section class="section section-light case-study-callout" data-active="true">
+  <div class="case-study-callout-active reveal">
+    <h2>When the strategy changes, the result can too.</h2>
+    <p>At 102 Brookfield, a stale listing sat through two price cuts before BrightWork walked the property, completed targeted repairs in about three weeks, and relaunched $50,000 above the prior list price. It sold in one day.</p>
+    <a href="/case-study/" class="case-study-callout-btn">Read the 102 Brookfield Case Study</a>
+  </div>
+  <p class="case-study-callout-inactive">See how a Lamorinda relaunch turned a stalled listing into a one-day sale. <a href="/case-study/">Read the 102 Brookfield case study.</a></p>
+</section>
+
 <!-- FORENSIC REVIEW -->
 <section class="section section-light">
   <div class="section-narrow">
@@ -1104,16 +1119,6 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       <li><span><strong>Premium tools deployed properly.</strong> Zillow Showcase, 3D tours, Final Offer for competitive multi-offer situations, and access to pre-sale capital programs if improvements are worth making.</span></li>
     </ul>
   </div>
-</section>
-
-<!-- Case study proof (full story at /case-study/) -->
-<section class="section section-light case-study-callout" data-active="true">
-  <div class="case-study-callout-active reveal">
-    <h2>When the strategy changes, the result can too.</h2>
-    <p>At 102 Brookfield, a stale listing sat through two price cuts before BrightWork walked the property, completed targeted repairs in about three weeks, and relaunched $50,000 above the prior list price. It sold in one day.</p>
-    <a href="/case-study/" class="case-study-callout-btn">Read the 102 Brookfield Case Study</a>
-  </div>
-  <p class="case-study-callout-inactive">See how a Lamorinda relaunch turned a stalled listing into a one-day sale. <a href="/case-study/">Read the 102 Brookfield case study.</a></p>
 </section>
 
 <!-- TRUST / WHY BEN -->
