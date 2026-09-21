@@ -28,7 +28,7 @@ Every agent must internalize these before writing a single line of code or copy.
 - Ben's title is **REALTOR**, never Broker. This has leaked before. Watch for it.
 - Brand name: **BrightWork Realty Advocates** — full name on first use per page, BrightWork thereafter
 - Tagline: **"The Smart Way to Real Estate"**
-- **Side Real Estate is invisible to clients.** Never mention it in any page copy, hero, footer, or section. It appears only in the legal footer line as required: `Brokered by Side Real Estate`
+- **Never name Side Real Estate in client-facing copy.** Not in the hero, footer, disclosure, or any legal line. Identify the brokerage as **BrightWork Realty Advocates** and **DRE# 02014153** only.
 - Do not center Ben's mother or family legacy. Correct tenure framing: "The BrightWork team has operated in Lamorinda since 1977"
 
 **Copy**
@@ -920,7 +920,7 @@ Ben Olsen has been in Lamorinda real estate since 2004. The BrightWork team has 
 4. How long should I wait after an expired listing before relisting?
 5. Can expired listings in Moraga or Lafayette still sell for full market value?
 
-**Disclaimer bar:** "Ben Olsen is a licensed REALTOR with BrightWork Realty Advocates, Brokered by Side Real Estate. Nothing on this page constitutes a guarantee of sale or a specific sale price. Results vary based on property condition, market conditions, and seller circumstances."
+**Disclaimer bar:** "Ben Olsen is a licensed REALTOR with BrightWork Realty Advocates, DRE# 02014153. Nothing on this page constitutes a guarantee of sale or a specific sale price. Results vary based on property condition, market conditions, and seller circumstances."
 
 ---
 

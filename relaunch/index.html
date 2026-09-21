@@ -489,6 +489,65 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       line-height: 1.85;
     }
 
+    /* Case study callout (mirrors seniors/workshop pattern) */
+    .case-study-callout[data-active="true"] .case-study-callout-inactive { display: none; }
+    .case-study-callout[data-active="false"] .case-study-callout-active { display: none; }
+    .case-study-callout-active {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--teal);
+      padding: 48px 56px;
+      text-align: center;
+    }
+    .case-study-callout-active h2 {
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .case-study-callout-active p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    .case-study-callout-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 16px 32px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .case-study-callout-btn:hover { background: #ffd700; transform: translateY(-2px); }
+    .case-study-callout-inactive {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .case-study-callout-inactive a {
+      color: var(--cyan-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* SPLIT FORM */
     .split {
       display: grid;
@@ -913,6 +972,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
       .field-row { grid-template-columns: 1fr; }
       .faq-section { padding: 56px 28px; }
       .disclaimer-bar { padding: 24px 28px; }
+      .case-study-callout-active { padding: 36px 28px; }
     }
   </style>
 </head>
@@ -1046,6 +1106,16 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
   </div>
 </section>
 
+<!-- Case study proof (full story at /case-study/) -->
+<section class="section section-light case-study-callout" data-active="true">
+  <div class="case-study-callout-active reveal">
+    <h2>When the strategy changes, the result can too.</h2>
+    <p>At 102 Brookfield, a stale listing sat through two price cuts before BrightWork walked the property, completed targeted repairs in about three weeks, and relaunched $50,000 above the prior list price. It sold in one day.</p>
+    <a href="/case-study/" class="case-study-callout-btn">Read the 102 Brookfield Case Study</a>
+  </div>
+  <p class="case-study-callout-inactive">See how a Lamorinda relaunch turned a stalled listing into a one-day sale. <a href="/case-study/">Read the 102 Brookfield case study.</a></p>
+</section>
+
 <!-- TRUST / WHY BEN -->
 <section class="section section-light">
   <div class="trust-block">
@@ -1162,7 +1232,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
 <!-- DISCLAIMER -->
 <div class="disclaimer-bar">
   <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  <p><strong>Disclosure:</strong> Ben Olsen is a licensed REALTOR with BrightWork Realty Advocates, Brokered by Side Real Estate. Nothing on this page constitutes a guarantee of sale or a specific sale price. Results vary based on property condition, market conditions, and seller circumstances.</p>
+  <p><strong>Disclosure:</strong> Ben Olsen is a licensed REALTOR with BrightWork Realty Advocates, DRE# 02014153. Nothing on this page constitutes a guarantee of sale or a specific sale price. Results vary based on property condition, market conditions, and seller circumstances.</p>
 </div>
 
 <!-- ── SMART WAY STRIP ── -->
