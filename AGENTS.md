@@ -154,6 +154,23 @@ sed -i 's/Suite 1, Moraga/Suite I, Moraga/g' */index.html
 
 ---
 
+## Perf journeys
+
+Scott/Ziggy named these (2026-09-24). Agents **must not invent** journey names or scope without sign-off. One named journey per perf-focused Cloud Agent run. Habit: mktng-brain `shop/perf-loop.md`.
+
+| Name | Start | End | Why it matters | Suggested lab proxy | Mobile-heavy? |
+|------|-------|-----|----------------|---------------------|---------------|
+| `hero-first-view` | Cold load of `https://<program>.brightworkrealty.com/` from an ad, QR, or SMS link | Hero headline, subhead, and primary CTA are visible and tappable, with no layout jump | Most traffic lands cold on a phone; a blank or shifting hero loses them before they read. | Lighthouse CLI, mobile preset, median of 3 runs per program URL. Track LCP, CLS, TBT, transfer bytes; shared JS (PostHog, widget tracker, animations) must be `defer`/`async`, not render-blocking. | Y |
+| `cta-to-form-ready` | Page loaded; user taps hero CTA (anchor) or scrolls to the form | Form fields rendered, focusable, and accept the first keystroke with no shift | Handoff from interest to intent; scroll stutter or first-field lag stalls the lead. | Playwright mobile + CPU throttle: CTA click → ms until first `input` focusable; CLS during scroll; INP-style latency on first field tap. | Y |
+| `form-submit-confirm` | Tap Submit with valid test data | Success state after bw-fub-proxy returns 2xx | Slowest felt moment; hangs and double-submits cost real leads. | **Blocked until** bw-fub-proxy has a dry-run/test path (no real FUB leads / PostHog pollution). Then: Playwright submit → success DOM, p50/p95 over 10 runs; record Worker response time separately. | Y |
+| `relaunch-case-study-nav` | Tap Case Study in relaunch nav, or open `/case-study/` | Case study hero / before-after media readable, no layout thrash | Proof path is unique to relaunch and image-heavy. | Lighthouse mobile on `https://relaunch.brightworkrealty.com/case-study/` + scripted nav tap → LCP. | Y |
+
+Shared JS weight is a budget check under `hero-first-view`, not its own journey.
+
+When claiming a perf win, fill the proof-card **Speed** rows (Journey, Metric, Before, After, Lab proxy, Ratchet locked?, Taste gate).
+
+---
+
 ## Cursor Cloud specific instructions
 
 - **Stack:** No framework and no build step. Each program folder is plain HTML/CSS/vanilla JS deployed as its own Cloudflare Workers static bundle.
@@ -162,4 +179,5 @@ sed -i 's/Suite 1, Moraga/Suite I, Moraga/g' */index.html
 - **Deploy:** Production deploy is CI on `main` only (`.github/workflows/deploy.yml`). Cloud Agents open PRs; do not push directly to `main`.
 - **Wrangler:** Deploy from the repo root with `--config <page>/wrangler.toml`. Never set `workingDirectory` to the page folder (25MB asset trap). Each page folder has `.assetsignore` for `node_modules/`, `package.json`, `package-lock.json`, and `.wrangler/`.
 - **DNS / hostnames:** Never rebind `mcp.brightworkrealty.com`. Export live DNS from the zone before binding any new hostname on `brightworkrealty.com`; verify route list after removing bindings.
-- **PRs:** Include a filled proof card on every PR (task, branch, agent, commands run, artifacts, not run / blocked).
+- **Perf:** Use only named journeys under **Perf journeys**. Do not invent journeys. Do not run `form-submit-confirm` against live FUB until dry-run exists.
+- **PRs:** Include a filled proof card on every PR (task, branch, agent, commands run, artifacts, not run / blocked). Speed rows required when claiming a perf improvement.
