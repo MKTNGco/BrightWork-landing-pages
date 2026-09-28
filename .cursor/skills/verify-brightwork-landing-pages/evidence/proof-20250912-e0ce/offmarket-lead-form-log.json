@@ -1,0 +1,26 @@
+{
+  "feature": "offmarket-lead-form",
+  "baseUrl": "http://localhost:4173",
+  "steps": [
+    {
+      "step": "load",
+      "title": "Off-Market Homes in Lamorinda | BrightWork Realty Advocates"
+    },
+    {
+      "step": "hero-cta-scroll",
+      "formVisible": true
+    },
+    {
+      "step": "fill-form",
+      "ok": true
+    },
+    {
+      "step": "submit-dry-run",
+      "successHeading": "You're on the list!"
+    },
+    {
+      "step": "form-hidden",
+      "ok": true
+    }
+  ]
+}
