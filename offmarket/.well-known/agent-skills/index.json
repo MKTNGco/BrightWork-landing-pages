@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "request-consult-offmarket",
+      "type": "skill-md",
+      "description": "Submit a contact request for this BrightWork program via WebMCP request_consult or the human lead form.",
+      "url": "/.well-known/agent-skills/request-consult-offmarket/SKILL.md",
+      "digest": "sha256:df44369e789aeebf19c3ca8fd015a340dcda9a39b2d5c7a86c51ac07d7b887a1"
+    }
+  ]
+}

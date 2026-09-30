@@ -90,6 +90,13 @@
       }
     ]
   },
+  "llmsTxt": "https://relaunch.brightworkrealty.com/llms.txt",
+  "sitemap": "https://relaunch.brightworkrealty.com/sitemap.xml",
+  "markdown": "https://relaunch.brightworkrealty.com/index.md",
+  "apiCatalog": "https://relaunch.brightworkrealty.com/.well-known/api-catalog",
+  "aiCatalog": "https://relaunch.brightworkrealty.com/.well-known/ai-catalog.json",
+  "webmcpTools": "https://relaunch.brightworkrealty.com/.well-known/webmcp-tools.json",
+  "agentSkills": "https://relaunch.brightworkrealty.com/.well-known/agent-skills/index.json",
   "otherPrograms": {
     "brandName": "BrightWork Realty Advocates",
     "tagline": "The Smart Way to Real Estate",

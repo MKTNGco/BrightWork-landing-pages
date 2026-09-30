@@ -1,0 +1,46 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://relaunch.brightworkrealty.com/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://relaunch.brightworkrealty.com/agents.json",
+          "title": "Agents catalog (agents.json)"
+        },
+        {
+          "href": "https://relaunch.brightworkrealty.com/llms.txt",
+          "title": "llms.txt site guide"
+        },
+        {
+          "href": "https://relaunch.brightworkrealty.com/sitemap.xml",
+          "title": "XML sitemap"
+        },
+        {
+          "href": "https://relaunch.brightworkrealty.com/.well-known/ai-catalog.json",
+          "title": "ARD capability manifest"
+        },
+        {
+          "href": "https://relaunch.brightworkrealty.com/.well-known/webmcp-tools.json",
+          "title": "WebMCP tool manifest"
+        },
+        {
+          "href": "https://relaunch.brightworkrealty.com/.well-known/agent-skills/index.json",
+          "title": "Agent Skills discovery index"
+        }
+      ]
+    },
+    {
+      "anchor": "https://relaunch.brightworkrealty.com/",
+      "service-desc": [
+        {
+          "href": "https://relaunch.brightworkrealty.com/.well-known/webmcp-tools.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://relaunch.brightworkrealty.com/agents.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "request-consult-buybefore",
+      "type": "skill-md",
+      "description": "Submit a contact request for this BrightWork program via WebMCP request_consult or the human lead form.",
+      "url": "/.well-known/agent-skills/request-consult-buybefore/SKILL.md",
+      "digest": "sha256:850f3a263e66f4b19208782eacc20f13b56793d95bb73fef81f965ff2478c645"
+    }
+  ]
+}

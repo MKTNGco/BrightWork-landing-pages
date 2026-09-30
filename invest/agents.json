@@ -94,6 +94,13 @@
       }
     ]
   },
+  "llmsTxt": "https://invest.brightworkrealty.com/llms.txt",
+  "sitemap": "https://invest.brightworkrealty.com/sitemap.xml",
+  "markdown": "https://invest.brightworkrealty.com/index.md",
+  "apiCatalog": "https://invest.brightworkrealty.com/.well-known/api-catalog",
+  "aiCatalog": "https://invest.brightworkrealty.com/.well-known/ai-catalog.json",
+  "webmcpTools": "https://invest.brightworkrealty.com/.well-known/webmcp-tools.json",
+  "agentSkills": "https://invest.brightworkrealty.com/.well-known/agent-skills/index.json",
   "compliance": "Ben Olsen is a licensed REALTOR, not a financial advisor or CPA. Real estate investment involves risk. Nothing on this page constitutes financial, tax, or legal advice. Consult your financial and tax advisors before making investment decisions.",
   "otherPrograms": {
     "brandName": "BrightWork Realty Advocates",

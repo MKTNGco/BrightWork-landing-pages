@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "request-consult-relaunch",
+      "type": "skill-md",
+      "description": "Submit a contact request for this BrightWork program via WebMCP request_consult or the human lead form.",
+      "url": "/.well-known/agent-skills/request-consult-relaunch/SKILL.md",
+      "digest": "sha256:f5ef8fc7332881417111bbf67608eaea3a3d3497a2fa196b60f4b0144e83eb73"
+    }
+  ]
+}

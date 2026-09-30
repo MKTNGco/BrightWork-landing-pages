@@ -89,6 +89,13 @@
       }
     ]
   },
+  "llmsTxt": "https://seniors.brightworkrealty.com/llms.txt",
+  "sitemap": "https://seniors.brightworkrealty.com/sitemap.xml",
+  "markdown": "https://seniors.brightworkrealty.com/index.md",
+  "apiCatalog": "https://seniors.brightworkrealty.com/.well-known/api-catalog",
+  "aiCatalog": "https://seniors.brightworkrealty.com/.well-known/ai-catalog.json",
+  "webmcpTools": "https://seniors.brightworkrealty.com/.well-known/webmcp-tools.json",
+  "agentSkills": "https://seniors.brightworkrealty.com/.well-known/agent-skills/index.json",
   "compliance": [
     "Ben Olsen is a licensed REALTOR, not an attorney, financial advisor, or CPA.",
     "Tax and estate topics, including 1031 exchanges, DSTs, and step-up in basis, are questions to raise with your CPA and estate attorney, not Ben."
