@@ -1,0 +1,63 @@
+{
+  "site": "https://relaunch.brightworkrealty.com/",
+  "spec": "https://webmachinelearning.github.io/webmcp/",
+  "registration": "Tools are registered at runtime via navigator.modelContext.registerTool on page load when the WebMCP API is available.",
+  "tools": [
+    {
+      "name": "get_office",
+      "description": "Return BrightWork Realty Advocates office and contact information for Ben Olsen, REALTOR: phone, email, address, DRE, and market tenure.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "list_programs",
+      "description": "List all eight BrightWork Realty Advocates program landing pages with a one-line summary and HTTPS URL. Breadth-of-services answer with no MLS data.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "get_program",
+      "description": "Return structured facts about BrightWork's Relaunch Strategy for expired Lamorinda listings. Does not return inventory or MLS data.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "request_consult",
+      "description": "Submit a contact request for a free expired listing review with Ben. Writes contact info to BrightWork's CRM. Contacts only; no CRM read access.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "Contact first name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Contact last name"
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact email address"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Contact mobile phone number"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone"
+        ]
+      },
+      "note": "Executes in the browser via fub-lead.js against the same bw-fub-proxy endpoint as the human lead form."
+    }
+  ]
+}

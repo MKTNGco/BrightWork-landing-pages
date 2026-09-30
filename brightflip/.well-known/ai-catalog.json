@@ -1,0 +1,64 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "BrightFlip",
+    "identifier": "did:web:brightflip.brightworkrealty.com"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:brightflip.brightworkrealty.com:discovery:agents",
+      "displayName": "Agents catalog",
+      "type": "application/json",
+      "url": "https://brightflip.brightworkrealty.com/agents.json",
+      "description": "Structured facts about this BrightWork program, office, and related programs.",
+      "representativeQueries": [
+        "what is the brightflip BrightWork program",
+        "brightflip.brightworkrealty.com agents.json"
+      ]
+    },
+    {
+      "identifier": "urn:air:brightflip.brightworkrealty.com:discovery:llms",
+      "displayName": "llms.txt site guide",
+      "type": "text/plain",
+      "url": "https://brightflip.brightworkrealty.com/llms.txt",
+      "description": "Plain-language summary of this program page for language models.",
+      "representativeQueries": [
+        "overview of https://brightflip.brightworkrealty.com",
+        "BrightWork program llms.txt"
+      ]
+    },
+    {
+      "identifier": "urn:air:brightflip.brightworkrealty.com:discovery:sitemap",
+      "displayName": "XML sitemap",
+      "type": "application/xml",
+      "url": "https://brightflip.brightworkrealty.com/sitemap.xml",
+      "description": "Canonical homepage URL for this program subdomain.",
+      "representativeQueries": [
+        "brightflip sitemap",
+        "BrightWork program sitemap"
+      ]
+    },
+    {
+      "identifier": "urn:air:brightflip.brightworkrealty.com:discovery:markdown",
+      "displayName": "Homepage markdown",
+      "type": "text/markdown",
+      "url": "https://brightflip.brightworkrealty.com/index.md",
+      "description": "Markdown twin of the program homepage factual content.",
+      "representativeQueries": [
+        "https://brightflip.brightworkrealty.com markdown",
+        "Accept text/markdown homepage"
+      ]
+    },
+    {
+      "identifier": "urn:air:brightflip.brightworkrealty.com:discovery:webmcp",
+      "displayName": "WebMCP tools",
+      "type": "application/json",
+      "url": "https://brightflip.brightworkrealty.com/.well-known/webmcp-tools.json",
+      "description": "Tool names and schemas registered by the page WebMCP scripts.",
+      "representativeQueries": [
+        "BrightWork WebMCP tools",
+        "request_consult WebMCP"
+      ]
+    }
+  ]
+}

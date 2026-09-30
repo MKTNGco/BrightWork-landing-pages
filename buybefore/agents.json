@@ -82,6 +82,13 @@
       }
     ]
   },
+  "llmsTxt": "https://buybefore.brightworkrealty.com/llms.txt",
+  "sitemap": "https://buybefore.brightworkrealty.com/sitemap.xml",
+  "markdown": "https://buybefore.brightworkrealty.com/index.md",
+  "apiCatalog": "https://buybefore.brightworkrealty.com/.well-known/api-catalog",
+  "aiCatalog": "https://buybefore.brightworkrealty.com/.well-known/ai-catalog.json",
+  "webmcpTools": "https://buybefore.brightworkrealty.com/.well-known/webmcp-tools.json",
+  "agentSkills": "https://buybefore.brightworkrealty.com/.well-known/agent-skills/index.json",
   "otherPrograms": {
     "brandName": "BrightWork Realty Advocates",
     "tagline": "The Smart Way to Real Estate",
