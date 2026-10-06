@@ -171,6 +171,101 @@ When claiming a perf win, fill the proof-card **Speed** rows (Journey, Metric, B
 
 ---
 
+## PR definition of done (learned in PRs)
+
+Brand copy, capital language, REALTOR vs Broker, FAQ tone, and agent-layer content rules live in **`artifacts/handbook.md`** and **`artifacts/agent-discoverability.md`** (sections 6 and 10). Do not duplicate that canon here. This section is enforcement and scope discipline from fix-up PRs.
+
+### No internal or editorial instructions in public output (S1)
+
+Public HTML, JSON-LD, meta tags, and generated agent files (`llms.txt`, `agents.json`, `webmcp-data.js`) contain facts only. Never ship copywriter instructions, internal notes, or "what we do not publish" editorial (`copyRules`, `capitalLanguage`, "Do not…", "We don't publish…", "This guide explains X only"). Rewrite a constraint as a positive fact, or drop it.
+
+Before merge, grep generated agent files (same bar as PR #12):
+
+```bash
+grep -rn 'Do not\|copyRules\|capitalLanguage' */agents.json */llms.txt
+# no matches
+
+grep -rniE "copyRules|capitalLanguage|internal only|don't publish|this guide (only|explains)" \
+  */index.html seniors/workshop/index.html relaunch/case-study/index.html
+# no matches outside legal disclaimers
+```
+
+Also run `node scripts/check-agent-files.mjs` (see **Script candidates**).
+
+### URLs and internal links (S2)
+
+There is no Astro build or `verify-canonicals.mjs` in this repo. Each page is static HTML on its own subdomain.
+
+- `<link rel="canonical">`, `og:url` when present, and internal `href` values should use the exact URL that returns **200** on that hostname, including a trailing slash when the deployed path uses one (see handbook canonical examples: program home `https://<program>.brightworkrealty.com/`; subpaths such as `https://relaunch.brightworkrealty.com/case-study/`).
+- Prefer one consistent form per path on a page (for example `case-study/` vs `/case-study/` on relaunch). Do not introduce a new href form without checking the live response.
+- Do not link internally to a URL that only 301/307s when the final URL is known. Cross-links to other program subdomains use each program's production root URL.
+
+### Same-PR doc sync (S4)
+
+When a PR changes visible copy, agent data, integrations (forms, PostHog, widget tracker), routes/hostnames, or discoverability behavior, update in the **same PR** whatever describes it: **`AGENTS.md`** (including **Perf journeys** when scope changes), **`artifacts/handbook.md`**, and **`artifacts/agent-discoverability.md`**. List touched doc paths in the proof card **Docs synced** row.
+
+### Scope discipline (S5)
+
+- Infra, SEO, perf, and discoverability PRs do not change visible marketing copy or images unless the task explicitly requires it. If the diff touches content files anyway, call that out in the PR body or split the work.
+- Refactors and component swaps must list in the PR body every behavior removed (analytics calls, auto-actions, fallbacks, images). Silent removal is a bug.
+
+### Assets (S6)
+
+Every new `<img>`, `src`, download, or file reference must exist in the same commit. Never merge placeholder headshots, logos, or stand-in images (PR #4 → #5). Verify paths with a quick file check or local load, not by eye alone.
+
+### FAQ visible text and FAQPage JSON-LD (#4, #6)
+
+FAQ answers in the visible `.faq-wrap` / `.faq-section` blocks and the matching `FAQPage` JSON-LD must stay **byte-identical** (questions and answer text). When editing either side, update the other in the same change and diff them before merge. Handbook checklist: `artifacts/handbook.md` (schema and new-page sections).
+
+### List bullets with a bold lead-in (#15 → #17)
+
+Bullets that mix a `<strong>` lead-in with body text use normal block flow (`display: block` on the `li`, or equivalent), not `display: grid` or `display: flex` that splits the lead-in and text into columns. Check at **390px** after CSS changes to list or plan sections.
+
+---
+
+## Script candidates
+
+Maintenance greps in **`artifacts/agent-discoverability.md` §10** and FAQ/JSON-LD parity are still run by hand on many PRs. Automate when convenient:
+
+| Script | Status | Purpose |
+|--------|--------|---------|
+| `node scripts/check-agent-files.mjs` | **Implemented** | Wraps §10 checks (em dash, banned words, Broker, Suite I, Side Real Estate, credentials hash, `howItWorks` count, `protocolVersion`, instruction leak on agent files and HTML). Future alias: `check:agents` if a root `package.json` is ever added (do not add one for landings-only work). |
+| `scripts/check-faq-parity.mjs` | **Candidate** | Pair visible FAQ HTML with `FAQPage` JSON-LD per page (`faq-wrap` and `faq-section` layouts). Exit non-zero on mismatch. |
+
+Paste `node scripts/check-agent-files.mjs` output in the proof card when agent layer or HTML discoverability changes.
+
+---
+
+## Two-strikes log
+
+Repeat mistakes from this repo's PR history. Log new rows when the same class of error happens twice.
+
+| Mistake (2+ times) | Where | Enforcement |
+|--------------------|-------|-------------|
+| Internal/editorial instructions leaked into `agents.json` / `llms.txt` (`copyRules`, `capitalLanguage`, "Do not…") | PR #12 (after #11 Round 2) | `node scripts/check-agent-files.mjs`; §10 greps; S1 grep above |
+| Placeholder image shipped, real asset in follow-up PR | PR #4 → #5 (workshop headshot) | S6 asset rule; file existence check before merge |
+| FAQ visible copy and FAQPage JSON-LD drifted apart | PR #4, #6 (workshop); handbook requires parity on all FAQ pages | Candidate `scripts/check-faq-parity.mjs`; manual diff until scripted |
+| Plan/list bullets relaid out with grid/flex, mobile wrap bugs | PR #15 → #16 → #17 (relaunch case study) | Block-flow list rule above; 390px check |
+
+---
+
+## PR proof card
+
+Include a filled proof card on every PR (Cloud Agents: draft PR, do not merge to `main` without review).
+
+| Row | What to put |
+|-----|-------------|
+| Task | One line on what the PR does |
+| Branch | `cursor/...-49b1` or feature branch name |
+| Agent | Model or human |
+| Commands run | e.g. `node scripts/check-agent-files.mjs`, smoke URLs, generator |
+| Artifacts | Screenshots, Lighthouse, logs |
+| Not run / blocked | Anything skipped and why |
+| **Docs synced** | `AGENTS.md` / `artifacts/handbook.md` / `artifacts/agent-discoverability.md` paths touched, or `none needed: <why>` |
+| Speed (perf PRs only) | Journey, metric, before, after, lab proxy, ratchet, taste gate |
+
+---
+
 ## Cursor Cloud specific instructions
 
 - **Stack:** No framework and no build step. Each program folder is plain HTML/CSS/vanilla JS deployed as its own Cloudflare Workers static bundle.
@@ -180,4 +275,4 @@ When claiming a perf win, fill the proof-card **Speed** rows (Journey, Metric, B
 - **Wrangler:** Deploy from the repo root with `--config <page>/wrangler.toml`. Never set `workingDirectory` to the page folder (25MB asset trap). Each page folder has `.assetsignore` for `node_modules/`, `package.json`, `package-lock.json`, and `.wrangler/`.
 - **DNS / hostnames:** Never rebind `mcp.brightworkrealty.com`. Export live DNS from the zone before binding any new hostname on `brightworkrealty.com`; verify route list after removing bindings.
 - **Perf:** Use only named journeys under **Perf journeys**. Do not invent journeys. Do not run `form-submit-confirm` against live FUB until dry-run exists.
-- **PRs:** Include a filled proof card on every PR (task, branch, agent, commands run, artifacts, not run / blocked). Speed rows required when claiming a perf improvement.
+- **PRs:** Use the **PR proof card** table above (including **Docs synced**). Speed rows required when claiming a perf improvement.
