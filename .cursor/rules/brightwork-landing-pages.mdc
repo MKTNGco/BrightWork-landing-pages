@@ -8,7 +8,7 @@ Before editing any landing page HTML or writing copy, read `artifacts/handbook.m
 
 Before editing agent discoverability files (`shared/agent-source-data.mjs`, `llms.txt`, `agents.json`, WebMCP scripts, or `bw-agent-root/`), read `artifacts/agent-discoverability.md`.
 
-PR definition of done, proof card (Docs synced), Two-strikes log, and `node scripts/check-agent-files.mjs`: **`AGENTS.md`** (sections **PR definition of done**, **Script candidates**, **Two-strikes log**, **PR proof card**).
+PR definition of done, proof card (Docs synced), Two-strikes log, and pre-merge checks (`check-agent-files`, `check-faq-parity`): **`AGENTS.md`** (sections **PR definition of done**, **Pre-merge checks**, **Two-strikes log**, **PR proof card**).
 
 Agent-layer patterns (do not drift):
 - `CREDENTIALS` fields are `bio`, `specialtyAreas`, `personalTrackRecord`, `reviewsUrl`, `firmTrackRecord`, `differentiator`. The old `trackRecord` / `localAuthority` / `background` shape no longer exists.

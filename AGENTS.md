@@ -190,7 +190,7 @@ grep -rniE "copyRules|capitalLanguage|internal only|don't publish|this guide (on
 # no matches outside legal disclaimers
 ```
 
-Also run `node scripts/check-agent-files.mjs` (see **Script candidates**).
+Run the **Pre-merge checks** below when agent files or FAQ/schema markup change.
 
 ### URLs and internal links (S2)
 
