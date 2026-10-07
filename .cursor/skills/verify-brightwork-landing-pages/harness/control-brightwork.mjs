@@ -329,20 +329,39 @@ async function driveAgentDiscoverability(state, evidenceDir) {
   await mkdir(evidenceDir, { recursive: true });
   const results = [];
 
-  for (const p of ['/llms.txt', '/agents.json', '/robots.txt']) {
+  const paths = [
+    '/llms.txt',
+    '/agents.json',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/index.md',
+    '/.well-known/ai-catalog.json'
+  ];
+
+  for (const p of paths) {
     const res = await fetch(`${state.baseUrl}${p}`);
     const body = await res.text();
     const entry = { path: p, status: res.status, ok: res.ok, bodyLength: body.length };
     if (p === '/agents.json') {
       const json = JSON.parse(body);
       entry.protocolVersion = json.protocolVersion;
-      entry.ok = res.ok && json.protocolVersion && json.program;
+      entry.ok = res.ok && Boolean(json.protocolVersion) && Boolean(json.program);
     }
     if (p === '/llms.txt') {
       entry.ok = res.ok && body.startsWith('# ') && body.includes('BrightWork');
     }
     if (p === '/robots.txt') {
-      entry.ok = res.ok && body.includes('User-agent:');
+      entry.ok = res.ok && body.includes('User-agent:') && body.includes('Content-Signal:');
+    }
+    if (p === '/sitemap.xml') {
+      entry.ok = res.ok && body.includes('<urlset') && body.includes('<loc>');
+    }
+    if (p === '/index.md') {
+      entry.ok = res.ok && body.startsWith('# ') && body.includes('BrightWork');
+    }
+    if (p === '/.well-known/ai-catalog.json') {
+      const json = JSON.parse(body);
+      entry.ok = res.ok && Boolean(json.specVersion) && Array.isArray(json.entries);
     }
     results.push(entry);
     const outFile = path.join(evidenceDir, p.replace(/\//g, '_').replace(/^_/, ''));
@@ -405,8 +424,10 @@ async function driveProgramCatalog(evidenceDir) {
 
 async function cmdDrive(args) {
   const feature = args.feature || args._[1];
+  const rid = runId();
+  const defaultEvidenceName = rid.startsWith('proof-') ? rid : `proof-${rid}`;
   const evidenceDir = path.resolve(
-    args['evidence-dir'] || path.join(SKILL_ROOT, 'evidence', `proof-${runId()}`)
+    args['evidence-dir'] || path.join(SKILL_ROOT, 'evidence', defaultEvidenceName)
   );
 
   if (feature === 'offmarket-lead-form') {

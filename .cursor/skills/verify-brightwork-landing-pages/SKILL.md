@@ -5,7 +5,7 @@ description: "Drive BrightWork Realty Advocates program landing pages (plain HTM
 
 # Verify BrightWork landing pages
 
-BrightWork ships eight self-contained program folders (`offmarket`, `buybefore`, `seniors`, `quiet`, `relaunch`, `brightflip`, `finaloffer`, `invest`) plus `seniors/workshop/`. Each folder is plain HTML, CSS, and vanilla JS served as a static bundle. Forms POST to `bw-fub-proxy` in production. PostHog opts out on `localhost`. Agent discoverability files (`llms.txt`, `agents.json`, `robots.txt`) are generated per folder from `shared/agent-source-data.mjs`.
+BrightWork ships eight self-contained program folders (`offmarket`, `buybefore`, `seniors`, `quiet`, `relaunch`, `brightflip`, `finaloffer`, `invest`) plus `seniors/workshop/`. Each folder is plain HTML, CSS, and vanilla JS served as a static bundle. Forms POST to `bw-fub-proxy` in production. PostHog opts out on `localhost`. Agent discoverability files (`llms.txt`, `agents.json`, `robots.txt`, plus Tier C `sitemap.xml`, `index.md`, and `.well-known` catalogs) are generated per folder from `shared/agent-source-data.mjs`.
 
 **Surface:** browser UI (static landing pages with lead forms, nav, hero CTAs, FAQ, smart-way strip).
 
