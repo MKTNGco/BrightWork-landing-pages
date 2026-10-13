@@ -1,17 +1,20 @@
 # Agent discoverability files
 
-Each program Worker folder ships generated agent files at `/llms.txt`, `/agents.json`, and `/robots.txt`. Agents and crawlers fetch these without loading the full HTML page.
+Each program Worker folder ships generated agent files at `/llms.txt`, `/agents.json`, and `/robots.txt`, plus Tier C static surfaces (`/sitemap.xml`, `/index.md`, `/.well-known/ai-catalog.json`). Agents and crawlers fetch these without loading the full HTML page.
 
 ## Sub-features
 
 - `llms-txt` returns markdown summary starting with `# ` and mentioning BrightWork.
 - `agents-json` returns JSON with `protocolVersion` and `program` objects.
-- `robots-txt` returns crawl rules with `User-agent:` header.
+- `robots-txt` returns crawl rules with `User-agent:` and `Content-Signal:` lines.
+- `sitemap-xml` returns XML urlset with at least the program home URL.
+- `index-md` returns markdown alternate for the program homepage.
+- `ai-catalog-json` returns `/.well-known/ai-catalog.json` with `specVersion` and `entries`.
 
 ## How to get to it (user POV)
 
 - From a browser or HTTP client, request `https://<program>.brightworkrealty.com/llms.txt` (production) or the same path on the local serve URL.
-- Repeat for `/agents.json` and `/robots.txt`.
+- Repeat for `/agents.json`, `/robots.txt`, `/sitemap.xml`, `/index.md`, and `/.well-known/ai-catalog.json`.
 
 ## Driving it with control-brightwork
 
@@ -23,8 +26,10 @@ Preconditions:
 
 - **Fetch llms.txt.** Run `control-brightwork.mjs fetch --path /llms.txt`. Status 200, body starts with `# `, includes "BrightWork".
 - **Fetch agents.json.** Run `control-brightwork.mjs fetch --path /agents.json`. Status 200, JSON parses, `protocolVersion` is present (currently `1.1`).
-- **Fetch robots.txt.** Run `control-brightwork.mjs fetch --path /robots.txt`. Status 200, contains `User-agent:`.
-- **Proof.** Run `control-brightwork.mjs drive --feature agent-discoverability --evidence-dir <dir>`. Copies of all three files land in evidence dir; JSON output shows `"ok": true` for each path.
+- **Fetch robots.txt.** Run `control-brightwork.mjs fetch --path /robots.txt`. Status 200, contains `User-agent:` and `Content-Signal:`.
+- **Fetch sitemap and markdown.** Run `fetch --path /sitemap.xml` and `fetch --path /index.md`. Sitemap is XML with `<urlset>`; markdown starts with `# `.
+- **Fetch ai catalog.** Run `fetch --path /.well-known/ai-catalog.json`. JSON parses with `specVersion` and `entries` array.
+- **Proof.** Run `control-brightwork.mjs drive --feature agent-discoverability --evidence-dir <dir>`. Copies of all six paths land in evidence dir; JSON output shows `"ok": true` for each path.
 
 ## Gotchas
 
@@ -32,3 +37,5 @@ Preconditions:
 - Apex `robots.txt` / `llms.txt` / `agents.json` on `brightworkrealty.com` are Luxury Presence redirects to `bw-agent-root`, not the program folders. This feature covers per-program Worker folders only.
 - After editing `shared/agent-source-data.mjs`, regenerate before verifying.
 - `agents.json` includes `protocolVersion` from `AGENT_PROTOCOL_VERSION`. Assert presence, not a hardcoded per-page version string.
+- Tier C also ships `agents.txt`, `/.well-known/api-catalog`, and `/.well-known/agent-skills/` on program Workers. This feature drive checks `ai-catalog.json` as the structured catalog entry point; add manual fetches if you need to proof those paths.
+- `relaunch/case-study/` is a secondary HTML route. It is not listed in every program `sitemap.xml` today; catalog load does not cover it.

@@ -43,5 +43,5 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 
 - [Off-Market lead form](./offmarket-lead-form.md) covers hero CTA scroll, form fill, dry-run submit, and success state on `offmarket`.
 - [Shared page shell](./shared-page-shell.md) covers nav logo, phone link, and smart-way strip on a launched program page.
-- [Agent discoverability files](./agent-discoverability.md) covers `llms.txt`, `agents.json`, and `robots.txt` on a served program folder.
+- [Agent discoverability files](./agent-discoverability.md) covers `llms.txt`, `agents.json`, `robots.txt`, `sitemap.xml`, `index.md`, and `/.well-known/ai-catalog.json` on a served program folder.
 - [Program catalog load](./program-catalog.md) covers all eight program `index.html` pages loading with a lead form present.

@@ -31,3 +31,4 @@ Preconditions:
 - Logo image may 404 locally if `images/logo.png` is missing; fallback text `#navLogoText` should still appear. Assert on the link role, not the image asset.
 - External logo link opens `brightworkrealty.com`. Do not follow it during headless drives unless testing outbound links explicitly.
 - `seniors/workshop/` uses the same shell pattern but different hero copy. Launch that subfolder separately.
+- Footer nav may show "Contact" while hero CTAs use program-specific labels (for example "Let's Talk" on some pages). Assert shell phone and smart-way strip; do not treat footer link wording as a verification failure unless a feature explicitly targets CTA copy.
