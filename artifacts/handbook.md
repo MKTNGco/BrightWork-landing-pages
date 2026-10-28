@@ -1260,6 +1260,8 @@ Every mention of 1031 exchanges, DSTs, capital gains, installment sales, or simi
 
 **Toggle:** Set `const WORKSHOP_ACTIVE = false` at top of `<script>` block. Flip to `true` when event is confirmed and update date/venue/presenter placeholders.
 
+**Co-presenter toggle:** `const JENNIFER_RAFTIS_PRESENTING = false` documents when Jennifer Raftis (CPO) is off the Nov 7 session. Her presenter markup lives in an HTML comment in the event details section; set the flag to `true`, uncomment that block, and restore her name in FAQ question 1 (visible + FAQPage JSON-LD) and in the downsizing agenda item if she is presenting that segment again.
+
 | State | Hero badge | Form heading | Submit button | LEAD_TAG |
 |---|---|---|---|---|
 | `WORKSHOP_ACTIVE = true` | "Upcoming Event · [DATE]" | Reserve Your Spot | Reserve My Spot | workshop-registration |
