@@ -32,7 +32,7 @@
         "name": "What is the BrightWork senior real estate planning workshop?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A two-hour educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session, joined by Jennifer Raftis, a Certified Professional Organizer who specializes in senior downsizing and move management. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps."
+          "text": "A two-hour educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps."
         }
       },
       {
@@ -1044,6 +1044,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
           <p class="presenter-role">REALTOR, BrightWork Realty Advocates</p>
           <p class="presenter-bio">Ben has worked exclusively with Lamorinda homeowners for more than a decade. He built BrightWork Realty Advocates around one idea: that families navigating a senior real estate decision deserve a process, not a pitch. These workshops are how that starts.</p>
         </div>
+        <!-- Co-presenter archived: set JENNIFER_RAFTIS_PRESENTING = true in the page script and uncomment this block to restore on a future event.
         <div class="presenter">
           <img src="../images/jennifer-raftis.jpg" alt="Jennifer Raftis, Certified Professional Organizer and founder of Efficiency Matters" class="presenter-img" />
           <p class="presenter-name">Jennifer Raftis, CPO</p>
@@ -1052,6 +1053,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
           <p class="presenter-bio">Jennifer is a Certified Professional Organizer specializing in senior transitions and downsizing. She helps families work through decades of belongings in a way that is methodical, respectful, and actually finishable. She brings the logistics that most real estate conversations leave out.</p>
           <a href="https://www.efficiencymattersllc.com" target="_blank" rel="noopener noreferrer" class="presenter-link">Efficiency Matters &rarr;</a>
         </div>
+        -->
       </div>
     </div>
   </div>
@@ -1113,7 +1115,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
         </div>
         <div>
           <h3>The Part Nobody Plans For</h3>
-          <p>Forty years of belongings is not a weekend project, and it is the reason most families stall out before they start. Jennifer Raftis walks through how a downsizing move actually works: what to sort first, what to do with the things nobody in the family wants, and how to sequence the work so the house is ready when the plan is. Families who handle this well get to make decisions on their own timeline instead of under pressure.</p>
+          <p>Forty years of belongings is not a weekend project, and it is the reason most families stall out before they start. Ben walks through how a downsizing move actually works: what to sort first, what to do with the things nobody in the family wants, and how to sequence the work so the house is ready when the plan is. Families who handle this well get to make decisions on their own timeline instead of under pressure.</p>
         </div>
       </div>
       <div class="cover-item">
@@ -1200,7 +1202,7 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
     <h2>Workshop Questions, Answered</h2>
     <div class="faq-item">
       <h3>What is the BrightWork senior real estate planning workshop?</h3>
-      <p>A two-hour educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session, joined by Jennifer Raftis, a Certified Professional Organizer who specializes in senior downsizing and move management. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps.</p>
+      <p>A two-hour educational session for Lamorinda homeowners and their adult children navigating senior real estate decisions. Ben Olsen leads the session. Topics include the legacy home decision, what to do now vs. later, tax and estate basics, and practical next steps.</p>
     </div>
     <div class="faq-item">
       <h3>Who should attend the senior real estate planning workshop?</h3>
@@ -1374,6 +1376,8 @@ posthog.init('phc_D4PErHHVrdiiphQqEZ8qmintbxdNLtzCShtmgmwWC79i', {
 <script>
   // flip to true when event is confirmed; keep date/time in sync with hero, event details, and meta tags
   const WORKSHOP_ACTIVE = true;
+  // Co-presenter toggle: false hides Jennifer Raftis on this page (presenter block is HTML-commented). Set true and uncomment the presenter block in event details when she joins a session again.
+  const JENNIFER_RAFTIS_PRESENTING = false;
   const WORKSHOP_DATE = 'November 7, 2026';
   const WORKSHOP_TIME = '10:00 AM';
   const WORKSHOP_VENUE = 'Moraga Country Club';
